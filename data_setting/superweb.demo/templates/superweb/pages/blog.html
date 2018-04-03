@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block title %}Bảng Giá{% endblock %}
+{% block header %}
+{{ include_module('mod_header',{topbar_class:' ',header_class:'header-colored-transparent dark'}) }}
+{% endblock %}
+{% block slider %}{% endblock %}
+{% block content %}
+
+<!-- Content -->
+<section id="page-content" class="sidebar-left">
+    <div class="container">
+        <div class="row">
+            <!-- post content -->
+            <div class="content col-md-9">
+                <!-- Page title -->
+                <div class="page-title">
+                    <h1>Blog - Right Sidebar</h1>
+                    <div class="breadcrumb float-left">
+                        <ul>
+                            <li><a href="#">Home</a>
+                            </li>
+                            <li><a href="#">Blog</a>
+                            </li>
+                            <li class="active"><a href="#">Sidebar Right</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end: Page title -->
+
+                <!-- Blog -->
+                <div id="blog" class="post-thumbnails">
+
+                    {{ include_module('mod_article') }}
+
+
+                </div>
+                <!-- end: Blog -->
+
+                <!-- Pagination -->
+                <div class="pagination pagination-simple">
+                    <ul>
+                        <li>
+                            <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a>
+                        </li>
+                        <li><a href="#">1</a> </li>
+                        <li><a href="#">2</a> </li>
+                        <li class="active"><a href="#">3</a> </li>
+                        <li><a href="#">4</a> </li>
+                        <li><a href="#">5</a> </li>
+                        <li>
+                            <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end: Pagination -->
+
+            </div>
+            <!-- end: post content -->
+
+            <!-- Sidebar-->
+            <div class="sidebar col-md-3">
+                <div class="pinOnScroll">
+                    <!--Tabs with Posts-->
+                    <div class="widget ">
+                        <h4 class="widget-title">Recent Posts</h4>
+                        <div class="post-thumbnail-list">
+                            <div class="post-thumbnail-entry">
+                                <img alt="" src="{{templates}}/images/blog/thumbnail/5.jpg">
+                                <div class="post-thumbnail-content">
+                                    <a href="#">Suspendisse consectetur fringilla luctus</a>
+                                    <span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
+                                    <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                </div>
+                            </div>
+                            <div class="post-thumbnail-entry">
+                                <img alt="" src="{{templates}}/images/blog/thumbnail/6.jpg">
+                                <div class="post-thumbnail-content">
+                                    <a href="#">Consectetur adipiscing elit</a>
+                                    <span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
+                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                </div>
+                            </div>
+                            <div class="post-thumbnail-entry">
+                                <img alt="" src="{{templates}}/images/blog/thumbnail/7.jpg">
+                                <div class="post-thumbnail-content">
+                                    <a href="#">Lorem ipsum dolor sit amet</a>
+                                    <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
+                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End: Tabs with Posts-->
+
+                    <!-- Twitter widget -->
+                    <div class="widget widget-tweeter" data-username="envato" data-limit="2">
+                        <h4 class="widget-title">Recent Tweets</h4>
+                    </div>
+                    <!-- end: Twitter widget-->
+
+                    <!--widget tags -->
+                    <div class="widget  widget-tags">
+                        <h4 class="widget-title">Tags</h4>
+                        <div class="tags">
+                            <a href="#">Design</a>
+                            <a href="#">Portfolio</a>
+                            <a href="#">Digital</a>
+                            <a href="#">Branding</a>
+                            <a href="#">HTML</a>
+                            <a href="#">Clean</a>
+                            <a href="#">Peace</a>
+                            <a href="#">Love</a>
+                            <a href="#">CSS3</a>
+                            <a href="#">jQuery</a>
+                        </div>
+                    </div>
+                    <!--end: widget tags -->
+
+                    <!--widget newsletter-->
+                    <div class="widget  widget-newsletter">
+                        <form class="widget-subscribe-form form-inline" action="include/subscribe-form.php" role="form" method="post">
+                            <h4 class="widget-title">Newsletter</h4>
+                            <small>Stay informed on our latest news!</small>
+                            <div class="input-group">
+                                <input type="email" aria-required="true" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+                                <span class="input-group-btn">
+                  <button type="submit" id="widget-subscribe-submit-button" class="btn btn-default"><i class="fa fa-paper-plane"></i></button>
+                  </span> </div>
+                        </form>
+
+                    </div>
+                    <!--end: widget newsletter-->
+                </div>
+            </div>
+            <!-- end: Sidebar-->
+        </div>
+    </div>
+</section>
+<!-- end: Content -->
+
+
+{% endblock %}

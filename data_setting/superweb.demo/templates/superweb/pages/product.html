@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Giao Diện{% endblock %}
+{% block header %}
+{{ include_module('mod_header',{topbar_class:' ',header_class:'header-colored-transparent dark'}) }}
+{% endblock %}
+{% block slider %}
+
+{% endblock %}
+
+{% block content %}
+
+
+   {{ include_module('mod_detail_product') }}
+
+    <!-- SHOP WIDGET PRODUTCS -->
+    <section class="p-t-0">
+        <div class="container">
+            <div class="heading-fancy heading-line text-center">
+                <h4>Các giao diện mới nhất!</h4>
+            </div>
+            <div class="shop">
+                <div class="grid-layout grid-4-columns" data-item="grid-item">
+                    {{ include_module('mod_product') }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end: SHOP WIDGET PRODUTCS -->
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<div style="margin-top:15px" class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg_menu">
+                        <h3>{{ ListProduct.0.tieude }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:15px" class="row">
+                {% for item in ListProduct %}
+                    <div class="col-md-3 sp_list">
+                        <div class="khunghinhsp">
+                            <a href="./product/{{ (item.alias~'-'~item.Id)|e }}">
+                                {% set hinhdachon = item.hinhanh.choose %}
+                                <img src="{{ ('/images/' ~ item.hinhanh.image_src[hinhdachon]) | src_template }}" onerror="this.src='resource/images/no_image.jpg'">
+                            </a>
+                        </div>
+                        <div class="des">
+                            <div class="msp">{{ item.masanpham|e }}<?/*= $row["masanpham"]; */?></div>
+                            <div class="tensp">{{ item.tensanpham|e }}</div>
+                            <div class="giasp">{{ item.gia|number_format }} VNĐ</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- phân trang-->
+            {{ include_module('mod_pagination',{pagination:pagination}) }}
+        </div>
+        <div class="col-md-3">
+            {{ include_module('mod_trademark') }}
+            {{ include_module('mod_product',{},'mod_product_featured') }}
+        </div>
+    </div>
+    <div style="margin-top:15px;margin-bottom:15px" class="row">
+        <div class="col-md-12">
+            <img src="{{ 'images/services.png' | src_template }}">
+        </div>
+    </div>
+</div>

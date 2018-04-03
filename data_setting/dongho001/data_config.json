@@ -1,0 +1,9 @@
+{
+    "dongho001": {
+        "db_schema": "dongho_data",
+        "db_host": "localhost",
+        "db_user": "root",
+        "db_password": "",
+        "template": "dongho-001"
+    }
+}

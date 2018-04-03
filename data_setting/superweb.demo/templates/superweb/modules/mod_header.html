@@ -1,0 +1,81 @@
+<!-- Topbar -->
+
+<div id="topbar" class="visible-md visible-lg {{ param.topbar_class|default('topbar-transparent topbar-fullwidth dark') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <ul class="top-menu">
+                    <li><a href="#">Phone: +1 (234) 567-890</a></li>
+                    <li><a href="#">Email: contact@inspiro-media.com</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 hidden-xs">
+                <div class="social-icons social-icons-colored-hover">
+                    <ul>
+                        <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="social-pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li class="social-vimeo"><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+                        <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="social-dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li class="social-youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li class="social-rss"><a href="#"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: Topbar -->
+<!-- Header -->
+<header id="header" class="{{ param.header_class|default('header-transparent header-fullwidth dark')}}">
+    <div id="header-wrap">
+        <div class="container">
+            <!--Logo-->
+            <div id="logo">
+                <a href="{{templates}}/index.html" class="logo" data-dark-logo="{{templates}}/images/Supertech_logo.png">
+                    <img src="{{templates}}/images/Supertech_logo.png" alt="Polo Logo">
+                </a>
+            </div>
+            <!--End: Logo-->
+
+            <!--Top Search Form-->
+            <div id="top-search">
+                <form action="search-results-page.html" method="get">
+                    <input type="text" name="q" class="form-control" value="" placeholder="Nhập và nhấn Enter  &quot;Enter&quot;">
+                </form>
+            </div>
+            <!--end: Top Search Form-->
+
+            <!--Header Extras-->
+            <div class="header-extras">
+                <ul>
+                    <li class="visible-md visible-lg">
+                        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary">Dùng Thử</a>
+                    </li>
+                    <li class="visible-md visible-lg">
+                        <a href="/cpanel"  class="btn btn-rounded">Đăng Nhập</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!--end: Header Extras-->
+
+            <!--Navigation Resposnive Trigger-->
+            <div id="mainMenu-trigger">
+                <button class="lines-button x"> <span class="lines"></span> </button>
+            </div>
+            <!--end: Navigation Resposnive Trigger-->
+
+            <!--Navigation-->
+            <div id="mainMenu" class="menu-center light">
+                <div class="container">
+                    {{ include_module('mod_menu') }}
+                </div>
+            </div>
+            <!--end: Navigation-->
+        </div>
+    </div>
+</header>
+<!-- end: Header -->

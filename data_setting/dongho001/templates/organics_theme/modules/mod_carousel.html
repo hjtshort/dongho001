@@ -1,0 +1,21 @@
+<section class="relative w_full m_bottom_15">
+    <div class="r_slider">
+        <ul>
+            {% set arr_slider = config %}
+            {% for i in 0..3 %}
+
+            {% if(arr_slider["slider_enable_" ~ i] == "on") %}
+            <li data-transition="fade" data-slotamount="10">
+                <div class="caption sfl str" data-x="100" data-y="109" data-speed="700" data-start="1500"><h1 class="color_light fw_light"><span style="margin-bottom:15px;display:inline-block">{{ arr_slider['slider_text' ~ i ~ '_1']|raw }}</span><br><span style="color:#e29d04;font-weight:bold;">{{ arr_slider['slider_text' ~ i ~ '_2']|raw }}</span></h1></div>
+                <div class="caption sfl str color_light" data-x="100" data-y="284" data-speed="700" data-start="1700" style="overflow-x: hidden">{{ arr_slider['slider_text' ~ i ~ '_3']|raw }}</div>
+                <div class="caption sfl str" data-x="100" data-y="369" data-speed="700" data-start="1900">
+                    <a href="{{ arr_slider['slider_link_' ~ i] }}" role="button" class="tt_uppercase button_type_3 color_purple r_corners fs_medium d_block tr_all">Chi tiết</a>
+                </div>
+                <div class="caption lfb ltb" data-x="805" data-y="25" data-hoffset="-50" data-speed="600"><img src="{{ ('images/' ~ arr_slider['slider_image_' ~ i]) | src_template }}" alt=""></div>
+            </li>
+            {% endif %}
+           {% endfor %}
+
+        </ul>
+    </div>
+</section>

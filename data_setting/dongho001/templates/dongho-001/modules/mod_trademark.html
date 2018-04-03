@@ -1,0 +1,20 @@
+<div class="khung_thuonghieu" style="margin-top: 15px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bg_menu">
+                <h3>THƯƠNG HIỆU</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="fw_light w_break m_xs_bottom_8 menu_danhmuckhac">
+                {% for trademark in list_vendors %}
+                <li>
+                    <a class="mau_den color_purple_hover" href="./collection?vendor={{ trademark.id }}">{{ trademark.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

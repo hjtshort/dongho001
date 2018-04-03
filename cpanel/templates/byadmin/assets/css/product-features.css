@@ -1,0 +1,116 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600&subset=latin,latin-ext);
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,600,700);
+/*!
+ * AdminPlus v2.0
+ *
+ * Copyright MosaicPro
+ * http://www.mosaicpro.biz
+ *
+ * Designed and built exclusively for sale @Envato Marketplaces.
+ */
+.item-container 
+{
+    border: 5px solid #EBEBEB;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.float-left
+{
+    float: left;
+    padding: 11px 10px;
+}
+.float-right 
+{
+    float: right;
+    padding: 14px 10px;
+}
+
+.object-group, .object-feature
+{
+    background-color: transparent;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.object-group .object-name
+{
+    background-color: #F9F9F9;
+    cursor: default;
+    padding: 10px 8px;
+}
+.object-group .object-name a
+{
+    font-size: 14px;
+}
+.object-group .object-name .description
+{
+}
+.object-group .object-name br
+{
+    margin-bottom: 5px;
+}
+
+.object-feature .object-name
+{
+    background-color: transparent;
+    cursor: default;
+    padding: 13px 37px;
+}
+.object-feature .object-name a
+{
+}
+.object-feature .object-name .description
+{    
+}
+.object-feature .object-order
+{
+    width: 70px;
+}
+.object-feature .object-controls
+{
+    padding-top: 13px;
+}
+.object-feature .float-right 
+{
+    padding: 10px; 
+}
+.object-feature .seperator
+{
+    padding: 10px 2px; 
+}
+
+.seperator
+{
+    padding: 14px 2px;
+}
+
+.object-feature-var input[type='text'].ordernumber
+{
+    width: 50px;
+}
+.object-feature-var input[type='text'].featurevar
+{
+    width: 250px;
+}
+.object-feature-var .object-name
+{
+    padding: 11px 8px 10px;
+}
+.object-feature-var .float-right
+{
+    padding: 14px 10px;
+}
+
+.object-feature .header{ font-weight: bold; }
+.object-feature .order-number{ width: 80px; }
+.object-feature .order-number input[type='text']{ width: 50px; }
+.object-feature .range-name{ width: 300px; }
+.object-feature .range-name input[type='text']{ width: 250px; }
+.object-feature .ranges{ width: 300px; }
+.object-feature .ranges input[type='text']{ width: 100px; }
+
+.object-group:hover, .object-feature:hover{ background-color: #FFD; }

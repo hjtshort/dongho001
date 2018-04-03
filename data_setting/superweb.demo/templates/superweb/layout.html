@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="INSPIRO"/>
+    <meta name="description" content="Themeforest Template Polo">
+    <!-- Document title -->
+    <title>{% block title %}{% endblock %} - {{config.website_title}}</title>
+    <base href="{{ config.rooturl}}">
+    <!-- Stylesheets & Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,800,700,600|Montserrat:400,500,600,700|Raleway:100,300,600,700,800"
+          rel="stylesheet" type="text/css"/>
+    <link href="{{ templates }}/css/plugins.css" rel="stylesheet">
+    <link href="{{ templates }}/css/style.css" rel="stylesheet">
+    <link href="{{ templates }}/css/color-variations/blue.css" rel="stylesheet">
+    <link href="{{ templates }}/css/responsive.css" rel="stylesheet">
+    <script src="{{ templates }}/js/jquery.js"></script>
+</head>
+<style>
+    /*custom menu header*/
+    #header.header-colored-transparent #header-wrap, #header.header-colored-transparent.dark #header-wrap{
+        background-color: #0071bca6;
+    }
+    #header.header-colored-transparent.dark.header-sticky #header-wrap, #header.header-colored-transparent.header-sticky #header-wrap{
+        background-color: #0071bca6!important;
+    }
+
+    #mainMenu nav>ul>li>a{
+        color: #fff;
+    }
+
+   #header.header-transparent.dark.header-sticky #header-wrap, #header.header-transparent.header-sticky #header-wrap{
+        /*background-color: #0071bca6!important;*/
+       background-image: linear-gradient( 135deg, #0071bca6 10%, #1D6FA3 100%);
+    }
+   #mainMenu nav>ul>li>a,.header-extras ul>li a,#header .header-extras .topbar-dropdown .title{
+       color: #fff;
+   }
+    section{
+        padding: 20px 0!important;
+    }
+    /*custom khung ảnh theme*/
+    .product .product-image{
+        height: 300px;
+    }
+    .product .product-image>a{
+        transition: all 5s ease-in-out ;
+    }
+    .product .product-image img, .product .product-image>a{
+        height: auto;
+    }
+    .product .product-image:hover>a:nth-of-type(1){
+        transform: translateY(calc(298px - 100%));
+    }
+    .product .product-image:hover>a:nth-of-type(2){
+        opacity: 0;
+        z-index: -1;
+    }
+    /*custom khung sản phẩm*/
+    .grid-item  .product .product-description .product-price ins{
+        font-size: 13px;
+        color: #f30000;
+    }
+    .product .product-description .product-price{
+        width: 35%;
+    }
+    .product .product-wishlist a{
+        border: 2px solid #f3eeee;
+        color: #f3eeee;
+    }
+    /*custom chi tiết sản phẩm*/
+    .product-page .product .product-price{
+        margin-top: auto;
+    }
+    /*custom danh muc sản phẩm*/
+    h2.hr-title abbr {
+        top: -24px;
+        color: #525252;
+    }
+    h2.hr-title{
+        border-width: 3px;
+    }
+</style>
+<body class="no-page-loader" data-icon="16">
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+    {% block header %}
+    {{ include_module('mod_header') }}
+    {% endblock %}
+
+
+    <!--revolution slider-->
+    {% block slider %}
+        {{ include_module('mod_carousel') }}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+
+
+
+
+    {{ include_module('mod_footer') }}
+
+</div>
+<!-- end: Wrapper -->
+<!--Modal SignUp -->
+<div class="modal fade" id="modalSignUp" tabindex="-1" role="modal" aria-labelledby="modalSignUp" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 id="modal-label-3" class="modal-title">Đăng Ký Tài Khoản Mới</h4>
+            </div>
+            <div class="modal-body">
+                <p>Tạo một tài khoản bằng cách nhập các thông tin dưới đây. Nếu bạn là khách hàng cũ hãy đăng nhập ở đầu trang.</p>
+                <form class="form-transparent-grey">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label class="sr-only">Tên Website</label>
+                            <div class="input-group">
+                                <input type="text"  name="title" class="form-control input-lg" placeholder="Tên Website"
+                                       aria-describedby="domain-name"/>
+                                <span class="input-group-addon" id="domain-name">.superweb.vn</span>
+                            </div>
+                            <p class="help-block p-b-0">Bạn có thể sử dụng tên miền riêng sau khi tạo website</p>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="sr-only">Email</label>
+                            <input type="email"  class="form-control input-lg" name="email" placeholder="Email"/>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="sr-only">Mật Khẩu</label>
+                            <input type="password"  name="password" class="form-control input-lg" placeholder="Mật Khẩu"/>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="sr-only">Họ Tên</label>
+                            <input type="text" class="form-control input-lg" name="full_name" placeholder="Họ Tên"/>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="sr-only">Xác Nhận Lại Mật Khẩu</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control input-lg"
+                                   placeholder="Xác Nhận Lại Mật Khẩu"/>
+                        </div>
+
+
+                        <div class="col-md-6 form-group">
+                            <label class="sr-only">Số Điện Thoại</label>
+                            <input type="text" class="form-control input-lg" name="phone" placeholder="SĐT"/>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="sr-only">Tỉnh/Thành Phố</label>
+                            <select  placeholder="Tỉnh/Thành Phố" class="form-control" name="address" id="address">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="colored-primary" checked="checked">
+                                    <span class="text darkgray">Tôi đồng ý với  <a class="item-link" href="#">Điều khoản Dịch vụ</a> và Chính sách Bảo mật của công ty</span>
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button class="btn btn-primary" type="button">ĐĂNG KÝ</button>
+                            <button data-dismiss="modal" type="button" class="btn btn-danger m-l-10">HỦY</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End: Modal Login -->
+<!-- Go to top button -->
+<a id="goToTop"><i class="fa fa-angle-up top-icon"></i><i class="fa fa-angle-up"></i></a>
+<!--Plugins-->
+<script src="{{ templates }}/js/plugins.js"></script>
+<!--Template functions-->
+<script src="{{ templates }}/js/functions.js"></script>
+
+<!-- SLICEY ADD-ON FILES -->
+<script type='text/javascript' src='{{ templates }}/js/plugins/revolution/revolution-addons/slicey/js/revolution.addon.slicey.min.js?ver=1.0.0'></script>
+<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+<link rel="stylesheet" type="text/css" href="{{ templates }}/js/plugins/revolution/css/settings.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="{{ templates }}/js/plugins/revolution/css/layers.css">
+<link rel="stylesheet" type="text/css" href="{{ templates }}/js/plugins/revolution/css/navigation.css">
+<!-- REVOLUTION JS FILES -->
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="{{ templates }}/js/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+
+{% block script %}{% endblock %}
+</body>
+
+</html>

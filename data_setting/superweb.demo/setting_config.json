@@ -1,0 +1,12 @@
+{
+    "config": {
+        "site_status": 1,
+        "rooturl": "//superweb.demo",
+        "website_title": "Super Web ",
+        "email_admin": "nguyenhoangphuc1995@gmail.com",
+        "company_name": "Super Web ",
+        "address": "",
+        "phone": "0923911007",
+        "page_default":"home"
+    }
+}

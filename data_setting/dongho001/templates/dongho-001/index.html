@@ -1,0 +1,89 @@
+<!doctype html>
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+	<title>{% block title %}{% endblock %} - {{config.settingweb.website_title}}</title>
+	<base href="{{ config.rooturl}}">
+	<!--meta info-->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="author" content="{{config.settingweb.author}}">
+	<meta name="keywords" content="{{config.settingweb.keywords}}">
+	<meta name="description" content="{{config.settingweb.description}}">
+	<link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
+	<!--web fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900,100italic,300italic,400italic' rel='stylesheet' type='text/css'>
+	<!--libs css-->
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/plugins/owl-carousel/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/plugins/owl-carousel/owl.transitions.css">
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/plugins/jackbox/css/jackbox.min.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="{{templates}}/plugins/rs-plugin/css/settings.css">
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/plugins/colorpicker/colorpicker.css">
+	<!--theme css-->
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/css/theme-animate.css">
+	<link rel="stylesheet" type="text/css" media="all" href="{{templates}}/css/style.css">
+	<!--head libs-->
+	<script src="{{templates}}/js/jquery-2.1.0.min.js"></script>
+	<script src="{{templates}}/js/jquery-ui-1.10.4.min.js"></script>
+	<script src="{{templates}}/js/flyto.min.js"></script>
+	<script src="{{templates}}/plugins/jquery.queryloader2.min.js"></script>
+	<script src="{{templates}}/plugins/modernizr.js"></script>
+
+</head>
+<body class="{{templates}}">
+<!--layout-->
+<div class="wide_layout bg_light_2">
+	<div class="wide_layout bg_light">
+		<!--header markup-->
+		<div class="bg_top">
+            {% block menu %}
+                {{ include_module('mod_menu') }}
+            {% endblock %}
+
+			<!--revolution slider-->
+            {% block slider %}
+                {{ include_module('mod_carousel') }}
+            {% endblock %}
+
+		</div>
+
+		<div style="background-color:#fff;">
+
+
+            {% block content %}{% endblock %}
+		</div>
+
+
+		<!--footer-->
+        {% block footer %}
+            {{ include_module('mod_footer') }}
+        {% endblock %}
+	</div>
+</div>
+<!--back to top button-->
+<button id="back_to_top" class="circle icon_wrap_size_2 color_blue_hover color_grey_light_4 tr_all d_md_none">
+	<i class="icon-angle-up fs_large"></i>
+</button>
+<!--Libs-->
+<script src="{{templates}}/plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="{{templates}}/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="{{templates}}/plugins/jquery.elevateZoom-3.0.8.min.js"></script>
+<script src="{{templates}}/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{templates}}/plugins/jquery.appear.js"></script>
+<script src="{{templates}}/plugins/afterresize.min.js"></script>
+<script src="{{templates}}/plugins/jquery.easing.1.3.js"></script>
+<script src="{{templates}}/plugins/jquery.easytabs.min.js"></script>
+<script src="{{templates}}/plugins/jackbox/js/jackbox-packed.min.js"></script>
+<!--<script src="plugins/twitter/jquery.tweet.min.js"></script>-->
+<script src="{{templates}}/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="{{templates}}/plugins/flickr.js"></script>
+<script src="{{templates}}/plugins/colorpicker/colorpicker.js"></script>
+<script src="{{templates}}/js/styleswitcher.js"></script>
+
+<!--Theme Initializer-->
+<script src="{{templates}}/js/theme.plugins.js"></script>
+<script src="{{templates}}/js/theme.js"></script>
+</body>
+</html>  

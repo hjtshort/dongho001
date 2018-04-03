@@ -1,0 +1,141 @@
+
+
+<div class="p-20" style=" background-image: linear-gradient( 135deg, #0071bca6 10%, #1D6FA3 100%);">
+    <div class="container">
+        <div class="row  collectionMenu">
+            <div class="col-sm-8" >
+                <!--Navigation-->
+                <div id="mainMenu" class="menu-left light">
+                    <div class="container">
+                        {% macro recursiveCategory(category) %}
+                            <li class="{{ (category.children|length)?'dropdown-submenu':'' }}">
+                                <a href="./collection/{{ category.alias~'-'~category.danhmuc_id }}">
+                                    {{ category.tieude }}
+                                </a>
+                                {% if category.children|length %}
+                                    <!--sub menu-->
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/collection/{{ category.alias~'-'~category.danhmuc_id }}">Tất Cả</a></li>
+                                        {% for child in category.children %}
+                                            {{ _self.recursiveCategory(child) }}
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endmacro %}
+                        <nav>
+                            <ul>
+                                <li><a href="/collection">Tất Cả</a></li>
+                                {% for category in TreeCategory %}
+                                    {{ _self.recursiveCategory(category) }}
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--end: Navigation-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Shop products -->
+<section id="page-content">
+    <div class="container-fluid">
+
+        <!--Product list-->
+        <div class="shop">
+            {% if(CategoryCurrent.tieude=='all') %}
+
+            <section class="p-b-0">
+                <div class="container">
+                    <div class="heading heading-center m-b-40" data-animation="fadeInUp">
+                        <h2 class="hr-title hr-long center m-b-0">
+                            <abbr>{{ config.collection_productlist1_title }}</abbr></h2>
+                        <span class="lead">{{ config.collection_productlist1_detail }}</span>
+                    </div>
+                    <div class="row" data-animation="fadeInUp">
+                        <div class="col-md-12">
+                            <div class="grid-layout grid-5-columns" data-item="grid-item">
+                                {{ include_module('mod_product',{category:config.collection_productlist1_id }) }}
+                            </div>
+
+                            <!-- Load next portfolio items -->
+                            <div id="pagination" class="infinite-scroll">
+                                <a href="./"></a>
+                            </div>
+                            <!-- end:Load next portfolio items -->
+
+                            <!-- Show more posts Button -->
+                            <div id="showMore">
+                                <a href="#" class="btn btn-outline btn-primary btn-rounded">Xem Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="p-b-0">
+                <div class="container">
+                    <div class="heading heading-center m-b-40" data-animation="fadeInUp">
+                        <h2 class="hr-title hr-long center m-b-0">
+                            <abbr>{{ config.collection_productlist2_title }}</abbr></h2>
+                        <span class="lead">{{ config.collection_productlist2_detail }}</span>
+                    </div>
+                    <div class="row" data-animation="fadeInUp">
+                        <div class="col-md-12">
+                            <div class="grid-layout grid-5-columns" data-item="grid-item">
+                                {{ include_module('mod_product',{category:config.collection_productlist2_id }) }}
+                            </div>
+
+                            <!-- Load next portfolio items -->
+                            <div id="pagination" class="infinite-scroll">
+                                <a href="./"></a>
+                            </div>
+                            <!-- end:Load next portfolio items -->
+
+                            <!-- Show more posts Button -->
+                            <div id="showMore">
+                                <a href="#" class="btn btn-outline btn-primary btn-rounded">Xem Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {% else %}
+
+            <section class="p-b-0">
+                <div class="container">
+                    <div class="heading heading-center m-b-40" data-animation="fadeInUp">
+                        <h2 class="hr-title hr-long center m-b-0">
+                            <abbr>{{ CategoryCurrent.tieude }}</abbr></h2>
+                        <span class="lead">{{ CategoryCurrent.tomtat }}</span>
+                    </div>
+                    <div class="row" data-animation="fadeInUp">
+                        <div class="col-md-12">
+                            <div class="grid-layout grid-5-columns" data-item="grid-item">
+                                {{ include_module('mod_product',{category:CategoryCurrent.danhmuc_id }) }}
+                            </div>
+
+                            <!-- Load next portfolio items -->
+                            <div id="pagination" class="infinite-scroll">
+                                <a href="./"></a>
+                            </div>
+                            <!-- end:Load next portfolio items -->
+
+                            <!-- Show more posts Button -->
+                            <div id="showMore">
+                                <a href="#" class="btn btn-outline btn-primary btn-rounded">Xem Thêm</a>
+                            </div>
+                            <!-- end: Show more posts Button -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        {% endif %}
+    </div>
+    <!--End: Product list-->
+</section>
+<!-- end: Shop products -->

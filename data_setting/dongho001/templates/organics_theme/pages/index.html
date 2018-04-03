@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+
+
+
+
+<div style="margin-top:15px" class="container">
+    {{ include_module('mod_logo') }}
+
+
+    <div style="margin-top:15px" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bg_menu">
+                    <h3>{{ config.producthot_title }}</h3>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:15px" class="row">
+            <div class="featured_products owl-carousel type_2 t_xs_align_c" data-plugin-options='{"singleItem":false,"itemsCustom":[[992,5],[768,5],[600,2],[10,1]],"autoPlay":true}' data-nav="fproducts_nav_1_">
+                {{ include_module('mod_product',{row:3},'mod_product') }}
+            </div>
+        </div>
+
+    </div>
+
+
+    <div style="margin-top:15px;margin-bottom:15px" class="row">
+        {{ include_module('mod_service') }}
+    </div>
+
+
+</div>
+{% endblock %}

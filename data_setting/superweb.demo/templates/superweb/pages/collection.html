@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Kho Giao Diện{% endblock %}
+{% block header %}
+{{ include_module('mod_header',{topbar_class:' ',header_class:'header-colored-transparent dark'}) }}
+{% endblock %}
+
+{% block slider %}
+{{ include_module('mod_carousel',{'style':'page'}) }}
+{% endblock %}
+
+{% block content %}
+
+{{ include_module('mod_category_product') }}
+
+
+{% endblock %}

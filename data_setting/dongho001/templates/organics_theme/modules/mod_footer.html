@@ -1,0 +1,98 @@
+<footer role="contentinfo" class="bg_footer" id="#footer_1">
+    <!--top part-->
+    <section class="footer_top_part">
+        <div class="container">
+            <div class="row">
+                <!--about us-->
+                <div class="col-lg-3 col-md-3 col-sm-3 fw_light m_bottom_30">
+                    <h5 class="color_light m_bottom_20">LIÊN HỆ VỚI CHÚNG TÔI</h5>
+                    <div class="row">
+                        <ul class="col-lg-12 col-md-12 col-sm-12 fw_light w_break m_xs_bottom_8">
+                            <li class="m_bottom_8">
+                                <div class="d_inline_m icon_wrap_size_1 color_light circle m_right_10">
+                                    <i class="icon-phone-1"></i>
+                                </div>
+                                <span class="color_light">{{ config.header_phone }}</span>
+                            </li>
+                            <li class="m_bottom_8">
+                                <div class="d_inline_m icon_wrap_size_1 color_light circle m_right_10">
+                                    <i class="icon-mail-alt"></i>
+                                </div>
+                                <a href="mailto:#" class="color_light color_light_hover">{{ config.header_email }}</a>
+                            </li>
+                            <li class="m_bottom_8">
+                                <div class="d_inline_m icon_wrap_size_1 color_light circle m_right_10">
+                                    <i class="icon-skype-1"></i>
+                                </div>
+                                <span class="color_light">skype.name</span>
+                            </li>
+                            <li class="">
+                                <div class="d_inline_m icon_wrap_size_1 color_light circle m_right_10">
+                                    <i class="icon-location"></i>
+                                </div>
+                                <span class="color_light">{{ config.header_address }}</span>
+                            </li>
+                        </ul>
+                        <ul class="col-lg-12 col-md-12 col-sm-12 vr_list_type_5">
+                            <li class="m_bottom_15 fw_light relative">
+
+                            </li>
+                            <li>
+                                <a href="{{ config.link_google_map }}" target="_blank" class="button_type_2 color_light r_corners tr_all color_light_hover d_inline_m fs_medium t_md_align_c w_break">Xêm trên bản đồ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--contact info-->
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_30">
+                    <h5 class="color_light m_bottom_20 fw_light">HỖ TRỢ KHÁCH HÀNG</h5>
+                    <div class="row">
+                        <ul class="col-lg-12 col-md-12 col-sm-12 fw_light w_break m_xs_bottom_8">
+                            <li class="m_bottom_8">
+                                <span class="color_light">Tìm hiểu về mua trả góp</span>
+                            </li>
+                            <li class="m_bottom_8">
+                                <span class="color_light">Tìm trung tâm bảo hành chính hãng</span>
+                            </li>
+                            <li>
+                                <span class="color_light">Chính sách đổi trả</span>
+                            </li>
+                            <li>
+                                <span class="color_light">Hướng dẫn mua online</span>
+                            </li>
+                            <li>
+                                <span class="color_light">Giao hàng và thanh toán</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 m_bottom_30">
+                    <h5 class="color_light m_bottom_20 fw_light">HỖ TRỢ TRỰC TUYẾN</h5>
+                    <div class="row">
+                        <ul class="col-lg-12 col-md-12 col-sm-12 fw_light w_break m_xs_bottom_8">
+                            <li class="m_bottom_8">
+                                <span class="color_light"><b>Kinh doanh 1: </b>0907 060212 (Mr Hưng)</span>
+                            </li>
+                            <li class="m_bottom_8">
+                                <span class="color_light"><b>Kinh doanh 2: </b>0932 972168 (Mr Phát)</span>
+                            </li>
+                            <li>
+                                <span class="color_light"><b>Kỹ thuật 1: </b>0945 667661 (Ms Nhi)</span>
+                            </li>
+                            <li>
+                                <span class="color_light"><b>Kỹ thuật 2: </b>0939 491092 (Mr Việt)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_30">
+                    {{ include_module('mod_visitcounter') }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--bottom part-->
+    <section style="color:#000" class="footer_bottom_part t_align_c bg_light_4 fw_light">
+        <p>Copyright &copy; {{ "now"|date("Y") }} {{ config.company_name }} - Giấy Chứng Nhận ĐKKD số. {{ config.tax_id }}</p>
+    </section>
+</footer>

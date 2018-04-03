@@ -1,0 +1,13 @@
+
+{% extends "layout.html" %}
+
+{% block title %}Tin tức{% endblock %}
+{% block header %}
+{{ include_module('mod_header',{topbar_class:' ',header_class:'header-colored-transparent dark'}) }}
+{% endblock %}
+{% block slider %}{% endblock %}
+
+{% block content %}
+    {{ include_module('mod_detail_news') }}
+{% endblock %}
+

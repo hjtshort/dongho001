@@ -1,0 +1,474 @@
+<div style="margin-top:15px" class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <!--chi tiết sản phẩm-->
+            <div class="clearfix m_bottom_45 m_xs_bottom_30">
+                <div class="f_left product_view f_sm_none m_sm_bottom_30">
+                    <div class="clearfix">
+                        <div class="thumbnails_carousel t_align_c f_left m_right_20">
+                            <ul id="thumbnails">
+                                {% set number_thumb_carousel = 3 %}
+                                {% for key,item in product.hinhanh.image_src %}
+                                    {% if((key % number_thumb_carousel) == 0) %}
+                                        <li>
+                                            {% for i in key..key+(number_thumb_carousel-1) %}
+                                                <a href="#" data-zoom-image="{{ ('images/'~product.hinhanh.image_src[i]) | src_template }}"
+                                                   data-image="{{ ('images/'~product.hinhanh.image_src[i]) | src_template }}"
+                                                   class="active d_block wrapper r_corners tr_all translucent m_bottom_10">
+                                                    <img src="{{ ('images/'~product.hinhanh.image_src[i]) | src_template }}" alt=""
+                                                            class="r_corners"></a>
+                                            {% endfor %}
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <!---->
+                            <div class="helper-list"></div>
+                        </div>
+                        <div class="wrapper r_corners container_zoom_image relative">
+                            {% set hinhdachon = product.hinhanh.choose %}
+                            <img id="img_zoom"
+                                 src="{{ ('images/'~product.hinhanh.image_src[hinhdachon]) | src_template }}"
+                                 data-zoom-image="{{ ('images/'~product.hinhanh.image_src[hinhdachon]) | src_template }}"
+                                 alt="{{ product.hinhanh.product_image_desc[hinhdachon]|e }}">
+                            <div class="labels_container">
+                                <a href="#"
+                                   class="d_block label color_pink color_pink_hover tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c"><span
+                                            class="d_inline_m">Sale</span></a>
+                            </div>
+                        </div>
+                        <a href="#" class="open_product f_right button_type_6 d_block r_corners tr_all t_align_c">
+                            <i class="icon-resize-full"></i>
+                        </a>
+                    </div>
+                    <!--share buttons-->
+                </div>
+                <div class="f_right product_info f_sm_none w_sm_full">
+                    <div class="fw_ex_bold color_pink product_current_price m_bottom_15 lh_medium">
+                        <span class="color_black">{{ product.tensanpham }}</span>
+                    </div>
+                    <hr class="m_bottom_12">
+                    <table class="fw_light table_type_9 m_bottom_15">
+                        <tr>
+                            <td>
+                                Thương hiệu:
+                            </td>
+                            <td class="color_black">
+                                {{ product.tendanhmuc }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mã sản phẩm:
+                            </td>
+                            <td class="color_black">
+                                {{ product.Id }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Đặt hàng qua điện thoại:
+                            </td>
+                            <td class="color_black">
+                                {{ config.header_phone }}
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="m_top_15 m_bottom_15">
+                        <p class="fw_light d_inline_m m_right_8">Share: </p>
+                        <ul class="dotted_list type_2 color_grey_light_2 d_inline_m">
+                            <li class="m_right_30 relative d_inline_m">
+                                <a href="http://www.facebook.com/sharer.php?u=http://inthe7heaven.com/illusion-html/shop_product_page_v1.html"
+                                   onClick="javascript:window.open(this.href,
+                                          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;"
+                                   class="facebook_color">
+                                    <i class="icon-facebook m_right_2 color_grey_light_2 tr_all fs_large"></i><i
+                                            class="fs_medium color_grey tr_all">18</i>
+                                </a>
+                            </li>
+                            <li class="m_right_30 relative d_inline_m">
+                                <a href="https://twitter.com/share?url=http://inthe7heaven.com/illusion-html/shop_product_page_v1.html"
+                                   onClick="javascript:window.open(this.href,
+                                          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;"
+                                   class="twitter_color">
+                                    <i class="icon-twitter m_right_2 color_grey_light_2 tr_all fs_large"></i><i
+                                            class="fs_medium color_grey tr_all">5</i>
+                                </a>
+                            </li>
+                            <li class="m_right_30 relative d_inline_m">
+                                <a href="https://plus.google.com/share?url=http://inthe7heaven.com/illusion-html/shop_product_page_v1.html"
+                                   onClick="javascript:window.open(this.href,
+                                          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
+                                   class="googleplus_color">
+                                    <i class="icon-gplus-1 m_right_2 color_grey_light_2 tr_all fs_large"></i><i
+                                            class="fs_medium color_grey tr_all">22</i>
+                                </a>
+                            </li>
+                            <li class="m_right_30 relative d_inline_m">
+                                <a href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.inthe7heaven.com/illusion-html/shop_product_page_v1.html"
+                                   data-pin-do="buttonPin" data-pin-config="above" class="pinterest_color"
+                                   onClick="window.open(this.href,'_blank', 'width=700, height=300');return false;">
+                                    <i class="icon-pinterest m_right_2 color_grey_light_2 tr_all fs_large"></i><i
+                                            class="fs_medium color_grey tr_all">43</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fw_ex_bold color_pink m_bottom_15 lh_ex_small">
+                        <span class="color_black">Không bảo hành</span>
+                    </div>
+                    {{ product.motangan|raw }}
+                    <hr class="m_bottom_12">
+                    <form action="./cart" method="post">
+                        <table class="fw_light table_type_9 m_bottom_20">
+                            <tr>
+                                <td class="color_black">
+                                    Số lượng:
+                                    <div class="wrapper d_inline_m fs_medium r_corners quantity type_2 clearfix">
+                                        <button type="button" class="f_left bg_light_3" data-count="minus">
+                                            <i class="icon-minus "></i>
+                                        </button>
+                                        <input id="item_quality" name="item_quality" type="text" readonly value="1"
+                                               class="f_left color_grey bg_light">
+                                        <button type="button" class="f_left bg_light_3" data-count="plus">
+                                            <i class="icon-plus"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="color_black">
+                                    Màu Sắc:
+                                    <div class="wrapper d_inline_m">
+                                        <select name="item_option[color]" id="">
+                                            <option value="Đen">Đen</option>
+                                            <option value="Bạc">Bạc</option>
+                                            <option value="Vàng">Vàng</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr class="m_bottom_12">
+                        <div class="fw_ex_bold color_red product_current_price m_bottom_15 lh_medium">
+                            {{ product.gia|number_format }} VNĐ
+                        </div>
+                        <button name="action" value="add"
+                                class="button_type_7 m_mxs_bottom_5 d_inline_b m_right_2 tt_uppercase color_pink r_corners vc_child tr_all">
+                            <span class="d_inline_m clerarfix"><i
+                                        class="icon-basket f_left m_right_10 fs_large"></i><span class="fs_medium">MUA NGAY</span></span>
+                        </button>
+                        <button type="button" name="action" value="add"
+                                class="add_to_cart_button button_type_7 m_mxs_bottom_5 d_inline_b m_right_2 tt_uppercase color_blue r_corners vc_child tr_all ">
+                            <span class="d_inline_m clerarfix"><i
+                                        class="icon-plus f_left m_right_10 fs_large"></i><span class="fs_medium">THÊM VÀO GIỎ</span></span>
+                        </button>
+                        <a href="#" class="product_howToBuy" target="_blank">
+                            <i class="icn-howtobuy"></i><span class="txt-howtobuy">Hướng dẫn <br> mua hàng</span>
+                        </a>
+                        <input id="item_id" type="hidden" name="item_id" value="{{ product.Id }}">
+                    </form>
+
+                </div>
+            </div>
+            <div class="tabs m_bottom_40 m_xs_bottom_30">
+                <!--tabs nav-->
+                <ul class="tabs_nav hr_list d_inline_b d_xs_block m_bottom_23 m_xs_bottom_20">
+                    <li class="f_xs_none"><a href="#tab-1" class="color_black d_block n_sc_hover tr_all_medium">Mô
+                            tả</a></li>
+                    <li class="f_xs_none"><a href="#tab-3" class="color_black d_block n_sc_hover tr_all_medium">Bình
+                            luận</a></li>
+                </ul>
+                <!--tabs content-->
+                <div id="tab-1">
+                    {{ product.motachitiet|raw }}
+                </div>
+                <div id="tab-3">
+                    <!--comment level 1-->
+                    <div class="m_bottom_20">
+                        <div class="d_table w_full m_bottom_20">
+                            <div class="d_table_cell">
+                                <!--author photo-->
+                                <a href="#" class="d_inline_m circle wrapper m_right_10">
+                                    <img width="80" height="80"
+                                         onerror='this.src="https://www.bin.vn/upload/article/noavatar_1418273249.jpg"'
+                                         src="{{ 'images/blog_img_13.jpg' | src_template }}" alt="">
+                                </a>
+                                <!--author name-->
+                                <div class="d_inline_m">
+                                    <a href="#" class="fs_large color_dark tr_all"><b>Nguyễn Anh Tuấn</b></a>
+                                    <p class="fs_medium color_grey d_mxs_none"><i>Tháng 10 27, 2016, 11:45 am</i></p>
+                                </div>
+                            </div>
+                            <div class="d_table_cell t_align_r v_align_m d_mxs_none">
+                                <ul class="rating_list d_inline_m hr_list tr_all">
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="comment relative r_corners bg_light_3 fw_light">Mẫu đồng hồ tại đây rất đẹp, tôi rất
+                            thích, nhân viên phục vụ tư vấn tận tình.
+                        </div>
+                    </div>
+                    <!--comment level 2-->
+                    <div class="m_bottom_20">
+                        <div class="d_table w_full m_bottom_20">
+                            <div class="d_table_cell">
+                                <!--author photo-->
+                                <a href="#" class="d_inline_m circle wrapper m_right_10">
+                                    <img width="80" height="80"
+                                         onerror='this.src="https://www.bin.vn/upload/article/noavatar_1418273249.jpg"'
+                                         src="{{ 'images/blog_img_12.jpg' | src_template }}" alt="">
+                                </a>
+                                <!--author name-->
+                                <div class="d_inline_m">
+                                    <a href="#" class="fs_large color_dark tr_all"><b>Nguyễn Vũ Lâm</b></a>
+                                    <p class="fs_medium color_grey d_mxs_none"><i>Tháng 8 23, 2016, 11:45 am</i></p>
+                                </div>
+                            </div>
+                            <div class="d_table_cell t_align_r v_align_m d_mxs_none">
+                                <ul class="rating_list d_inline_m hr_list tr_all">
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="comment relative r_corners bg_light_3 fw_light">Giao hàng nhanh, sản phẩm chất
+                            lượng, tôi rất hài lòng.
+                        </div>
+                    </div>
+                    <!--comment level 1-->
+                    <div class="m_bottom_45 m_xs_bottom_30">
+                        <div class="d_table w_full m_bottom_20">
+                            <div class="d_table_cell">
+                                <!--author photo-->
+                                <a href="#" class="d_inline_m circle wrapper m_right_10">
+                                    <img width="80" height="80"
+                                         onerror='this.src="https://www.bin.vn/upload/article/noavatar_1418273249.jpg"'
+                                         src="{{ 'images/blog_img_13.jpg' | src_template }}" alt="">
+                                </a>
+                                <!--author name-->
+                                <div class="d_inline_m">
+                                    <a href="#" class="fs_large color_dark tr_all"><b>Huỳnh Thị Bích Huyền</b></a>
+                                    <p class="fs_medium color_grey d_mxs_none"><i>Tháng bảy 23, 2016, 11:45 am</i></p>
+                                </div>
+                            </div>
+                            <div class="d_table_cell t_align_r v_align_m d_mxs_none">
+                                <ul class="rating_list d_inline_m hr_list tr_all">
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative active lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                    <li class="relative lh_ex_small">
+                                        <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                        <i class="icon-star-1 color_yellow tr_all"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="comment relative r_corners bg_light_3 fw_light">Shop có nhiều mẫu mã đồng hồ đẹp
+                            quá.
+                        </div>
+                    </div>
+                    <!--comment form-->
+                    <h5 class="fw_light color_black m_bottom_23">Bình luận của bạn</h5>
+                    <form>
+                        <ul>
+                            <li class="row fw_light">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <input type="text" class="r_corners color_grey r_corners w_full m_bottom_10"
+                                           placeholder="Họ và tên">
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <input type="email" class="r_corners color_grey r_corners w_full m_bottom_10"
+                                           placeholder="Địa chỉ Email">
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="m_top_5">
+                                        <i class="d_inline_m m_right_5 color_grey">Đánh giá</i>
+                                        <ul class="rating_list d_inline_m hr_list tr_all">
+                                            <li class="relative lh_ex_small">
+                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                            </li>
+                                            <li class="relative lh_ex_small">
+                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                            </li>
+                                            <li class="relative lh_ex_small">
+                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                            </li>
+                                            <li class="relative lh_ex_small">
+                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                            </li>
+                                            <li class="relative lh_ex_small">
+                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="m_bottom_20 fw_light">
+                                <textarea class="color_grey d_block r_corners w_full height_4"
+                                          placeholder="Nội dung bình luận"></textarea>
+                            </li>
+                            <li>
+                                <button class="button_type_2 r_corners tr_all fs_medium color_blue transparent">Gửi
+                                </button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <!--end-chi tiết sản phẩm-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg_light_3">
+                        <div class="fb-comments"
+                             data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+                             data-numposts="5"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg_menu">
+                        <h3>{{ config.producthot_title }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:15px" class="row">
+                <div class="featured_products  owl-carousel type_2 t_xs_align_c"
+                     data-plugin-options='{"singleItem":false,"itemsCustom":[[992,4],[768,4],[600,2],[10,1]],"autoPlay":true}'
+                     data-nav="fproducts_nav_1_">
+                    {{ include_module('mod_product') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            {#Thương hiệu#}
+            {{ include_module('mod_trademark') }}
+            {#Sản phảm nổi bật#}
+            {{ include_module('mod_product',{},'mod_product_featured') }}
+        </div>
+    </div>
+    <div style="margin-top:15px;margin-bottom:15px" class="row">
+        {{ include_module('mod_service') }}
+    </div>
+</div>
+<script>
+    Object.size = function (obj) {
+        var size = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    };
+    $('.add_to_cart_button').click(function () {
+        $.ajax({
+            url: 'http://dongho001/cart-ajax',
+            data: {
+                action: 'add',
+                item_id: $('#item_id').val(),
+                item_quality: $('#item_quality').val()
+            },
+            datType: "json",
+            method: 'post',
+            success: function (data) {
+                console.log(data);
+
+                $('#number_item_cart').text(Object.size(data));
+
+                var cart = $('.bg_cart');
+                var imgtodrag = $('img#img_zoom');
+
+                if (imgtodrag) {
+                    var imgclone = imgtodrag.clone()
+                        .offset({
+                            top: imgtodrag.offset().top,
+                            left: imgtodrag.offset().left
+                        })
+                        .css({
+                            'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': '150px',
+                            'width': '150px',
+                            'z-index': '100'
+                        })
+                        .appendTo($('body'))
+                        .animate({
+                            'top': cart.offset().top + 10,
+                            'left': cart.offset().left + 10,
+                            'width': 75,
+                            'height': 75
+                        }, 1000, 'easeInOutExpo');
+
+                    setTimeout(function () {
+                        cart.effect("shake", {
+                            times: 2
+                        }, 200);
+                    }, 1500);
+
+                    imgclone.animate({
+                        'width': 0,
+                        'height': 0
+                    }, function () {
+                        $(this).detach()
+                    });
+                }
+            }
+        })
+    });
+</script>

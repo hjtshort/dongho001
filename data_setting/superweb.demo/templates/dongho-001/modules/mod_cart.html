@@ -1,0 +1,294 @@
+<div style="margin-top:15px;" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="hr_list d_inline_m breadcrumbs">
+                <li class="m_right_8 f_xs_none">Có {{ ListItemCart|length }} sản phẩm trong giỏ hàng của bạn</li>
+                <li class="m_right_8 f_xs_none">
+                    <form action="" method="post">
+                        <button name="action" value="destroy"
+                                class="color_grey_light_2 color_black_hover tr_all">
+                            <i class="icon-cancel-circled-1 fs_large"></i> Huỷ
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div style="margin-top:15px" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="r_corners wrapper border_grey m_bottom_50 m_xs_bottom_30">
+                <table class="table_type_2 responsive_table w_full t_align_l">
+                    <thead>
+                    <tr class="color_black">
+                        <th>Hình ảnh</th>
+                        <th>Mô tả</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng cộng</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total = 0 %}
+                    {% for item in ListItemCart %}
+
+                        <tr class="tr_delay">
+                            <td data-title="Product Image">
+                                <a href="#" class="r_corners d_inline_b wrapper">
+                                    <img src="{{ ('images/'~item.product_data.hinhanh.image_src[item.product_data.hinhanh.choose]) | src_template }}"
+                                         height="80" alt="">
+                                </a>
+                            </td>
+                            <td data-title="Description">
+                                <h6 class="m_bottom_5"><a href="#"
+                                                          class="color_black tr_all">{{ item.product_data.tensanpham }}
+                                        ( {{ item.option.color }})</a>
+                                </h6>
+                                {# <p class="fw_light">Màu sắc : Đen</p> #}
+                            </td>
+                            <td data-title="Price">{{ item.product_data.gia|number_format }} VNĐ</td>
+                            <td data-title="Quantity">
+                                <form action="" method="post">
+                                    <div class="wrapper fs_medium r_corners d_inline_b quantity clearfix">
+                                        <button name="action" value="update" class="f_left bg_light_3"
+                                                data-count="minus">
+                                            <i class="icon-minus "></i>
+                                        </button>
+                                        <input name="item_quality" style="width: 30px;" type="text" readonly
+                                               value="{{ item.quality }}" class="f_left color_grey bg_light">
+                                        <button name="action" value="update" class="f_left bg_light_3"
+                                                data-count="plus">
+                                            <i class="icon-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="item_id" value="{{ item.product_data.Id }}">
+                                </form>
+                            </td>
+                            <td data-title="Total" class="fw_ex_bold color_dark">
+                                {{ (item.product_data.gia*item.quality)|number_format }} VNĐ
+                                {% set total = total + (item.product_data.gia*item.quality) %}
+                            </td>
+                            <td>
+                                <form action="" method="post">
+                                    <button name="action" value="remove"
+                                            class="color_grey_light_2 color_black_hover tr_all">
+                                        <i class="icon-cancel-circled-1 fs_large"></i> Xóa
+                                    </button>
+                                    <input type="hidden" name="item_id" value="{{ item.product_data.Id }}">
+                                </form>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    <tr>
+                        <td colspan="4" class="t_align_r fw_light">Tổng tiền sản phẩm:</td>
+                        <td colspan="2">{{ total|number_format }} VNĐ</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="t_align_r fw_light">Phí shipping</td>
+                        <td colspan="2">0 VNĐ</td>
+                    </tr>
+                    <tr class="bg_light_2">
+                        <td colspan="4" class="v_align_m">
+                            <div class="d_table w_full">
+                                {#<div class="col-lg-9 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
+                                    <p class="fw_light d_inline_m m_right_5 d_xs_block">Mã khuyến mãi:</p>
+                                    <form class="d_inline_m">
+                                        <input type="text" placeholder="Nhập mã khuyến mãi vào đây" class="color_grey r_corners bg_light fw_light coupon m_xs_bottom_15">
+                                        <button class="tr_all m_xs_bottom_10 r_corners color_purple transparent tt_uppercase button_type_5 fs_medium">Gửi</button>
+                                    </form>
+                                </div>#}
+                                <div class="col-lg-3 col-md-3 col-sm-1 v_align_m d_table_cell d_xs_block f_none t_align_r fw_ex_bold color_pink t_xs_align_c">
+                                    Tổng tiền phải trả:
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2" class="fw_ex_bold color_pink v_align_m">{{ total|number_format }} VNĐ</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="title_counter_type r_corners wrapper m_bottom_23 bg_light_2 counter_inc color_dark">Thông Tin
+                Khách Hàng</h4>
+            {#<h5 class="color_black fw_light m_bottom_23">Bạn đã có tài khoản?</h5>
+            <form class="m_bottom_45 m_xs_bottom_30">
+                <ul>
+                    <li class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_8">
+                            <i class="icon-user login_icon fs_medium color_grey_light_2"></i>
+                            <input style="background:#FFF" type="text" placeholder="Tên tài khoản" class="r_corners color_grey w_full fw_light">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_8">
+                            <i class="icon-lock login_icon fs_medium color_grey_light_2"></i>
+                            <input style="background:#FFF" type="password" placeholder="Mật khẩu" class="r_corners color_grey w_full fw_light">
+                        </div>
+                    </li>
+                    <li class="m_bottom_23">
+                        <input type="checkbox" checked id="checkbox_2" name="" class="d_none">
+                        <label for="checkbox_2" class="d_inline_m fs_medium fw_light">Remember me</label>
+                    </li>
+                    <li class="clearfix">
+                        <button class="button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners">Đăng nhập</button>
+                        <div class="lh_medium">
+                            <a href="#" class="color_scheme color_purple_hover d_inline_b m_bottom_3 fs_small">Quên mật khẩu?</a><br>
+                        </div>
+                    </li>
+                </ul>
+            </form>#}
+            <div class="clearfix m_bottom_20">
+                {#<h5 class="color_black f_left fw_light">Khách hàng mới</h5>#}
+                <p class="fw_light fs_medium f_right required_l">Các trường bắt buộc</p>
+            </div>
+            <form class="m_bottom_40 m_bottom_30" method="post">
+                <ul>
+                    <li class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                            <label for="input_1"
+                                   class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0">E-mail</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                            <input required name="bill_email"
+                                   data-validation-error-msg-email="Vui lòng nhập đúng định dạng email"
+                                   data-validation-error-msg-required="Vui lòng nhập email"
+                                   style="background:#FFF" type="email" id="input_1"
+                                   class="r_corners fw_light color_grey w_full">
+                        </div>
+                    </li>
+                    {#<li class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                            <label for="input_2" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0">Mật khẩu</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                            <input style="background:#FFF" type="password" id="input_2" class="r_corners fw_light color_grey w_full">
+                        </div>
+                    </li>#}
+
+                    <li class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                            <label for="input_3" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0">Tên
+                                khách hàng</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                            <input required minlength="5" name="bill_name"
+                                   data-validation-error-msg-required="Vui lòng nhập họ tên"
+                                   style="background:#FFF" type="text" id="input_3"
+                                   class="r_corners fw_light color_grey w_full">
+                        </div>
+                    </li>
+                    <li class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                            <label for="input_3" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0">Số điện
+                                thoại</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                            <input data-validation="custom"
+                                   data-validation-regexp="^0(([8-9][0-9]{8})|(1[0-9]{9}))$"
+                                   data-validation-error-msg-custom="Vui lòng nhập đúng định dạng SĐT"
+                                   data-validation-error-msg-required="Vui lòng nhập SĐT"
+                                   required
+                                   name="bill_phone" style="background:#FFF" type="number" id="input_3"
+                                   class="r_corners fw_light color_grey w_full">
+                        </div>
+                    </li>
+                    <li class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                            <label for="input_3" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0">Địa
+                                chỉ</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                            <textarea required
+                                      data-validation-error-msg-required="Vui lòng nhập địa chỉ"
+                                      name="bill_address" type="text" style="height:150px" id="input_3"
+                                      class="r_corners fw_light color_grey w_full"></textarea>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="bg_light_2 r_corners privacy m_bottom_20">
+                    <h5 class="color_dark m_bottom_23 fw_light">Điều khoản mua hàng</h5>
+                    <label for="checkbox_6" class="d_inline_m fw_light">Tất cả các Điều Khoản và Điều Kiện (và tất cả
+                        nghĩa
+                        vụ phát sinh ngoài Điều khoản và Điều kiện này hoặc có liên quan) sẽ bị chi phối và được hiểu
+                        theo
+                        luật pháp Việt Nam. Chúng tôi có quyền sửa đổi các Điều khoản và Điều kiện này vào bất kỳ thời
+                        điểm
+                        nào và các sửa đổi đó sẽ có hiệu lực ngay tại thời điểm được được đăng tải tại website.
+
+                        Xin quý khách lưu ý chỉ mua hàng khi chấp nhận và hiểu rõ những quy định trên. Nếu cần hỗ trợ
+                        thêm
+                        thông tin, quý khách vui lòng tham khảo tại</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_40 m_xs_bottom_30">
+                        <h4 class="title_counter_type r_corners wrapper m_bottom_23 bg_light_2 counter_inc color_dark">
+                            Phương thức giao hàng</h4>
+                        <h5 class="fw_light color_dark m_bottom_23">Chọn phương thức giao hàng</h5>
+                        <ul>
+                            <li class="m_bottom_15">
+                                <input type="radio" checked id="radio_4" name="method_1" class="d_none">
+                                <label for="radio_4" class="d_inline_m m_right_15 m_bottom_3 fw_light">Giao hàng nhanh
+                                    <span
+                                            class="color_grey">từ 1 đến 2 ngày phí ship 35,000 VNĐ </span></label>
+                            </li>
+                            <li>
+                                <input type="radio" id="radio_5" name="method_1" class="d_none">
+                                <label for="radio_5" class="d_inline_m m_right_15 m_bottom_3 fw_light">Giao hàng tiết
+                                    kiệm
+                                    <span class="color_grey">từ 3 đến 7 ngày, miễn phí SHIP </span></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_40 m_xs_bottom_30">
+                        <h4 class="title_counter_type r_corners wrapper m_bottom_23 bg_light_2 counter_inc color_dark">
+                            Phương thức thanh toán</h4>
+                        <h5 class="fw_light color_dark m_bottom_23">Chọn phương thức thanh toán</h5>
+                        <ul>
+                            <li class="m_bottom_15">
+                                <input type="radio" checked id="radio_6" name="method_2" class="d_none">
+                                <label for="radio_6" class="d_inline_m m_right_15 m_bottom_3 fw_light">Chuyển khoản ngân
+                                    hàng</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="radio_7" name="method_2" class="d_none">
+                                <label for="radio_7" class="d_inline_m m_right_15 m_bottom_3 fw_light">Lấy hàng trước
+                                    trả
+                                    tiền sau</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="fw_light m_bottom_3">Ghi chú</p>
+                <textarea name="note" class="r_corners height_5 fw_light color_grey w_full d_block m_bottom_10"></textarea>
+
+                <div class="m_bottom_23">
+                    <input type="checkbox" id="checkbox_7" name="" class="d_none">
+                    <label for="checkbox_7" class="d_inline_m fw_light">Tôi đồng ý với điều khoản mua hàng và dịch
+                        vụ </label>
+                    <p class="d_inline_m fw_light">(<a href="#" class="tr_all color_dark_hover fw_light">Xem thêm về
+                            điều
+                            khoản mua hàng</a>)</p>
+                </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="total" value="{{ total }}">
+                <input type="hidden" name="redirect" value="cart-success">
+                <button name="action" value="checkout" class="button_type_3 tr_all color_pink r_corners tt_uppercase d_inline_b fs_medium mini_side_offset">
+                    <i class="icon-check fs_large d_inline_b m_right_10"></i>
+                    Đặt hàng
+                </button>
+            </form>
+        </div>
+    </div>
+    <div style="margin-top:15px;margin-bottom:15px" class="row">
+        {{ include_module('mod_service') }}
+    </div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+    $.validate({
+        modules: 'html5, security',
+        addValidClassOnAll: true
+    });
+</script>

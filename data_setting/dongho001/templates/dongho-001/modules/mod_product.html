@@ -1,0 +1,15 @@
+{% for item in ListProduct %}
+    <div class="col-md-{{ param.row!=''?param.row:12 }} {{ param.class}}">
+        <div class="khunghinhsp">
+            <a href="./product/{{ (item.alias~'-'~item.Id)|e }}">
+                {% set hinhdachon = item.hinhanh.choose %}
+                <img src="{{ ('/images/' ~ item.hinhanh.image_src[hinhdachon]) | src_template }}" onerror="this.src='resource/images/no_image.jpg'">
+            </a>
+        </div>
+        <div class="des">
+            <div class="msp">{{ item.masanpham|e }}<?/*= $row["masanpham"]; */?></div>
+            <div class="tensp">{{ item.tensanpham|e }}</div>
+            <div class="giasp">{{ item.gia|number_format }} VNĐ</div>
+        </div>
+    </div>
+{% endfor %}

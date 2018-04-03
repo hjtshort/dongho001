@@ -1,0 +1,24 @@
+{
+    "config": {
+        "site_status": "1",
+        "rooturl": "/dongho001",
+        "site_close_msg": "1",
+        "website_title": "Đồng hồ Hưng Phát",
+        "keyword": "dong ho deo tay, dong ho casio, dong ho nu",
+        "description": "tạo lập web miễn phí",
+        "email_admin": "love2t@gmail.com",
+        "page_default": "2",
+        "default_language": "en-US",
+        "www_redirect": "www",
+        "smart_search": "True",
+        "company_name": "Cty TNHH Web Tiện Ích",
+        "slogan": null,
+        "address": "218/44B THĐ, Q Ninh Kiều, TPCT",
+        "phone": "0932900733",
+        "fax": "0932900733",
+        "email": null,
+        "website": null,
+        "ga_code": "hfhhtr565546",
+        "id_facebook": "id0123456"
+    }
+}

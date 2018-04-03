@@ -1,0 +1,118 @@
+<!-- Page title -->
+<section id="page-title" class="page-title-classic">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="/">Trang Chủ</a></li>
+                <li><a href="/collection">Kho giao diện</a></li>
+                <li class="active"><a>{{ product.tensanpham|e }}</a></li>
+            </ul>
+        </div>
+        <div class="page-title">
+            <h1>Kho giao diện - {{ product.tensanpham|e }}</h1>
+            <span>{{ product.motangan|e }}</span>
+        </div>
+    </div>
+</section>
+<!-- end: Page title -->
+<!-- SHOP PRODUCT PAGE -->
+<section id="product-page" class="product-page background-grey p-b-0">
+    <div class="container">
+        <div class="product">
+            <div class="row m-b-40">
+                <div class="col-md-7">
+                    <div class="product-image">
+                        <!-- Carousel slider -->
+
+                        <div class="carousel dots-inside dots-dark arrows-visible arrows-only arrows-dark"
+                             data-items="1" data-loop="true" data-autoplay="true" data-animate-in="fadeIn"
+                             data-animate-out="fadeOut" data-autoplay-timeout="2500" data-lightbox="gallery">
+                            {% set hinhdachon = product.hinhanh.choose %}
+                            <a href="{{ ('product/'~product.hinhanh.image_src[hinhdachon]) | src_upload }}"
+                               data-lightbox="image" title="{{ product.tensanpham|e }}">
+                                <img alt="{{ product.tensanpham|e }}" src="{{ ('product/'~product.hinhanh.image_src[hinhdachon]) | src_upload }}">
+                            </a>
+                            {% for key,item in product.hinhanh.image_src %}
+                                {% if(key!=hinhdachon) %}
+                                    <a href="{{ ('product/'~item) | src_upload }}" data-lightbox="image"
+                                       title="{{ product.tensanpham|e }}">
+                                        <img alt="{{ product.tensanpham|e }}" src="{{ ('product/'~item) | src_upload }}">
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <!-- Carousel slider -->
+                    </div>
+                </div>
+
+
+                <div class="col-md-5">
+                    <div class="product-description">
+                        <div class="product-category">{{ product.danhmucsanpham|e }}</div>
+                        <div class="product-title">
+                            <h1><a href="#">{{ product.tensanpham|e }}</a></h1>
+                        </div>
+                        <div class="product-price">
+                            <ins style="color: #ff4d4a">{{ product.gia>0?(product.gia|number_format)~ ' ' ~product.donvitinh:'Miễn phí' }}</ins>
+                        </div>
+                        <div class="product-rate">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        {#<div class="product-reviews"><a href="#">3 customer reviews</a>
+                        </div>#}
+
+                        <div class="seperator m-b-10"></div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a class="btn btn-block btn-primary btn-rounded btn-shadow"><i class="fa fa-shopping-cart"></i> Sử Dụng Giao
+                                    Diện này</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a class="btn btn-block btn-outline btn-primary btn-rounded"><i class="fa fa-eye"></i> Xem Trước</a>
+                            </div>
+                        </div>
+                        <div class="seperator m-t-0 m-b-0"></div>
+                        <p> {{ product.motangan|raw }}</p>
+                        <div class="product-meta">
+                            <p>Tags: <a href="#" rel="tag">Clothing</a>, <a rel="tag" href="#">T-shirts</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tabs-1" class="tabs simple">
+                <ul class="tabs-navigation">
+                    <li class="active"><a href="#tab_info"><i class="fa fa-align-justify"></i>Thông Tin</a></li>
+                    <li><a href="#tab_reviews"><i class="fa fa-star"></i>Bình Luận <span>(3)</span></a></li>
+                </ul>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="tab_info">
+                        {{ product.motachitiet|raw }}
+                    </div>
+
+                    <div class="tab-pane" id="tab_reviews">
+                        <div class="comments" id="comments">
+                            <div class="comment_number">
+                                Reviews <span>(3)</span>
+                            </div>
+
+                            <div class="comment-list">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end: SHOP PRODUCT PAGE -->

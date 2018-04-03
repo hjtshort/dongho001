@@ -1,0 +1,40 @@
+{% for item in ListProduct %}
+    <div class="grid-item">
+        <div class="product">
+            <div class="product-image">
+                {% set hinhdachon = item.hinhanh.choose %}
+                <a href="./product/{{ (item.alias~'-'~item.Id)|e }}"><img alt="Shop product image!"
+                                                                          src="{{ ('/product/' ~ item.hinhanh.image_src[hinhdachon]) | src_upload }}">
+                </a>
+                <span class="product-new">NEW</span>
+                <span class="product-wishlist">
+<a href="#"><i class="fa fa-heart"></i></a>
+</span>
+                <div class="product-overlay">
+                    <a href="/product" data-lightbox="ajax">Xem Nhanh</a>
+                </div>
+            </div>
+
+            <div class="product-description">
+                <div class="product-category">{{ item.tendanhmuc|e }}</div>
+                <div class="product-title">
+                    <h3><a href="#">{{ item.tensanpham|e }}</a></h3>
+                </div>
+                <div class="product-price">
+
+                    <ins>{{ item.gia>0?(item.gia|number_format)~ ' ' ~item.donvitinh:'Miễn phí' }}</ins>
+                </div>
+                <div class="product-rate">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="product-reviews"><a href="#">{{ item.solanxem }} <i class="fa fa-eye"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+

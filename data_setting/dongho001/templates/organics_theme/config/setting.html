@@ -1,0 +1,365 @@
+<style>
+	.imgPreview {
+		display: block;
+		max-width: 450px;
+		margin: 0 auto;
+	}
+	.control-group {
+		border-bottom: 1px solid #ededed;
+		padding: 5px 0;
+		margin: 0px;
+	}
+	.control-group label {
+		font-weight: bold;
+		float: left;
+		width: 140px;
+	}
+	.control-group p {
+		display: block;
+		clear: both;
+	}
+	.accordion-inner .control-group:last-child {
+		border-bottom: none;
+		margin-bottom: 0;
+	}
+	#accordionTemplate .accordion-toggle {
+		height: 42px;
+		line-height: 42px;
+	}
+	.control-group .preview {
+		color: #2294d2;
+		padding: 3px 4px 3px 35px;
+		margin-right: 5px;
+		font-weight: bold;
+	}
+	.image-placeholder {
+		width: auto;
+		border: 1px solid #eee;
+		padding: 4px;
+		border-radius: 3px
+	}
+	input[type="text"]{
+		margin-bottom:0px;	
+}
+</style>
+
+	<div class="accordion-group">
+        <div class="accordion-heading"> <a class="accordion-toggle accordion-page" data-id="home" data-toggle="collapse" data-parent="#accordionTemplate" href="#collapse_page_home"> Trang chủ </a> </div>
+        <div id="collapse_page_home" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="row">
+                    <div class="span7"> <img class="imgPreview" src="/templates/001/images/layout/trang-chu.jpg"> </div>
+                    <div class="span5">
+                        <div class="accordion" id="accordion_home_inner">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Branding" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_Branding">1. Logo & Biểu tượng</a> </div>
+                                <div id="collapse_Branding" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Chọn logo của website</label>
+                                            <p>Bạn nên chọn tập tin có kích thước 300x80, dung lượng < 2Mb</p>                                           
+                                            <input type="file" id="logo" name="logo" data-max-width="300" data-max-height="83">
+                                            <!--<br />                                            
+                                            <a class="preview" href="#previewModal" role="button" class="" data-toggle="modal" data-src="/files/images/logo_old_HB-01.png"> 
+                                            	<i class="icon-picture"></i>
+                                            	logo.png
+                                            </a>--> 
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Chọn favicon</label>
+                                            <p>Bạn nên chọn tập tin có kích thước 16x16, dung lượng ít hơn < 2Mb</p>                                            
+                                            <input type="file" id="favicon" name="favicon" data-max-width="16" data-max-height="16">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Header" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_Header">2. Nội dung trên đầu trang</a> </div>
+                                <div id="collapse_Header" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Số điện thoại</label>
+                                            <input value="0932900733" type="text" name="header_phone" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Địa chỉ</label>
+                                            <input value="218/44B Trần Hưng Đạo" type="text" name="header_address" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Email</label>
+                                            <input value="love2t@gmail.com" type="text" name="header_email" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Nội dung</label>
+                                            <input value="dzvdfdf" type="text" name="header_noidung" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Slider" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_Slider">3. Slider hình ảnh</a> </div>
+                                <div id="collapse_Slider" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Hiển thị hình 1</label>
+                                            <input type="checkbox" name="slider_enable_1" value="1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Chọn hình 1</label>                                            
+                                            <input type="file" name="slider_image_1" value="1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 1</label>
+                                            <input type="text" name="slider_text1_1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 2</label>
+                                            <input type="text" name="slider_text2_1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 3</label>
+                                            <input type="text" name="slider_text3_1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Liên kết hình 1</label>
+                                            <input type="text" name="slider_link_1">
+                                        </div>
+                                    </div>
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Hiển thị hình 2</label>
+                                            <input checked type="checkbox" name="slider_enable_2">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Chọn hình 2</label>                                           
+                                            <input type="file" name="slider_image_2">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 1</label>
+                                            <input type="text" name="slider_text1_2">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 2</label>
+                                            <input type="text" name="slider_text2_2">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 3</label>
+                                            <input type="text" name="slider_text3_2">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Liên kết hình 2</label>
+                                            <input type="text" name="slider_link_2">
+                                        </div>
+                                    </div>
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Hiển thị hình 3</label>
+                                            <input checked type="checkbox" name="slider_enable_3">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Chọn hình 3</label>                                            
+                                            <input type="file" name="slider_image_3">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 1</label>
+                                            <input type="text" name="slider_text1_3">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 2</label>
+                                            <input type="text" name="slider_text2_3">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Text 3</label>
+                                            <input type="text" name="slider_text3_3">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Liên kết hình 3</label>
+                                            <input type="text" name="slider_link_3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="ProductHot" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_ProductHot">4. Danh sách sản phẩm</a> </div>
+                                <div id="collapse_ProductHot" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Hiển thị</label>
+                                            <input checked type="checkbox" name="producthot_enable_1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Tiêu đề</label>
+                                            <input value="SẢN PHẨM BÁN CHẠY" type="text" name="producthot_title" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Số lượng sản phẩm</label>
+                                            <input value="10" type="text" name="producthot_productnumber" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Số cột sản phẩm</label>
+                                            <select class="form-control" name="producthot_productcolumns">
+                                                <option value="3" selected>3 cột</option>
+                                                <option value="4" >4 cột</option>
+                                                <option value="5" >5 cột</option>
+                                            </select>
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Chọn loại sản phẩm hiển thị</label>
+                                            <select class="form-control type_product" name="feature_product">
+                                            	<option value="0" selected="selected">-- Không chọn --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Banner_2" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_Banner_2">5. Banner hình ảnh trang chủ</a> </div>
+                                <div id="collapse_Banner_2" class="accordion-body  collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Chọn hình</label>
+                                            <input type="file" name="home_banner_2_image_1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Liên kết hình</label>
+                                            <input value="" type="text" name="home_banner_2_link_1" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Chọn nhóm sản phẩm hiển thị</label>
+                                            <select class="form-control collection_product" name="collection_product">
+                                            	<option value="0">-- Không chọn --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="ProductList2" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_ProductList2">6. Danh sách sản phẩm</a> </div>
+                                <div id="collapse_ProductList2" class="accordion-body  collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Số lượng sản phẩm</label>
+                                            <input value="" type="text" name="home_productlist2_productnumber" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Banner3" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_Banner3">7. Banner trang chủ cuối trang</a> </div>
+                                <div id="collapse_Banner3" class="accordion-body  collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Chọn hình</label>
+                                            <input type="file" name="home_Banner3_Image1">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Liên kết hình</label>
+                                            <p>Bỏ trống sẽ không chuyển trang</p>
+                                            <input value="" type="text" name="home_banner3_link1" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Footer" data-toggle="collapse" data-parent="#accordion_home_inner" href="#collapse_Footer">8. Chân trang</a> </div>
+                                <div id="collapse_Footer" class="accordion-body  collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Tiêu đề</label>
+                                            <input value="ContactHeading" type="text" name="home_footer_contactheading" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Mô tả</label>
+                                            <input value="" type="text" name="home_footer_contactDescription" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Địa chỉ email</label>
+                                            <input value="" type="text" name="home_footer_contactEmail" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Địa chỉ</label>
+                                            <input value="" type="text" name="home_footer_contactAddress" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Điện thoại</label>
+                                            <input value="" type="text" name="home_footer_contactPhone" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Tiêu đề nhận email</label>
+                                            <input value="" type="text" name="home_footer_emailHeading" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Mô tả thêm</label>
+                                            <input value="" type="text" name="home_footer_emailDescription" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Tiêu đề fanpage</label>
+                                            <input value="" type="text" name="home_footer_facebookHeading" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Link Fanpage Facebook</label>
+                                            <input value="" type="text" name="home_footer_facebookURL" placeholder="">
+                                        </div>
+                                        <div class="control-group">
+                                            <label>Copyright Text</label>
+                                            <input value="" type="text" name="home_footer_copyrightText" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-group">
+        <div class="accordion-heading"> <a class="accordion-toggle accordion-page" data-id="products" data-toggle="collapse" data-parent="#accordionTemplate" href="#collapse_page_products"> Danh mục sản phẩm </a> </div>
+        <div id="collapse_page_products" class="accordion-body  collapse">
+            <div class="accordion-inner">
+                <div class="row">
+                    <div class="span7"> <img class="imgPreview" src="/templates/001/images/layout/nhom-san-pham.jpg"> </div>
+                    <div class="span5">
+                        <div class="accordion" id="accordion_products_inner">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="ProductList1" data-toggle="collapse" data-parent="#accordion_products_inner" href="#collapse_ProductList1">1. Danh sách sản phẩm</a> </div>
+                                <div id="collapse_ProductList1" class="accordion-body  collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Số lượng sản phẩm</label>
+                                            <input value="" type="text" name="products_productlist1_productnumber" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-group">
+        <div class="accordion-heading"> <a class="accordion-toggle accordion-page" data-id="product" data-toggle="collapse" data-parent="#accordionTemplate" href="#collapse_page_product"> Sản phẩm chi tiết </a> </div>
+        <div id="collapse_page_product" class="accordion-body  collapse">
+            <div class="accordion-inner">
+                <div class="row">
+                    <div class="span7"> <img class="imgPreview" src="/templates/001/images/layout/san-pham.jpg"> </div>
+                    <div class="span5">
+                        <div class="accordion" id="accordion_product_inner">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle accordion-section" data-id="Comment" data-toggle="collapse" data-parent="#accordion_product_inner" href="#collapse_Comment">1. Bình luận sản phẩm</a> </div>
+                                <div id="collapse_Comment" class="accordion-body  collapse">
+                                    <div class="accordion-inner">
+                                        <div class="control-group">
+                                            <label>Hiển thị bình luận</label>
+                                            <input  type="checkbox" name="product_comment_enable_1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                                                                                                                                                                

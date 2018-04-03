@@ -1,0 +1,62 @@
+<div class="col-lg-6 col-md-6 col-sm-7 m_bottom_15 phantrang">
+    <p class="d_inline_m fs_medium m_right_5">Số sản phẩm trên trang</p>
+    <div class="custom_select show_per_page_select type_2 m_right_5 d_inline_m">
+        <div class="select_title r_corners color_grey fs_medium">8</div>
+        <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
+        <select class="d_none">
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-5 m_bottom_15 t_align_r t_xs_align_l phantrang">
+    <ul class="hr_list d_inline_b fs_medium paginations t_align_c">
+        {% set pagination = param.pagination %}
+        {%  if  pagination.current_page<=1 %}
+            <li>
+                <a href="javascript:void(0)" class="rc_first_hr color_dark"><i class="icon-angle-left fs_large"></i></a>
+            </li>
+         {% else %}
+             <li>
+                 <a href="{{ pagination.prev_page_url }}" class="rc_first_hr color_dark"><i class="icon-angle-left fs_large"></i></a>
+             </li>
+             {%  if  pagination.current_page-1 > 1 %}
+                 <li>
+                     <a href="{{ pagination.prev_prev_page_url }}" class=" color_dark">{{ pagination.current_page - 2 }}</a>
+                 </li>
+             {% endif %}
+             <li>
+                 <a href="{{ pagination.prev_page_url }}" class=" color_dark">{{ pagination.current_page - 1 }}</a>
+             </li>
+        {% endif %}
+
+        <li class="active">
+            <a href="javascript:void(0)" class=" color_dark">{{ pagination.current_page }}</a>
+        </li>
+
+        {%  if  pagination.current_page >= pagination.last_page %}
+            <li>
+                <a href="javascript:void(0)" class="rc_last_hr color_dark"><i class="icon-angle-right fs_large"></i></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ pagination.next_page_url }}" class=" color_dark">{{ pagination.current_page+1 }}</a>
+            </li>
+
+            {%  if  pagination.current_page+1 < pagination.last_page %}
+                <li>
+                    <a href="{{ pagination.next_next_page_url }}" class=" color_dark">{{ pagination.current_page+2 }}</a>
+                </li>
+            {% endif %}
+
+            <li>
+                <a href="{{ pagination.next_page_url }}" class="rc_last_hr color_dark"><i class="icon-angle-right fs_large"></i></a>
+            </li>
+        {% endif %}
+
+    </ul>
+</div>

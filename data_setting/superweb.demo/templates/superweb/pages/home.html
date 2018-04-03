@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<!-- WELCOME -->
+<section class="p-b-0">
+    <div class="container">
+        <div class="heading heading-center m-b-40" data-animation="fadeInUp">
+            <h2>Bạn đang cần một Website?</h2>
+            <span class="lead">
+                    Chúng tôi giúp bạn có thể bắt đầu hôm nay <br>
+                    Sở hữu website một cách <label style="color: #f75420; font-weight: 800">nhanh chóng</label>, đầy đủ <label
+                    style="color: #2fa2ef; font-weight: 800;">tính năng</label> và tiết kiệm <label
+                    style="color: #2B8B3A ; font-weight: 800;">chi phí</label></span>
+        </div>
+        <div class="row" data-animation="fadeInUp">
+            <div class="col-md-12">
+                <img class="img-responsive" src="{{ templates }}/images/other/responsive-1.jpg"
+                     alt="Welcome to POLO">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end: WELCOME -->
+
+<!-- WHAT WE DO -->
+<section class="background-grey">
+    <div class="container">
+        <div class="heading text-left">
+            <h2>Super Web giúp bạn tạo website cực nhanh, cực dễ</h2>
+            <span class="lead">{#<button class="btn btn-primary">Dùng Thử Miễn Phí</button>#}</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="" data-animation="fadeInUp" data-animation-delay="0">
+                    <h4>Tạo website bán hàng với 30S</h4>
+                    <p>Với Super Web, bạn không cần phải là chuyên gia nhưng vẫn có thể tạo website bán hàng cực
+                        nhanh, cực dễ và cực hiệu quả chỉ trong vòng 30 giây.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="" data-animation="fadeInUp" data-animation-delay="200">
+                    <h4>Gần 200 giao diện đẹp mắt</h4>
+                    <p>Gần 200 giao diện đẹp mắt, được tối ưu hóa cho từng ngành nghề, Super Web sẽ giúp cho các chủ
+                        cửa hàng, doanh nghiệp tự tay làm website một cách chuyên nghiệp nhất.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="" data-animation="fadeInUp" data-animation-delay="400">
+                    <h4>Dễ dàng chỉnh sửa</h4>
+                    <p>Với khả năng tùy chỉnh dễ dàng Super Web giúp cho quá trình sử dụng website trở nên vô cùng
+                        đơn giản. Bạn có thể tự mình up sản phẩm, tối ưu SEO và chỉnh mọi thứ trên website theo ý
+                        mình.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="" data-animation="fadeInUp" data-animation-delay="600">
+                    <h4>Chi phí tối ưu nhất</h4>
+                    <p>Với Super Web, bạn có thể tạo website bán hàng hiệu quả cao với mức chi phí tối ưu nhất, bởi
+                        bạn không mất phí khởi tạo website ban đầu và chỉ mất phí duy trì website từ 6,900
+                        VND/ngày.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WHAT WE DO -->
+
+{{ include_module('mod_service') }}
+<!-- Shop products -->
+<section class="background-grey">
+    <div class="container">
+        <div class="heading text-left m-b-10">
+            <h2>KHO GIAO DIỆN</h2>
+            <span class="lead">Kho giao diện website chuyên nghiệp, được thiết kế riêng cho từng lĩnh vực, ngành nghề. Giúp bạn dễ dàng lựa chọn và tiết kiệm chi phí.</span>
+        </div>
+        <!--Product list-->
+        <div class="shop">
+            <div class="carousel" data-margin="20">
+                {{ include_module('mod_product') }}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end: Shop products -->
+
+<!-- COUNTERS -->
+<section class="text-light p-t-50 p-b-50 background-overlay"
+         data-parallax-image="{{templates}}/images/parallax/comment-bg.png">
+    <div class="container">
+        <div class="heading heading-center">
+            <h2>HƠN 45.000 NGƯỜI MỚI THAM GIA MỖI NGÀY </h2>
+            <span class="lead">Chúng tôi bắt đầu sứ mệnh này từ năm 2018</span>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="icon"><i class="fa fa-3x fa-user"></i></div>
+                    <div class="counter"><span data-speed="3000" data-refresh-interval="50" data-to="124"
+                                               data-from="600" data-seperator="true"></span></div>
+                    <div class="seperator seperator-small"></div>
+                    <p>Nhân viên</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="text-center">
+                    <div class="icon"><i class="fa fa-3x fa-user-plus"></i></div>
+                    <div class="counter"><span data-speed="4500" data-refresh-interval="23" data-to="365000"
+                                               data-from="100" data-seperator="true"></span></div>
+                    <div class="seperator seperator-small"></div>
+                    <p>Khách hàng</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="text-center">
+                    <div class="icon"><i class="fa fa-3x fa-handshake-o"></i></div>
+                    <div class="counter"><span data-speed="3000" data-refresh-interval="12" data-to="114" data-from="50"
+                                               data-seperator="true"></span></div>
+                    <div class="seperator seperator-small"></div>
+                    <p>Đối tác</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="text-center">
+                    <div class="icon"><i class="fa fa-3x fa-smile-o"></i></div>
+                    <div class="counter"><span data-speed="4550" data-refresh-interval="50" data-to="148250000"
+                                               data-from="48" data-seperator="true"></span></div>
+                    <div class="seperator seperator-small"></div>
+                    <p>Doanh Thu Cho Hơn 33,000+ Khách Hàng</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end: COUNTERS -->
+
+
+<!-- CLIENTS -->
+<section class="p-t-60">
+    <div class="container">
+        <div class="heading heading-center">
+            <h2>33,000+ KHÁCH HÀNG ĐÃ SỬ DỤNG DỊCH VỤ CỦA SUPER WEB</h2>
+            <span class="lead">Sự hài lòng của khách hàng chính là thành công lớn nhất của chúng tôi </span>
+        </div>
+        <div class="carousel" data-items="6" data-items-sm="4" data-items-xs="3" data-items-xxs="2" data-margin="20" data-arrows="false" data-autoplay="true" data-autoplay-timeout="3000" data-loop="true">
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/1.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/2.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/3.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/4.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/5.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/6.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/7.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/8.png"> </a>
+            </div>
+            <div>
+                <a href="#"><img alt="" src="{{templates}}/images/clients/9.png"> </a>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- end: CLIENTS -->
+
+<!-- BLOG -->
+<section class="content background-grey">
+    <div class="container">
+        <div class="heading heading text-left">
+            <h2>BÁO CHÍ NÓI GÌ VỀ SUPERWEB</h2>
+            <span class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. Suspendisse consectetur fringilla luctus. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor. </span>
+        </div>
+        <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
+            {{ include_module('mod_article') }}
+        </div>
+    </div>
+</section>
+<!-- end: BLOG -->
+
+{{ include_module('mod_team_support') }}
+{% endblock %}

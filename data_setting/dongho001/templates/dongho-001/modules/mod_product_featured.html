@@ -1,0 +1,30 @@
+<div style="margin-top:15px" class="khung_spbanchay">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bg_menu">
+                <h3>SẢN PHẨM NỔI BẬC</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="owl-carousel t_xs_align_c" data-plugin-options='{"transitionStyle":"backSlide","autoPlay" : true}' data-nav="specials_">
+                {% for item in ListProduct %}
+                    {% set hinhdachon = item.hinhanh.choose %}
+                    <div class="">
+                        <div class="hinh_sp_banchay">
+                            <a href="./product/{{ (item.alias~'-'~item.Id)|e }}">
+                                <img src="{{ ('/images/' ~ item.hinhanh.image_src[hinhdachon]) | src_template }}" onerror="this.src='resource/images/no_image.jpg'">
+                            </a>
+                        </div>
+                        <div class="des">
+                            <div class="msp">{{ item.tensanpham|e }}</div>
+                            <div class="tensp">{{ item.masanpham|e }}</div>
+                            <div class="giasp">{{ item.gia|number_format }} VNĐ</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "superweb.demo": {
+        "db_schema": "superweb_data",
+        "db_host": "localhost",
+        "db_user": "root",
+        "db_password": "root",
+        "template": "superweb"
+    }
+}

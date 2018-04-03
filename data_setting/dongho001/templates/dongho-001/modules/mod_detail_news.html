@@ -1,0 +1,198 @@
+<div style="margin-top:15px;padding-bottom:15px" class="container">
+    <div class="row">
+
+        <aside class="col-lg-3 col-md-3 col-sm-3">
+            <div class="tabs m_bottom_50 m_xs_bottom_30">
+                <!--tabs nav-->
+                <ul class="tabs_nav type_3 hr_list d_inline_b d_md_block m_bottom_30 m_xs_bottom_20">
+                    <li class="f_md_none"><a href="#popular" class="color_dark d_block n_sc_hover tr_all_medium">Tin
+                            mới</a></li>
+                    <li class="f_md_none"><a href="#recent" class="color_dark d_block n_sc_hover tr_all_medium">Xem
+                            nhiều</a></li>
+                </ul>
+                <!--tabs content-->
+                <div id="popular">
+                    <!--popular-->
+                    {{ include_module('mod_news_popular') }}
+                </div>
+                <div id="recent">
+                    <!--recent-->
+                    {{ include_module('mod_news_popular') }}
+                </div>
+            </div>
+
+            {{ include_module('mod_trademark') }}
+            {{ include_module('mod_video') }}
+
+        </aside>
+
+        <section class="col-lg-9 col-md-9 col-sm-9 m_xs_bottom_30">
+            <!--post-->
+            <article class="clearfix m_bottom_45 m_xs_bottom_30">
+
+                <!--post content-->
+                <figure>
+                    <figcaption>
+                        <p>
+                        <h4 class="">{{ Article.tieude }}</h4>
+                        <ul class="dotted_list m_bottom_5 color_grey_light_2">
+                            <li class="m_right_15 relative d_inline_m">
+                                <a href="#" class="color_grey fs_small">
+                                    <i class="icon-calendar-1 m_right_2 color_grey_light_2 tr_all"></i>
+                                    <i>{{ Article.ngaysua | date("d/m/Y h:i A") }}</i>
+                                </a>
+                            </li>
+                            <li class="m_right_15 relative d_inline_m">
+                                <a href="#" class="color_grey fs_small">
+                                    <i>{{ Article.tacgia_ten }}</i>
+                                </a>
+                            </li>
+                            <li class="m_right_15 relative d_inline_m">
+                                <a href="#" class="fs_medium color_grey"><i>{{ Article.tieudedanhmuc }}</i></a>
+                            </li>
+                            <li class="m_right_15 relative d_inline_m">
+                                <a href="#" class="color_scheme_hover">
+                                    <i class="icon-eye m_right_2 color_grey_light_2 tr_all"></i>
+                                    <i class="fs_medium color_grey tr_all">{{ Article.solanxem }}</i>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="m_bottom_12">
+                            {{ Article.motangan|raw }}
+                        </p>
+                        <p class="m_bottom_12 t_align_c">
+                            <img src="{{ Article.filehinhanh }}">
+                        <p class="m_bottom_12 t_align_c"><i>{{ Article.chuthichanh }}</i></p>
+
+                        <p class="m_bottom_12">
+                            {{ Article.motachitiet|raw }}
+                        </p>
+                        <!--tags-->
+                        <i class="icon-tag-1 color_grey_light_2 d_inline_m m_right_5 fs_large tags_icon"></i>
+                        <ul class="d_inline_m fw_light">
+                            <li class="d_inline_m"><a href="#" class="color_purple">Bóng đá</a>,</li>
+                            <li class="d_inline_m"><a href="#" class="color_purple">U19 việt nam</a>,</li>
+                            <li class="d_inline_m"><a href="#" class="color_purple">hoàng anh tuấn</a></li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </article>
+            <hr class="m_bottom_20">
+            <h5 class="fw_light color_dark m_bottom_25">Bình luận</h5>
+            <!--comment level 1-->
+            {#<div class="m_bottom_20">#}
+                {#<div class="d_table w_full m_bottom_20">#}
+                    {#<div class="d_table_cell">#}
+                        {#<!--author photo-->#}
+                        {#<a href="#" class="d_inline_m circle wrapper m_right_10">#}
+                            {#<img src="images/blog_img_13.jpg" alt="">#}
+                        {#</a>#}
+                        {#<!--author name-->#}
+                        {#<div class="d_inline_m">#}
+                            {#<a href="#" class="fs_large color_dark tr_all"><b>Hilary CLinton</b></a>#}
+                            {#<p class="fs_medium color_grey d_mxs_none"><i>September 23, 2013, 11:45 am</i></p>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="d_table_cell t_align_r v_align_m d_mxs_none">#}
+                        {#<a href="#" class="color_purple d_inline_b color_pink_hover d_block f_right fw_light">#}
+                                        {#<span class="d_inline_m m_right_5 icon_wrap_size_0 circle color_grey_light tr_all">#}
+                                            {#<i class="icon-reply"></i>#}
+                                        {#</span>#}
+                            {#Trả lời#}
+                        {#</a>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="comment relative r_corners bg_light_3 fw_light">Nulla venenatis. In pede mi, aliquet sit#}
+                    {#amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis#}
+                    {#quis, lobortis dignissim, pulvinar ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus.Sed#}
+                    {#ut perspiciatis unde omnis iste natus error sit#}
+                {#</div>#}
+            {#</div>#}
+            {#<!--comment level 2-->#}
+            {#<div class="m_bottom_20 comment_level_2">#}
+                {#<div class="d_table w_full m_bottom_20">#}
+                    {#<div class="d_table_cell">#}
+                        {#<!--author photo-->#}
+                        {#<a href="#" class="d_inline_m circle wrapper m_right_10">#}
+                            {#<img src="images/blog_img_12.jpg" alt="">#}
+                        {#</a>#}
+                        {#<!--author name-->#}
+                        {#<div class="d_inline_m">#}
+                            {#<a href="#" class="fs_large color_dark tr_all"><b>Donal Trump</b></a>#}
+                            {#<p class="fs_medium color_grey d_mxs_none"><i>September 23, 2013, 11:45 am</i></p>#}
+                        {#</div>#}
+
+                    {#</div>#}
+                    {#<div class="d_table_cell t_align_r v_align_m d_mxs_none">#}
+                        {#<a href="#" class="color_purple d_inline_b color_pink_hover d_block f_right fw_light">#}
+                                        {#<span class="d_inline_m m_right_5 icon_wrap_size_0 circle color_grey_light tr_all">#}
+                                            {#<i class="icon-reply"></i>#}
+                                        {#</span>#}
+                            {#Trả lời#}
+                        {#</a>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="comment relative r_corners bg_light_3 fw_light">Vivamus eget nibh. Etiam cursus leo vel#}
+                    {#metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et#}
+                    {#ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.#}
+                {#</div>#}
+            {#</div>#}
+            {#<!--comment level 1-->#}
+            {#<div class="m_bottom_45 m_xs_bottom_30">#}
+                {#<div class="d_table w_full m_bottom_20">#}
+                    {#<div class="d_table_cell">#}
+                        {#<!--author photo-->#}
+                        {#<a href="#" class="d_inline_m circle wrapper m_right_10">#}
+                            {#<img src="images/blog_img_13.jpg" alt="">#}
+                        {#</a>#}
+                        {#<!--author name-->#}
+                        {#<div class="d_inline_m">#}
+                            {#<a href="#" class="fs_large color_dark tr_all"><b>Hilary Clinton</b></a>#}
+                            {#<p class="fs_medium color_grey d_mxs_none"><i>September 23, 2013, 11:45 am</i></p>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="d_table_cell t_align_r v_align_m d_mxs_none">#}
+                        {#<a href="#" class="color_purple d_inline_b color_pink_hover d_block f_right fw_light">#}
+                                        {#<span class="d_inline_m m_right_5 icon_wrap_size_0 circle color_grey_light tr_all">#}
+                                            {#<i class="icon-reply"></i>#}
+                                        {#</span>#}
+                            {#Trả lời#}
+                        {#</a>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="comment relative r_corners bg_light_3 fw_light">Vivamus eget nibh. Etiam cursus leo vel#}
+                    {#metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et#}
+                    {#ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.#}
+                {#</div>#}
+            {#</div>#}
+            {#<!--comment form-->#}
+            {#<h5 class="fw_light color_dark m_bottom_23">Để lại nhật xét</h5>#}
+            {#<form>#}
+                {#<ul>#}
+                    {#<li class="row fw_light">#}
+                        {#<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">#}
+                            {#<input type="text" class="r_corners color_grey r_corners w_full m_bottom_10"#}
+                                   {#placeholder="Họ tên*">#}
+                        {#</div>#}
+                        {#<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">#}
+                            {#<input type="email" class="r_corners color_grey r_corners w_full m_bottom_10"#}
+                                   {#placeholder="Email*">#}
+                        {#</div>#}
+                        {#<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">#}
+                            {#<input type="url" class="r_corners color_grey r_corners w_full m_bottom_10"#}
+                                   {#placeholder="Website">#}
+                        {#</div>#}
+                    {#</li>#}
+                    {#<li class="m_bottom_20 fw_light">#}
+                        {#<textarea class="color_grey d_block r_corners w_full height_4"#}
+                                  {#placeholder="Nội dung"></textarea>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<button class="button_type_2 r_corners tr_all fs_medium color_blue transparent">Đồng ý</button>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</form>#}
+        </section>
+
+    </div>
+</div>

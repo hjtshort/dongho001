@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block title %}Bảng Giá{% endblock %}
+{% block header %}
+{{ include_module('mod_header',{topbar_class:' ',header_class:'header-colored-transparent dark'}) }}
+{% endblock %}
+{% block slider %}{% endblock %}
+{% block content %}
+
+<style>
+    .pricing-table .plan .plan-header .plan-price{
+        font-size: 35px;
+    }
+    .pricing-table .plan .plan-header .plan-price sup{
+        top: -20px;
+    }
+</style>
+<!-- Pricing Table full width -->
+<section class="background-grey">
+    <div class="container">
+        <div class="text-center">
+            <hr class="space">
+            <h1 class="heading-jumbo">Bảng giá thiết kế website <span class="nowrap">SuperWeb</span>.</h1>
+            <p class="lead">Hãy lựa chọn gói giải pháp phù hợp với nhu cầu của bạn và dùng thử miễn phí 15 ngày</p>
+        </div>
+    </div>
+    <hr class="space">
+    <div class="row">
+        <div class="pricing-table full-width colored">
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                <div class="plan">
+                    <div class="plan-header" style="background-color: #E7573C">
+                        <h4>Economy Plan</h4>
+                        <p class="text-muted">Plan short description</p>
+                        <div class="plan-price">210.000<sup>đ</sup><span>/Tháng</span> </div>
+                        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary">Dùng Thử</a>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li><i class="fa fa-globe"></i>Unlimited Websites</li>
+                            <li><i class="fa fa-thumbs-up"></i>Unlimited Storage</li>
+                            <li><i class="fa fa-signal"></i>Unlimited Bandwidth</li>
+                            <li><i class="fa fa-user"></i>1000 Email Addresses</li>
+                            <li><i class="fa fa-star"></i>Free domain with annual plan</li>
+                            <li><i class="fa fa-rocket"></i>4X Processing Power</li>
+                            <li><i class="fa fa-server"></i>Premium DNS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                <div class="plan">
+                    <div class="plan-header" style="background-color: #59AC3D">
+                        <h4>Ultimate Plan</h4>
+                        <p class="text-muted">Plan short description</p>
+                        <div class="plan-price">210.000<sup>đ</sup><span>/Tháng</span> </div>
+                        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary">Dùng Thử</a>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li><i class="fa fa-globe"></i>Unlimited Websites</li>
+                            <li><i class="fa fa-thumbs-up"></i>Unlimited Storage</li>
+                            <li><i class="fa fa-signal"></i>Unlimited Bandwidth</li>
+                            <li><i class="fa fa-user"></i>1000 Email Addresses</li>
+                            <li><i class="fa fa-star"></i>Free domain with annual plan</li>
+                            <li><i class="fa fa-rocket"></i>4X Processing Power</li>
+                            <li><i class="fa fa-server"></i>Premium DNS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                <div class="plan featured">
+                    <div class="plan-header" style="background-color: #FFD14B">
+                        <h4>Deluxe Plan</h4>
+                        <p class="text-muted">Plan short description</p>
+                        <div class="plan-price">210.000<sup>đ</sup><span>/Tháng</span> </div>
+                        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary">Dùng Thử</a>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li><i class="fa fa-globe"></i>Unlimited Websites</li>
+                            <li><i class="fa fa-thumbs-up"></i>Unlimited Storage</li>
+                            <li><i class="fa fa-signal"></i>Unlimited Bandwidth</li>
+                            <li><i class="fa fa-user"></i>1000 Email Addresses</li>
+                            <li><i class="fa fa-star"></i>Free domain with annual plan</li>
+                            <li><i class="fa fa-rocket"></i>4X Processing Power</li>
+                            <li><i class="fa fa-server"></i>Premium DNS</li>
+                            <li class="plan-featured-item text-center">Free trial</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                <div class="plan">
+                    <div class="plan-header" style="background-color: #719FE3">
+                        <h4>Professional Plan</h4>
+                        <p class="text-muted">Plan short description</p>
+                        <div class="plan-price">210.000<sup>đ</sup><span>/Tháng</span> </div>
+                        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary">Dùng Thử</a>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li><i class="fa fa-globe"></i>Unlimited Websites</li>
+                            <li><i class="fa fa-thumbs-up"></i>Unlimited Storage</li>
+                            <li><i class="fa fa-signal"></i>Unlimited Bandwidth</li>
+                            <li><i class="fa fa-user"></i>1000 Email Addresses</li>
+                            <li><i class="fa fa-star"></i>Free domain with annual plan</li>
+                            <li><i class="fa fa-rocket"></i>4X Processing Power</li>
+                            <li><i class="fa fa-server"></i>Premium DNS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                <div class="plan">
+                    <div class="plan-header" style="background-color: #3B71AA">
+                        <h4>Corporate Plan</h4>
+                        <p class="text-muted">Giảm 33% khi mua 24 tháng</p>
+                        <div class="plan-price">210.000<sup>đ</sup><span>/Tháng</span> </div>
+                        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary">Dùng Thử</a>
+                    </div>
+                    <div class="plan-list">
+                        <ul>
+                            <li><i class="fa fa-globe"></i>Unlimited Websites</li>
+                            <li><i class="fa fa-thumbs-up"></i>Unlimited Storage</li>
+                            <li><i class="fa fa-signal"></i>Unlimited Bandwidth</li>
+                            <li><i class="fa fa-user"></i>1000 Email Addresses</li>
+                            <li><i class="fa fa-star"></i>Free domain with annual plan</li>
+                            <li><i class="fa fa-rocket"></i>4X Processing Power</li>
+                            <li><i class="fa fa-server"></i>Premium DNS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end: Pricing Table full width -->
+
+<!-- HIT -->
+<section class="text-light p-t-50 p-b-50 background-overlay"
+         data-parallax-image="{{templates}}/images/slider/pattern.png">
+    <div class="container">
+        <div class="heading heading-center m-b-10">
+            <h2>BẠN CHƯA CHỌN ĐƯỢC GÓI DỊCH VỤ THÍCH HỢP</h2>
+            <span class="lead">Hãy dùng thử website trước, SuperWeb sẽ tư vấn cho bạn</span>
+        </div>
+    </div>
+    <div class="row text-center">
+        <a href="" data-target="#modalSignUp" data-toggle="modal" class="btn btn-rounded btn-light btn-primary btn-lg">Dùng Thử</a>
+    </div>
+</section>
+<!-- end: HIT -->
+
+{{ include_module('mod_team_support') }}
+{% endblock %}
