@@ -86,7 +86,7 @@
 			if($validator->ValidateForm())
 			{
 				if($_POST["act"] == "save"){
-
+					
 					$news_process = new news_process;
 					$check = true;
 					

@@ -264,7 +264,7 @@
                                 <!--Avatar Area-->
                                 <li class="edit">
                                     <a href="account/account/view.html" class="pull-left">Profile</a>
-                                    <a href="#" class="pull-right">Setting</a>
+                                    <a href="account/account/edit.html" class="pull-right">Setting</a>
                                 </li>                                    
                                 <!--/Theme Selector Area-->
                                 <li class="dropdown-footer">

@@ -39,14 +39,13 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="widget-body widget-body-white">   
-								<?php var_dump($_POST); ?>                                    
+                                <div class="widget-body widget-body-white">                                      
                                     <div class="form-group">
 
                                         <label for="inputTitle">Họ</label>
                                         <div>
                                             <input name="ho" type="text" id="inputTitle" class="form-control" value="<?php echo $data[0]['ho']; ?>">
-
+                                            <?php if(isset($_SESSION['validator']['ho'])) echo $_SESSION['validator']['ho'];  ?>
 
                                         </div>
                                     </div>
@@ -55,7 +54,7 @@
                                         <label for="inputTitle">Tên </label>
                                         <div>
                                             <input name="ten" type="text" id="inputTitle" class="form-control" value="<?php echo $data[0]['ten']; ?>">
-
+                                            <?php if(isset($_SESSION['validator']['ten'])) echo $_SESSION['validator']['ten'];  ?>   
 
                                         </div>
                                     </div>
@@ -64,7 +63,7 @@
                                         <label for="inputTitle">Địa chỉ</label>
                                         <div>
                                             <input  name="diachi" type="text" id="inputTitle" class="form-control" value="<?php echo $data[0]['diachi']; ?>">
-
+                                            <?php if(isset($_SESSION['validator']['diachi'])) echo $_SESSION['validator']['diachi'];  ?>
 
                                         </div>
                                     </div>
@@ -72,7 +71,7 @@
 
                                         <label for="inputTitle">Giới tính </label>
                                         <div>
-											<select class="span12">
+											<select class="span12" name="gioitinh">
 												<option value="NAM" <?php if($data[0]['gioitinh']=="NAM") echo 'selected="selected"'; ?>>Nam</option>
 												<option value="NU" <?php if($data[0]['gioitinh']=="NU") echo 'selected="selected"'; ?>>Nữ</option>
 											</select>
@@ -85,7 +84,7 @@
 										<label for="inputTitle">Phone</label>
 										<div>
 											<input name="sdt" type="text" id="inputTitle" class="form-control" value="<?php echo $data[0]['dienthoai']; ?>"  >
-
+                                            <?php if(isset($_SESSION['validator']['sdt'])) echo $_SESSION['validator']['sdt'];  ?>
 
 										</div>
 									</div>
@@ -94,34 +93,16 @@
                                         <label for="inputTitle">E-mail </label>
                                         <div>
                                             <input name="email" type="text" id="inputTitle" class="form-control" placeholder="contact@mosaicpro.biz" value="<?php echo $data[0]['email']; ?>">
-                                       
+                                            <?php if(isset($_SESSION['validator']['email'])) echo $_SESSION['validator']['email'];  ?>
 									   
 									    </div>
                                     </div>
 									<div class="form-group">
                                         <label for="inputTitle">Facebook</label>
                                         <div>
-                                            <input name="facebook" type="text" id="inputTitle" class="form-control" placeholder="/mosaicpro">
+                                            <input name="facebook" type="text" id="inputTitle" class="form-control" placeholder="/mosaicpro" value="<?php echo $data[0]['facebook']; ?>">
                                         </div>
                                     </div>                                   
-                                </div>
-                            </div>
-                            <div class="widget flat">
-                                <div class="widget-header bordered-bottom bordered-themeprimary">
-                                    <span class="widget-caption">Thông tin liên hệ</span>
-                                    <div class="widget-buttons">
-                                        <a href="#" data-toggle="maximize">
-                                            <i class="fa fa-expand blue"></i>
-                                        </a>
-                                        <a href="#" data-toggle="collapse">
-                                            <i class="fa fa-minus blue"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="widget-body widget-body-white">   
-								
-									
-								                                     
                                 </div>
                             </div>
                         </div>
@@ -216,19 +197,6 @@
                         }
                     }
                 },
-				'facebook': {
-                    validators: {
-                        notEmpty: {
-                            message: 'Facebook không được bỏ trống'
-                        },
-						stringLength: {
-                            min: 4,
-                            message: "Facebook phải lớn hơn 4 ký tự "
-                        }
-                    }
-                }
-				
-
             }
         });
     });

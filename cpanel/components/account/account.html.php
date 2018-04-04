@@ -56,7 +56,6 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 			break;
 		
 		default:
-			echo "<script>alert('aaa')</script>";
 			include_once("404.php");
 		break;
 	
