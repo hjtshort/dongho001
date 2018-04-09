@@ -263,8 +263,12 @@
                                 </li>
                                 <!--Avatar Area-->
                                 <li class="edit">
-                                    <a href="account/account/view.html" class="pull-left">Profile</a>
-                                    <a href="account/account/edit.html" class="pull-right">Setting</a>
+                                    <div style="display:flex;justify-content: space-between">
+                                        <a href="account/account/view.html">Profile</a>
+                                        <a href="account/account/change.html" >Change Password</a>
+                                        <a href="account/account/edit.html" >Setting</a>
+                                    </div>
+                                   
                                 </li>                                    
                                 <!--/Theme Selector Area-->
                                 <li class="dropdown-footer">

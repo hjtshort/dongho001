@@ -10,29 +10,52 @@
         }
 		
 		/* lay du lieu nhom chuc nang quan tri */
-		public function get_user_list( $uid, $email, $condition, $offset, $limit )
+		//LIMIT $offset, $limit
+		public function get_user_list($search,$offset, $limit)
         {
-			$query = "SELECT
-							taikhoanquantri.Id,
-							taikhoanquantri.uid,
-							taikhoanquantri.ho,
-							taikhoanquantri.ten,
-							taikhoanquantri.email,
-							taikhoanquantri.dienthoai,
-							taikhoanquantri.thutu,
-							taikhoanquantri.trangthai,
-							taikhoanquantri.ngaythem
-						FROM
-							taikhoanquantri
-						WHERE 1 = 1 AND taikhoanquantri.uid LIKE ? AND taikhoanquantri.email LIKE ? $condition
-						ORDER BY `taikhoanquantri`.`thutu` DESC
-						LIMIT $offset, $limit ";
-            $result = $this->dbObj->SqlQueryOutputResult($query, array( $uid, $email ));
+			if($search==""){
+				$query = "SELECT
+								taikhoanquantri.Id,
+								taikhoanquantri.uid,
+								taikhoanquantri.ho,
+								taikhoanquantri.ten,
+								taikhoanquantri.email,
+								taikhoanquantri.dienthoai,
+								taikhoanquantri.thutu,
+								taikhoanquantri.trangthai,
+								taikhoanquantri.ngaythem
+							FROM
+								taikhoanquantri						
+							ORDER BY `taikhoanquantri`.`thutu` DESC	
+							Limit $offset,$limit				
+							";
+			}
+			else{
+				$a="%".$search."%";
+				$query = "SELECT
+								taikhoanquantri.Id,
+								taikhoanquantri.uid,
+								taikhoanquantri.ho,
+								taikhoanquantri.ten,
+								taikhoanquantri.email,
+								taikhoanquantri.dienthoai,
+								taikhoanquantri.thutu,
+								taikhoanquantri.trangthai,
+								taikhoanquantri.ngaythem
+							FROM
+								taikhoanquantri	
+							where taikhoanquantri.uid like	?			
+							ORDER BY `taikhoanquantri`.`thutu` DESC	
+							Limit $offset,$limit				
+							";
+			}
+            $result = $this->dbObj->SqlQueryOutputResult($query, array($a))->fetchAll();
 			return $result;
+			//return $query;
         }
 		
 		/* lay du lieu nhom chuc nang quan tri */
-		public function get_user_list_count( )
+		public function get_user_list_count()
         {
 			$query = "SELECT
 							COUNT(taikhoanquantri.Id) as `totalrow`
@@ -76,14 +99,13 @@
     
 	// khai bao doi tuong cho lop xu ly
 	$myprocess = new process;
-	
     switch(@$_POST["hidden"]){
 
         case "";
         // khoi dau trang khong co gia tri submit. khong lam zi ca
         break;
         
-        case "user.view":
+        case "news.view":
 		
 			if($_POST["act"] == "lock" || $_POST["act"] == "lock-all"){
 				$check = FALSE;
@@ -110,9 +132,20 @@
 			else if($_POST["act"] == "delete"){
 				$check = FALSE;
 				$values = $_POST["chkItem"];
-				for ($row = 0; $row < count($values); $row++){
-					if($myprocess->process_delete_user($values[$row]) <> FALSE)
-					$check = TRUE;
+				foreach($values as $value){
+					if($myprocess->process_delete_user($value) <> FALSE)
+						$check = TRUE;
+				}
+				if($check == TRUE)
+				$GLOBALS['msg'] = "";
+				else $GLOBALS['msg'] = "Hiện tại hệ thống đang gặp lỗi, vui lòng liên hệ quản trị !!! ";
+			}
+			else if($_POST["act"] == "delete-all"){
+				$check = FALSE;
+				$values = $_POST["chkItem"];
+				foreach($values as $value){
+					if($myprocess->process_delete_user($value) <> FALSE)
+						$check = TRUE;
 				}
 				if($check == TRUE)
 				$GLOBALS['msg'] = "";
@@ -124,4 +157,4 @@
         default:
             $func->_redirect(".");
         break;
-    }
+   }

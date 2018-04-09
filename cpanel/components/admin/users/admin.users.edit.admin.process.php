@@ -21,11 +21,7 @@
 							taikhoanquantri.gioitinh,
 							taikhoanquantri.diachi,
 							taikhoanquantri.dienthoai,
-							taikhoanquantri.yahoo,
-							taikhoanquantri.msn,
-							taikhoanquantri.skype,
-							taikhoanquantri.aol,
-							taikhoanquantri.gtalk,
+							taikhoanquantri.facebook,
 							taikhoanquantri.nhomchucnang_id,
 							taikhoanquantri.chucnang
 						FROM
@@ -64,7 +60,7 @@
 			return $result;			          
         }
 		       
-	    function process_edituser_pass($pwd, $ho, $ten, $email , $gioitinh, $diachi, $dienthoai, $yahoo, $msn, $skype, $aol, $gtalk, $nhomchucnang_id, $chucnang, $id)
+	    function process_edituser_pass($pwd, $ho, $ten, $email , $gioitinh, $diachi, $dienthoai,$facebook, $nhomchucnang_id, $chucnang, $id)
         {
 		    $sql = "UPDATE taikhoanquantri SET
 						taikhoanquantri.pwd = ?,
@@ -74,23 +70,19 @@
 						taikhoanquantri.gioitinh = ?,
 						taikhoanquantri.diachi = ?,
 						taikhoanquantri.dienthoai = ?,
-						taikhoanquantri.yahoo = ?,
-						taikhoanquantri.msn = ?,
-						taikhoanquantri.skype = ?,
-						taikhoanquantri.aol = ?,
-						taikhoanquantri.gtalk = ?,
+						taikhoanquantri.facebook=?,
 						taikhoanquantri.nhomchucnang_id = ?,
 						taikhoanquantri.chucnang = ?
 					WHERE taikhoanquantri.Id = ?";
 
-            if ($this->dbObj->SqlQueryInputResult($sql, array($pwd, $ho, $ten, $email , $gioitinh, $diachi, $dienthoai, $yahoo, $msn, $skype, $aol, $gtalk, $nhomchucnang_id, $chucnang, $id)) <> FALSE) {
+            if ($this->dbObj->SqlQueryInputResult($sql, array($pwd, $ho, $ten, $email , $gioitinh, $diachi, $dienthoai,$facebook,$nhomchucnang_id, $chucnang, $id)) <> FALSE) {
                 return true;
             } else {
                 return false;
             }
 	    }
 		
-		function process_edituser_nopass($ho, $ten, $email , $gioitinh, $diachi, $dienthoai, $yahoo, $msn, $skype, $aol, $gtalk, $nhomchucnang_id, $chucnang, $id)
+		function process_edituser_nopass($ho, $ten, $email , $gioitinh, $diachi, $dienthoai,$facebook, $nhomchucnang_id, $chucnang, $id)
         {
 		    $sql = "UPDATE taikhoanquantri SET
 						taikhoanquantri.ho = ?,
@@ -99,16 +91,12 @@
 						taikhoanquantri.gioitinh = ?,
 						taikhoanquantri.diachi = ?,
 						taikhoanquantri.dienthoai = ?,
-						taikhoanquantri.yahoo = ?,
-						taikhoanquantri.msn = ?,
-						taikhoanquantri.skype = ?,
-						taikhoanquantri.aol = ?,
-						taikhoanquantri.gtalk = ?,
+						taikhoanquantri.facebook=?,
 						taikhoanquantri.nhomchucnang_id = ?,
 						taikhoanquantri.chucnang = ?
 					WHERE taikhoanquantri.Id = ?";
 
-            if ($this->dbObj->SqlQueryInputResult($sql, array($ho, $ten, $email , $gioitinh, $diachi, $dienthoai, $yahoo, $msn, $skype, $aol, $gtalk, $nhomchucnang_id, $chucnang, $id)) <> FALSE) {
+            if ($this->dbObj->SqlQueryInputResult($sql, array($ho, $ten, $email , $gioitinh, $diachi, $dienthoai,$facebook,$nhomchucnang_id, $chucnang, $id)) <> FALSE) {
                 return true;
             } else {
                 return false;
@@ -129,7 +117,7 @@
         // khoi dau trang khong co gia tri submit. khong lam zi ca
         break;        
         
-        case "user.edit";
+        case "edit.user";
 						
 			$ho 		= $_POST["firstname"];
 			$ten 		= $_POST["lastname"];
@@ -137,25 +125,21 @@
 			$gioitinh	= $_POST["gender"];
 			$diachi		= $_POST["address"];
 			$dienthoai 	= $_POST['phone'];
-			
-			$yahoo 		= $_POST["yahoo"];
-			$msn 		= $_POST["msn"];
-			$skype 		= $_POST["'skype"];
-			$aol 		= $_POST["aol"];
-			$gtalk 		= $_POST["gtalk"];
-			
+			$facebook   =$_POST['facebook'];
+
 			$pwd		= $func->enscriptPass($_POST["password"]);
 			
 			$nhomchucnang_id	= $_POST["ddlRoleTypes"];
-			$chucnang			= $_POST["hdRoles"];
+			$chucnang			= json_encode($_POST["chucnang"]);
+			$url=$func->get_url("1|2|3|id");
 			
-			$id 		= intval($_POST["user_id"]);
+			$id 		= intval($url['id']);
 			
             if($_POST["act"] == "save"){
                 $myprocess = new process;
 				
 				if($_POST["password"] != ""){
-					if($myprocess->process_edituser_pass($pwd, $ho, $ten, $email , $gioitinh, $diachi, $dienthoai, $yahoo, $msn, $skype, $aol, $gtalk, $nhomchucnang_id, $chucnang, $id) <> FALSE){
+					if($myprocess->process_edituser_pass($pwd, $ho, $ten, $email , $gioitinh, $diachi, $dienthoai,$facebook, $nhomchucnang_id, $chucnang, $id) <> FALSE){
 						$_SESSION["message"]["notyfy"] = "Đã thay đổi thông tin tài khoản <strong>$uid</strong> thành công !";
 						$func->_redirect($index_backend . "admin/users/edit/$id.html");
 						exit;
@@ -165,7 +149,7 @@
 						exit;
 					}
 				} else {
-					if($myprocess->process_edituser_nopass($ho, $ten, $email , $gioitinh, $diachi, $dienthoai, $yahoo, $msn, $skype, $aol, $gtalk, $nhomchucnang_id, $chucnang, $id) <> FALSE){
+					if($myprocess->process_edituser_nopass($ho, $ten, $email , $gioitinh, $diachi, $dienthoai,$facebook, $nhomchucnang_id, $chucnang, $id) <> FALSE){
 						$_SESSION["message"]["notyfy"] = "Đã thay đổi thông tin tài khoản <strong>$uid</strong> thành công !";
 						$func->_redirect($index_backend . "admin/users/edit/$id.html");
 						exit;

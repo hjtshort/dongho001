@@ -40,11 +40,18 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 						break;
 						
 						case "edit":
-							include_once("account/account.account.view.admin.proccess.php");
-							include_once("account/account.account.view.admin.php");
+							include_once("account/account.account.edit.admin.proccess.php");
+							include_once("account/account.account.edit.admin.php");
 							//include_once("account/account.account.changepassword.admin.php");
 							//include_once("process/com_product.article.edit.models.php");
 							//include_once("product/com_product.product.edit.admin.php");
+						break;
+						case "change":
+						include_once("account/account.account.changepassword.admin.proccess.php");
+						include_once("account/account.account.changepassword.admin.php");
+						//include_once("account/account.account.changepassword.admin.php");
+						//include_once("process/com_product.article.edit.models.php");
+						//include_once("product/com_product.product.edit.admin.php");
 						break;
 						
 					}

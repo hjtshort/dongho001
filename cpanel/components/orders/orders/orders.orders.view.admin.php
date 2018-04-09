@@ -72,7 +72,7 @@
                                              </div>
                                          </div>
                                      </div>
-        
+                                    <?php var_dump($_POST); ?>
         
                                      <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                          <thead class="flip-content bordered-palegreen">
@@ -110,7 +110,7 @@
                                                      </label>
                                                  </td>
                                                  <td>
-                                                    <?php echo $value['bill_name'] ?>
+                                                    <a href="orders/orders/edit/<?php echo $value['id'];  ?>.html"><?php echo $value['bill_name'] ?></a>
                                                  </td>
                                                  <td>
                                                     ++
@@ -216,11 +216,6 @@
 
     <script src="<?= $conf['template_admin']; ?>/assets/js/bootbox/bootbox.js"></script>
     <script language="javascript">
-        function check(e){
-             $("#act").val("choose");
-             $("#tempt").val($(e).val())
-             $("#validateSubmitForm").submit();
-        }
  $('.OrderStatus').on('change', function (e) {
     $(this).closest("tr").find("input:checkbox").prop('checked',true)
     $("#act").val("choose");
@@ -245,9 +240,15 @@
              }
     
         } else if (self.data("action") == "delete") {
-            $(this).closest("tr").find("input:checkbox").prop('checked',true)
-            $("#act").val(self.data("action"));
-            $("#validateSubmitForm").submit();
+            bootbox.confirm("Bạn có chắc chắn xoá các bản tin được chọn hay không !", function (result) {
+            if (result) {
+           
+                self.closest("tr").find("input:checkbox").prop('checked',true)
+                $("#act").val(self.data("action"));
+                $("#validateSubmitForm").submit();
+            }
+            });
+        }
 
             //  $('.checkboxs thead :checkbox').prop('checked', false).parent().removeClass('checked');
             //  $('.checkboxs tbody :checkbox').prop('checked', false).parent().removeClass('checked');
@@ -255,12 +256,9 @@
     
             //  $('#chkItem_' + self.data("id")).prop('checked', true).parent().addClass('checked');
     
-            //  bootbox.confirm("Bạn có chắc chắn xoá các bản tin được chọn hay không !", function (result) {
-            //      if (result) {
-            //          $("#act").val(self.data("action"));
-            //          $("#validateSubmitForm").submit();
-            }
-             //});
+       
+            
+           
     
           else if (self.data("action") == "search") {
              var dateRangeFrom = $("#dateRangeFrom").val();

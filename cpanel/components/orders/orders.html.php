@@ -33,8 +33,9 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 				break;
 				
 				case "edit":
-					//include_once("process/com_product.article.edit.models.php");
-					//include_once("product/com_product.product.edit.admin.php");
+					include_once("models.orders.php");
+					include_once("orders/orders.orders.invoice.admin.proccess.php");
+					include_once("orders/orders.orders.invoice.admin.php");
 				break;
 				
 				case "copy":

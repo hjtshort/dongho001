@@ -1,521 +1,413 @@
-<?php defined( '_VALID_MOS' ) or die( include("../../content/news/404.php") );
-	$myprocess = new process();	
+<?php defined( '_VALID_MOS' ) or die( include("../news/404.php") ); 
+$myprocess = new process;
+$data=$myprocess->get_group_function_list();
 ?>
-<form class="form-horizontal" id="validateSubmitForm" name="myForm" method="post">
-    <div id="wrapper">	
-        <div id="content">
-            <ul class="breadcrumb">
-                <li><a href="<?= $index_backend; ?>" class="glyphicons home"><i></i>Bảng điều khiển</a></li>
-                <li class="divider"></li>
-                <li><a href="<?= $index_backend . "admin/users/view.html"; ?>"><i></i>Tài khoản quản trị</a></li>
-                <li class="divider"></li>
-                <li><a href="<?= $index_backend . "admin/users/add.html"; ?>"><i></i>Thêm tài khoản</a></li>
-            </ul>
-            <div class="separator bottom"></div>
-            <div class="innerLR">
-                <div class="widget widget-2">
-                    <div class="widget-head">                    
-                        <h4 class="heading glyphicons user_add"><i></i>Thêm tài khoản mới</h4>                        
-                        <div class="heading-buttons">
-                            <div class="buttons pull-right">
-                                <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Thêm</button>
-                                <a href="admin/users/view.html" class="btn btn-primary btn-icon glyphicons unshare"><i></i> Quay lại</a>                                
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>                        
-                    </div>                                           
+    <form id="validateSubmitForm" name="myForm" method="post" enctype="multipart/form-data">
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs breadcrumbs-fixed">
+            <div class="buttons-task col-xs-12 col-md-6">
+                <ul class="breadcrumb breadcrumbs-fixed">
+                    <li><i class="fa fa-table"></i></li>
+                    <li>Thêm tài khoản mới</li>
+                </ul>
+            </div>
+            <div class="text-align-right text-align-left-xs col-xs-12 col-md-6">
+                <a href="admin/users/view.html" class="btn btn-sky shiny">Hủy</a>
+                <button type="submit" class="btn btn-sky shiny">Lưu</button>
+            </div>
+        </div>
+        <!-- /Page Breadcrumb -->
+        <!-- Page Body -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-8 col-sm-8 col-xs-12">
+                            <div class="widget flat">
+                                <div class="widget-header bordered-bottom bordered-themeprimary">
+                                    <span class="widget-caption">Thông tin cá nhân</span>
+                                    <div class="widget-buttons">
+                                        <a href="#" data-toggle="maximize">
+                                            <i class="fa fa-expand blue"></i>
+                                        </a>
+                                        <a href="#" data-toggle="collapse">
+                                            <i class="fa fa-minus blue"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget-body widget-body-white">                                        
+                                    <div class="form-group">
 
-                    <div class="widget-body">
-                        
-                        <div class="row-fluid">                    
-							<?php
-                                // print message error from server response
-                                if(!empty($_SESSION["message"]["alert"])){
-                                    echo join($_SESSION["message"]); 
-                                    unset($_SESSION["message"]);
-                                }
-                            ?>                        
-                        	<div class="separator"></div>
-                        </div>
-                        
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <label class="control-label" for="username">Tên đăng nhập <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">
-                                <div class="controls">
-                                	<input type="text" id="username" name="username" class="span4">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Tên tài khoản đăng nhập được cấp phát">
-                                    </span>
+                                        <label for="inputTitle">Họ đệm <span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Họ và chữ lót tên người được cấp phát tài khoản"></i></label>
+                                        <div>
+                                            <input name="firstname" type="text" id="inputTitle" class="form-control" value="Nguyễn">
+                                            <?php if(isset($_SESSION['validator']['firstname'])) echo $_SESSION['validator']['firstname']; ?> 
+
+
+                                        </div>
+                                    </div>
+                                        <div class="form-group">
+
+                                        <label for="inputTitle">Tên  <span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Tên người được cấp phát tài khoản"></i></label>
+                                        <div>
+                                            <input name="lastname" type="text" id="inputTitle" class="form-control" value="chipu">
+                                            <?php if(isset($_SESSION['validator']['lastname'])) echo $_SESSION['validator']['lastname']; ?> 
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Địa chỉ Email<span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Địa chỉ Email của tài khoản được cấp phát"></i></label>
+                                        <div>
+                                            <input name="email" type="text" id="inputTitle" class="form-control" value="chipuu@gmail.com">
+                                            <?php if(isset($_SESSION['validator']['email'])) echo $_SESSION['validator']['email']; ?> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Facebook<span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Địa chỉ Email của tài khoản được cấp phát"></i></label>
+                                        <div>
+                                            <input name="facebook" type="text" id="inputTitle" class="form-control" value="/caigido">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Giới tính <span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Giới tính của tài khoản được cấp phát"></i></label>
+                                        <div>
+                                            <select id="gender" name="gender" class="span5">
+                                                <option value="NAM">Nam</option>
+                                                <option value="NU">Nữ</option>
+                                            </select>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Địa chỉ <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Địa chỉ của tài khoản được cấp phát"></i></label>  
+                                        <div>
+                                            <textarea name="address" id="address" class="span6" rows="2" style="width:50%;">Cần Thơ</textarea>
+                                            <?php if(isset($_SESSION['validator']['address'])) echo $_SESSION['validator']['address']; ?> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Số điện thoại<span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Số điện thoại của tài khoản được cấp phát"></i></label>  
+                                        <div>
+                                            <input name="phone" type="text" id="inputTitle" class="form-control" value="0121111111">
+                                            <?php if(isset($_SESSION['validator']['phone'])) echo $_SESSION['validator']['phone']; ?> 
+                                        </div>
+                                    </div>                                    
                                 </div>
-                                <div class="separator"></div>
                             </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <label class="control-label" for="firstname">Họ đệm <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">
-                                <div class="controls">
-                                    <input type="text" id="firstname" name="firstname" class="span4">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Họ và chữ lót tên người được cấp phát tài khoản">
-                                    </span>
-                                </div>                                
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">
-                            	<label class="control-label" for="lastname">Tên <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">
-                            	<div class="controls">
-                                    <input type="text" id="lastname" name="lastname" class="span4">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Địa chỉ Email của tài khoản được cấp phát">
-                                       
-                                    </span>
+                            <div class="widget flat">
+                                <div class="widget-header bordered-bottom bordered-themeprimary">
+                                    <span class="widget-caption">Phân quyền người sử dụng, cho phép bạn giới hạn những chức năng mà người dùng có thể truy cập đến.</span>
+                                    <div class="widget-buttons">
+                                        <a href="#" data-toggle="maximize">
+                                            <i class="fa fa-expand blue"></i>
+                                        </a>
+                                        <a href="#" data-toggle="collapse">
+                                            <i class="fa fa-minus blue"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <label class="control-label" for="email">Địa chỉ Email <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">
-                            	<div class="controls">
-                                    <input type="email" id="email" name="email" class="span4" placeholder="contact@webtienich.vn">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Địa chỉ Email của tài khoản được cấp phát">
-                                       
-                                    </span>
-                                </div>
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">	
-                                <label class="control-label" for="gender">Giới tính <span class="required">*</span></label>
-                            </div>
-                            <div class="span5">                                
-                                <div class="controls">
-                                    <select id="gender" name="gender" class="span5">
-                                        <option value="NAM">Nam</option>
-                                        <option value="NU">Nữ</option>
-                                    </select>
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Địa chỉ Email của tài khoản được cấp phát">
-                                       
-                                    </span>
-                                </div>
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">	
-                                <label class="control-label" for="address">Địa chỉ </label>
-                            </div>
-                            <div class="span9">                                
-                                <div class="controls">
-                                    <textarea name="address" id="address" class="span6" rows="2"></textarea>
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Địa chỉ Email của tài khoản được cấp phát">
-                                       
-                                    </span>
-                                </div>
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <label class="control-label" for="phone">Số điện thoại <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">                                
-                                <div class="controls">
-                                    <input type="text" id="phone" name="phone" class="span4">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Số điện thoại của tài khoản được cấp phát">
-                                      
-                                    </span>
-                                </div>
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">
-                                 <label class="control-label">Tài khoản </label>
-                            </div>
-                            <div class="span5">
-                            	<div class="controls">
-                                    <table>
-                                        <tbody class="muted">
-                                            <tr>
-                                                <td style="width: 50px;">Yahoo</td>
-                                                <td>
-                                                    <input name="yahoo" type="text" maxlength="30" id="txtYahoo" class="TextInput" style="width: 218px;">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 50px;">MSN</td>
-                                                <td>
-                                                    <input name="msn" type="text" maxlength="30" id="txtMSN" class="TextInput" style="width: 218px;">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 50px;">Skype</td>
-                                                <td>
-                                                    <input name="skype" type="text" maxlength="30" id="txtSkype" class="TextInput" style="width:218px;">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 50px;">AOL</td>
-                                                <td>
-                                                    <input name="aol" type="text" maxlength="30" id="txtAOL" class="TextInput" style="width:218px;">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 50px;">GTalk</td>
-                                                <td>
-                                                    <input name="gtalk" type="text" maxlength="30" id="txtGTalk" class="TextInput" style="width:218px;">
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="separator"></div>                                                                
-                           </div>
-                        </div>
-                       <div class="row-fluid">
-                           <div class="span2">
-                                <label class="control-label" for="password">Mật khẩu <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">                                
-                                <div class="controls">
-                                    <input type="password" id="password" name="password" class="span4">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Địa chỉ Email của tài khoản được cấp phát">
-                                       
-                                    </span>
-                                </div>
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">
-                                <label class="control-label" for="confirm_password">Xác nhận mật khẩu <span class="required">*</span></label>
-                            </div>
-                            <div class="span9">
-                            	<div class="controls">
-                                    <input type="password" id="confirm_password" name="confirm_password" class="span4">
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Địa chỉ Email của tài khoản được cấp phát">
-                                       
-                                    </span>
-                                </div>                                
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span9">
-                                <p class="muted"><h5>Phân quyền người sử dụng, cho phép bạn giới hạn những chức năng mà người dùng có thể truy cập đến.</h5></p>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span2">	
-                                <label class="control-label" for="ddlRoleTypes">Nhóm quyền <span class="required">*</span></label>
-                            </div>
-                            <div class="span5">                                
-                                <div class="controls">
-                                    <select name="ddlRoleTypes" id="ddlRoleTypes" class="TextInput" onchange="javascript:OnChangeRoleType();" style="width:285px;">                        
-                                        <option selected="selected" value="0">-- Nhóm quyền --</option>
-                                        <?php
-                                            $result = $myprocess->get_group_function_list();
-                                            while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-                                        ?>
-                                        <option value="<?= $row["Id"]; ?>"><?= $row["tennhom"]; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <span class="icon-question-sign" data-toggle="tooltip" data-placement="right" title="Nhóm quyền của tài khoản được cấp phát">
-                                       
-                                    </span>
-                                </div>                                
-                                <div class="separator"></div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span9">
-                                <table style="width: 100%;" class="admintable fixedTable">
-                                    <tbody class="muted">
-                                        <tr>
-                                            <td class="key keyRole">
-                                                <h5>Quản trị hệ thống</h5>
-                                            </td>
-                                            <td class="key keyRole">
-                                                <h5>Quản lý bán hàng</h5>
-                                            </td>
-                                            <td class="key keyRole">
-                                                <h5>Quản lý nội dung</h5>
-                                            </td>
-                                            <td class="key keyRole">
-                                               <h5>Nhân viên bán hàng</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="BorderListbox">
-                                                    <?php
-                                                        $result = $myprocess->get_function_list(1);
-                                                        while ($row = $result->fetch()){
-                                                    ?>
-                                                    <p class="innerListbox">
-                                                        <label>                                                
-                                                            <input id="chkItem_<?= $row["Id"]; ?>" type="checkbox" name="administratorRole" onclick="javascript:OnClickRole(<?= $row["Id"]; ?>);"><?= $row["chucnang"]; ?>
-                                                        </label>
-                                                    </p>
-                                                    <?php } ?>
+                                <div class="widget-body widget-body-white">   
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Nhóm quyền <span class="text-danger">*</span> <i
+                                                    class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    data-original-title="Thông tin về Yahoo Messenger của khách hàng"></i></label>
+                                        <div>
+                                            <select name="ddlRoleTypes" id="ddlRoleTypes" class="TextInput"  style="width:285px;">
+                                                <option selected="selected" value="0">-- Nhóm quyền --</option>  
+                                                <?php  foreach($data as $value){ ?>                      
+                                                <option value="<?php echo $value['Id']; ?>"><?php echo $value['tennhom']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php if(isset($_SESSION['validator']['ddlRoleTypes'])) echo $_SESSION['validator']['ddlRoleTypes']; ?> 
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-6">
+                                            <label for="inputTitle">Quản trị hệ thống </label>
+                                            <div>
+                                                <div class="BorderListbox">                                                                                                       
+                                            
+                                                    <?php 
+                                                      $result1 = $myprocess->get_function_list(1)->fetchAll(); 
+                                                      foreach($result1 as $value){
+                                                     ?>
+                                                       
+                                                       <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="colored-success"  value="<?php echo $value['Id'] ?>" name="chucnang[]">
+                                                                <span class="text"><?php echo $value['chucnang'] ?></span>
+                                                            </label>
+                                                        </div>
+                                                        
+                                                      <?php } ?>
+                                              
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="BorderListbox">
-                                                    <?php
-                                                        $result = $myprocess->get_function_list(2);
-                                                        while ($row = $result->fetch()){
-                                                    ?>                                         
-                                                    <p class="innerListbox">
-                                                        <label>
-                                                            <input id="chkItem_<?= $row["Id"]; ?>" type="checkbox" name="managerRole" onclick="javascript:OnClickRole(<?= $row["Id"]; ?>);"><?= $row["chucnang"]; ?>
-                                                        </label>
-                                                    </p>
-                                                    <?php } ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="inputTitle">Quản lý bán hàng </label>
+                                            <div>
+                                                <div class="BorderListbox ql">                                                                                                       
+                                                    
+                                                    <?php 
+                                                      $result2 = $myprocess->get_function_list(2)->fetchAll(); 
+                                                      foreach($result2 as $value){
+                                                     ?>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="colored-success"  value="<?php echo $value['Id'] ?>" name="chucnang[]">
+                                                                <span class="text"><?php echo $value['chucnang'] ?></span>
+                                                            </label>
+                                                        </div>
+                                                      
+                                                      <?php } ?>
+                                                   
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="BorderListbox">
-                                                    <?php
-                                                        $result = $myprocess->get_function_list(3);
-                                                        while ($row = $result->fetch()){
-                                                    ?>
-                                                    <p class="innerListbox">
-                                                        <label>
-                                                            <input id="chkItem_<?= $row["Id"]; ?>" type="checkbox" name="contentRole" onclick="javascript:OnClickRole(<?= $row["Id"]; ?>);"><?= $row["chucnang"]; ?>
-                                                        </label>
-                                                    </p>
-                                                    <?php } ?>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-6">
+                                            <label for="inputTitle">Quản lý nội dung </label>
+                                            <div>
+                                                <div class="BorderListbox nd">                                                                                                       
+                                                  
+                                                    <?php 
+                                                      $result3 = $myprocess->get_function_list(3)->fetchAll(); 
+                                                      foreach($result3 as $value){
+                                                     ?>
+                                                      
+                                                      <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="colored-success"  value="<?php echo $value['Id'] ?>" name="chucnang[]">
+                                                                <span class="text"><?php echo $value['chucnang'] ?></span>
+                                                            </label>
+                                                        </div>
+                                                     
+                                                      <?php } ?>
+                                                    
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="BorderListbox">
-                                                    <?php
-                                                        $result = $myprocess->get_function_list(4);
-                                                        while ($row = $result->fetch()){
-                                                    ?>
-                                                    <p class="innerListbox">
-                                                        <label>
-                                                            <input id="chkItem_<?= $row["Id"]; ?>" type="checkbox" name="saleRole" onclick="javascript:OnClickRole(<?= $row["Id"]; ?>);"><?= $row["chucnang"]; ?>
-                                                        </label>
-                                                    </p>
-                                                    <?php } ?>
-                                               </div>
-                                            </td>
-                                        </tr>
-                                </tbody>
-                            </table>
-                                <div class="separator"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="inputTitle">Nhân viên bán hàng </label>
+                                            <div>
+                                                <div class="BorderListbox bh">                                                                                                       
+                                                 
+                                                    <?php 
+                                                      $result4 = $myprocess->get_function_list(4)->fetchAll(); 
+                                                      foreach($result4 as $value){
+                                                     ?>
+                                                      
+                                                      <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" class="colored-success"  value="<?php echo $value['Id'] ?>" name="chucnang[]">
+                                                                <span class="text"><?php echo $value['chucnang'] ?></span>
+                                                            </label>
+                                                        </div>
+                                                      
+                                                      <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </div>                                        
+                                </div>
                             </div>
                         </div>
-                     </div>
-                     
-                        <style type="text/css">
-                            .keyRole
-                            {
-                                width: 25%;
-                                text-transform: uppercase;
-                            }
-                        </style>
-                        <script type="text/javascript">
-							<?php if(!empty($_SESSION["message"]["notyfy"])){ ?>
-								$(function () {
-									func_notyfy("top", "information", "<?= $_SESSION["message"]["notyfy"]; ?>");
-								});
-							<?php unset($_SESSION["message"]["notyfy"]);} ?>
-							
-							$.validator.setDefaults(
-							{
-								submitHandler: function(form) {
-									//alert("submitted!");
-									//var val = $("input[type=submit][clicked=true]").val();
-									//alert(val);
-									
-									//var btn = $( ":input[type=submit]:focus" );
-									//alert(btn.val());
-									//$("#validateSubmitForm").submit();
-									form.submit();
-								},
-								showErrors: function(map, list) 
-								{
-									this.currentElements.parents('label:first, .controls:first').find('.error').remove();
-									this.currentElements.parents('.row-fluid:first').removeClass('error');
-									
-									$.each(list, function(index, error) 
-									{
-										var ee = $(error.element);
-										var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
-										
-										ee.parents('.row-fluid:first').addClass('error');
-										eep.find('.error').remove();
-										eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
-									});
-									//refreshScrollers();
-								}
-							});
-							
-							$(function()
-							{
-								// validate signup form on keyup and submit
-								$("#validateSubmitForm").validate({
-									rules: {
-										firstname: "required",
-										lastname: "required",
-										username: {
-											required: true,
-											minlength: 2
-										},
-										password: {
-											required: true,
-											minlength: 5
-										},
-										confirm_password: {
-											required: true,
-											minlength: 5,
-											equalTo: "#password"
-										},
-										email: {
-											required: true,
-											email: true
-										},
-										phone: {
-											required: true,
-											number: true
-										},
-										permission: {
-											required: function(element) {
-												return $("#ddlRoleTypes").val() == "0";
-											}
-										}
-									},
-									messages: {
-										firstname: "Họ đệm không được bỏ trống",
-										lastname: "Tên không được bỏ trống",
-										username: {
-											required: "Tên đăng nhập không được bỏ trống",
-											minlength: "Tên đăng nhập phải lớn hơn 2 ký tự"
-										},
-										password: {
-											required: "Mật khẩu không được bỏ trống",
-											minlength: "Mật khẩu phải lớn hơn 5 ký tự"
-										},
-										confirm_password: {
-											required: "Xác nhận mật khẩu không được bỏ trống",
-											minlength: "Xác nhận mật khẩu phải lớn hơn 5 ký tự",
-											equalTo: "Xác nhận mật khẩu không khớp với mật khẩu"
-										},
-										email: "Email không được bỏ trống",	
-										phone: {
-											required: "Số điện thoại không được bỏ trống"
-										},
-										permission: {
-											required: "Chọn nhóm quyền cho tài khoản được cấp phát"
-										}
-									}
-								});
-							
-								// propose username by combining first- and lastname
-								$("#username").focus(function() {
-									var firstname = $("#firstname").val();
-									var lastname = $("#lastname").val();
-									if(firstname && lastname && !this.value) {
-										this.value = firstname + "." + lastname;
-									}
-								});
-							
-								//code to hide topic selection, disable for demo
-								var newsletter = $("#newsletter");
-								// newsletter topics are optional, hide at first
-								var inital = newsletter.is(":checked");
-								var topics = $("#newsletter_topics")[inital ? "removeClass" : "addClass"]("gray");
-								var topicInputs = topics.find("input").attr("disabled", !inital);
-								// show when newsletter is checked
-								newsletter.click(function() {
-									topics[this.checked ? "removeClass" : "addClass"]("gray");
-									topicInputs.attr("disabled", !this.checked);
-								});
-							});
-							
-							/* chon nhom chuc nang */
-							/*
-                           jQuery(function () {
-                                var isAdmin =jQuery("[id$='hdAdmin']").val();
-                                if (isAdmin == "1") {
-                                    var arr =jQuery("input:checkbox");
-                                    document.getElementById('ddlRoleTypes').disabled = true;
-                                    for (var i = 0; i < arr.length; i++) {
-                                        var obj = arr[i];
-                                        if (obj.id.indexOf("chkItem_") != "-1") { obj.disabled = true; }
-                                    }
-                                }
-                                var currentChecked =jQuery("[id$='hdRoles']").val();
-                                if (currentChecked != "") {
-                                    var currentChecked = currentChecked.substring(0, currentChecked.length - 1);
-                                    var arr = currentChecked.split(",");
-                                    for (var i = 0; i < arr.length; i++) {
-                                        var id = "chkItem_" + arr[i];
-                                        document.getElementById(id).checked = true;
-                                    }
-                                }
-                            });
-							*/
-                            function OnChangeRoleType() {
-                                var selected = document.getElementById('ddlRoleTypes').value;
-                                switch (selected) {
-                                    case "4": UnCheckAll(); CheckByRole("saleRole"); break;
-                                    case "3": UnCheckAll(); CheckByRole("contentRole"); break;
-                                    case "2": UnCheckAll(); CheckByRole("saleRole"); CheckByRole("managerRole"); break;
-                                    case "1": UnCheckAll(); CheckByRole("saleRole"); CheckByRole("contentRole"); CheckByRole("managerRole"); CheckByRole("administratorRole"); break;
-                                    default: UnCheckAll(); break;
-                                }
-                            }
-                            function OnClickRole(roleid) {
-                                var id = "chkItem_" + roleid;
-                                var chk = document.getElementById(id);
-                                var currentChecked =jQuery("[id$='hdRoles']").val();
-                                if (chk.checked == true) { currentChecked = currentChecked + roleid + ","; }
-                                else { currentChecked = currentChecked.replace(roleid + ",", ""); }jQuery("[id$='hdRoles']").val(currentChecked);
-                            }
-                            function CheckByRole(roleName) {
-                                var arr = document.getElementsByName(roleName);
-                                var roleChecked = '';
-                                for (var i = 0; i < arr.length; i++) {
-                                    var chk = arr[i]; chk.checked = true;
-                                    var id = chk.id.replace("chkItem_", "");
-                                    roleChecked = roleChecked + Number(id) + ","
-                                }
-                                var currentChecked =jQuery("[id$='hdRoles']").val();jQuery("[id$='hdRoles']").val(currentChecked + roleChecked);
-                            }
-                            function UnCheckByRole(roleName) {
-                                var arr = document.getElementsByName(roleName);
-                                for (var i = 0; i < arr.length; i++) { var chk = arr[i]; chk.checked = false; }
-                            }
-                            function UnCheckAll() {
-                                UnCheckByRole("saleRole");
-                                UnCheckByRole("managerRole");
-                                UnCheckByRole("contentRole");
-                                UnCheckByRole("administratorRole");jQuery("[id$='hdRoles']").val("");
-                            }							
-                        </script>                                  
-                </div>
-                    
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                            <div class="widget flat">
+                                <div class="widget-header bordered-bottom bordered-themeprimary">
+                                    <span class="widget-caption">Tài khoản</span>
+                                    <div class="widget-buttons">
+                                        <a href="#" data-toggle="maximize">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget-body widget-body-white">
+                                <div class="form-group">
+
+                                    <label for="inputTitle">Tên đăng nhập <span class="text-danger">*</span> <i
+                                                class="fa fa-question-circle tooltip-info sky" data-toggle="tooltip"
+                                                data-placement="right"
+                                                data-original-title="Tên tài khoản đăng nhập được cấp phát"></i></label>
+                                    <div id="check">
+                                        <input name="username" type="text" id="inputTitle" class="form-control checkid">
+
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTitle">Mật khẩu <span class="text-danger">*</span></label>
+                                    <div>
+                                        <input name="password" type="text" id="inputTitle" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTitle">Xác nhận mật khẩu <span class="text-danger">*</span></label>
+                                    <div>
+                                        <input name="confirm_password" type="text" id="inputTitle" class="form-control">
+                                    </div>
+                                </div>
+                            </div>                                  
+                       </div>
+                    </div>
                 </div>
             </div>
-            <!-- End Content -->        
         </div>
-   	<!-- End Wrapper -->
-</div>
-<input type="hidden" name="hidden" value="user.add" />
-<input type="hidden" name="act" value="save"/>
-<input type="hidden" name="hdRoles" id="hdRoles" />
-<input type="hidden" name="date_add" id="date_add" value="<?= date("d/m/Y");?>" />
-</form>
+        <input type="hidden" name="hidden" value="news.add"/>
+        <input type="hidden" name="act" value="save"/>
+        <input type="hidden" name="hdRoles" id="hdRoles" />
+        <input type="hidden" name="date_add" id="date_add" value="<?= date("d/m/Y");?>" />
+
+    </form>
+    <!-- /Page Body -->
+
+
+<script type="text/javascript">
+$('#ddlRoleTypes').on('change', function () {
+    if(this.value==1)
+        $('.BorderListbox').find('input[type=checkbox]').prop('checked', true);
+    else if(this.value==2){
+        $('.BorderListbox').find('input[type=checkbox]').prop('checked', false);
+        $('.ql').find('input[type=checkbox]').prop('checked', true);
+        $('.bh').find('input[type=checkbox]').prop('checked', true);
+    }
+    else if(this.value==3){
+        $('.BorderListbox').find('input[type=checkbox]').prop('checked', false);
+        $('.nd').find('input[type=checkbox]').prop('checked', true);
+    }
+    else if(this.value==4){
+        $('.BorderListbox').find('input[type=checkbox]').prop('checked', false);
+        $('.bh').find('input[type=checkbox]').prop('checked', true);
+    }else
+    {
+        $('.BorderListbox').find('input[type=checkbox]').prop('checked', false);
+    }
+
+});
+    $.validator.setDefaults(
+        {
+            submitHandler: function (form) {
+                form.submit();
+            },
+            showErrors: function (map, list) {
+                this.currentElements.parents('label:first, .controls:first').find('.error').remove();
+                this.currentElements.parents('.row-fluid:first').removeClass('error');
+
+                $.each(list, function (index, error) {
+                    var ee = $(error.element);
+                    var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
+
+                    ee.parents('.row-fluid:first').addClass('error');
+                    eep.find('.error').remove();
+                    eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
+                });
+                //refreshScrollers();
+            }
+        });
+
+    $(function () {
+        // validate signup form on keyup and submit
+        $("#validateSubmitForm").bootstrapValidator({
+            fields: {
+                "firstname": {
+                    validators: {
+                        notEmpty: {
+                            message: "Họ không được bỏ trống"
+                        }
+                    }
+                },
+                "lastname": {
+                    validators: {
+                        notEmpty: {
+                            message: "Họ không được bỏ trống"
+                        }
+                    }
+                },
+                "username": {
+                    validators: {
+                        notEmpty: {
+                            message: "Tài khoản không được bỏ trống"
+                        }
+                    }
+                },
+                "password": {
+                    validators: {
+                        notEmpty: {
+                            message: "Mật khẩu không được bỏ trống"
+                        }
+                    }
+                },
+                'email': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Email không được để trống'
+                        }
+                    }
+                },
+                'address': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Địa chỉ không được để trống'
+                        }
+                    }
+                },
+                'phone': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Phone không được để trống'
+                        },
+                        stringLength: {
+                            min: 10,
+                            message: "Số điện thoại chỉ được 10 hoặc 11 số ",
+							max: 11,
+                            message: "Số điện thoại chỉ được 10 hoặc 11 số "
+                        }
+                    }
+                }
+                
+
+            }
+        });
+    });
+
+</script>
+
+
+</script>
+<?php if (!empty($_SESSION["validator"])) {
+    unset($_SESSION["validator"]);
+} ?>

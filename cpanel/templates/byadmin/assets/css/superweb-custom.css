@@ -13,7 +13,12 @@ table ul.dropdown-menu {
 .dropdown-menu li a {
     cursor: pointer !important;
 }
-
+.BorderListbox {
+    overflow: auto;
+    width: 260px;
+    height: 150px;
+    border: solid 1px #08c;
+}
 .accordion.accordion-custom.panel-group .panel-heading .accordion-toggle{
     background-color: #eeeeee;
 }

@@ -73,7 +73,6 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 						include_once("accessdenied.php");
 					}
 				break;
-				
 				case "edit":
 					$chucnang_id = 4; // Cập nhật thông tin người dùng
 					$chucnang_list = $_SESSION["wti"]["chucnang"];
