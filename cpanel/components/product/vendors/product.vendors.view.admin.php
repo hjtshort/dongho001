@@ -1,5 +1,15 @@
 <?php defined( '_VALID_MOS' ) or die( include("404.php") );
-    $vendors_process = new vendors_process();
+    $myprocess = new vendors_process();
+    $self_link = $_GET["params"] . ".html?";
+    if(isset($_GET["record"])) { $self_link .= "record=" . $_GET["record"] . "&"; }
+    if(!isset($_GET["page"])) $tranghientai = 1; else $tranghientai = intval($_GET["page"]);
+    if(!isset($_GET["record"])) $somautin = 10; else $somautin = intval($_GET["record"]);
+    include_once('../include/paging.php');
+    $search= isset($_POST['search'])? "%".strip_tags($_POST['search'])."%":"%%";
+    $tongsodong=$myprocess->process_get_vendors('','',$search)->rowCount();
+    @$pager = Pager::getPagerData($tongsodong, $somautin,$tranghientai, $self_link );
+    $data=$myprocess->process_get_vendors($pager->offset,$pager->limit,$search)->fetchAll();
+   
 ?>
 <link href="<?= $conf['template_admin']; ?>/assets/css/dataTables.bootstrap.css" rel="stylesheet"/>
 <!-- Page Breadcrumb -->
@@ -71,9 +81,7 @@
                                              </ul>
                                          </div>
                                      </div>
-                                 </div>
-    
-    
+                                 </div> 
                                  <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                      <thead class="flip-content bordered-palegreen">
                                      <tr>
@@ -85,34 +93,35 @@
                                              </label>
                                          </th>
                                          <th>Nhà sản xuất</th>
-                                         <th class="center" style="width: 10%;">Số điện thoại</th>
+                                         <th class="center" style="width: 20%;">Số điện thoại</th>
                                          <th class="center" style="width: 10%;">Địa chỉ</th>
-                                         <th style="width: 10%;" class="center">Email</th>
+                                         <th style="width: 30%;" class="center">Email</th>
                                          <th  class="center">Thao tác</th>
                                      </tr>
                                      </thead>
                                      <tbody>
-                                     
-                                         <tr class="selectable">
-                                             <td class="center">1</td>
+                                     <?php $stt=1;
+                                      foreach($data as $key=>$value){ ?>
+                                        <tr class="selectable">
+                                             <td class="center"><?php echo $stt; ?></td>
                                              <td class="center uniformjs">
                                                  <label>
                                                      <input class="chkItem" name="chkItem[]"
                                                              type="checkbox"
-                                                            value="">
+                                                            value="<?php echo $value['nhasanxuat_id']; ?>">
                                                      <span class="text"></span>
                                                  </label>
     
                                              </td>
                                              <td>
-                                                Nhóm khách hàng ưu tiên
+                                                <?php echo $value['nhasanxuat']; ?>
                                              </td>
                                              <td>
-                                                012345566
+                                                <?php echo $value['sodienthoai']; ?>
                                              </td>
-                                             <td class="center">ADD</td>
+                                             <td class="center"><?php echo $value['diachi']; ?></td>
                                              <td>
-                                                 ABX@gmail.com
+                                                <?php echo $value['email']; ?>
                                              </td>
                                              <td class="center">
                                                  <div class="btn-group">
@@ -134,7 +143,7 @@
                                                                  <a class="btn_submit" title="Sữa tin tức"
                                                                     data-action="edit"
                                                                     data-id=""
-                                                                    data-link="content/news/edit/.html">Sửa</a>
+                                                                    data-link="product/vendors/edit/<?php echo $value['nhasanxuat_id']; ?>.html">Sửa</a>
                                                              </li>
                                                      
     
@@ -162,7 +171,8 @@
                                                      </ul>
                                                  </div>
                                              </td>
-                                         </tr>
+                                        </tr>
+                                     <?php $stt++; } ?>
                                      
                                      </tbody>
                                  </table>
@@ -183,7 +193,7 @@
     
                                      <div class="col-sm-4">
                                          <div class="text-align-right" id="simpledatatable_length">
-                                             <select onchange="javascript:location.href = ''record='+this.value;"
+                                             <select onchange="javascript:location.href = 'product/vendors/view.html?record='+this.value;"
                                                      name="from" name="simpledatatable_length"
                                                      aria-controls="simpledatatable"
                                                      class="form-control input-sm">
@@ -259,15 +269,9 @@ $(function () {
          }
 
      } else if (self.data("action") == "delete") {
-
-         $('.checkboxs thead :checkbox').prop('checked', false).parent().removeClass('checked');
-         $('.checkboxs tbody :checkbox').prop('checked', false).parent().removeClass('checked');
-         $('.checkboxs tbody tr.selectable').removeClass('selected');
-
-         $('#chkItem_' + self.data("id")).prop('checked', true).parent().addClass('checked');
-
          bootbox.confirm("Bạn có chắc chắn xoá các bản tin được chọn hay không !", function (result) {
              if (result) {
+                 self.closest('tr').find('input:checkbox').prop('checked',true)
                  $("#act").val(self.data("action"));
                  $("#validateSubmitForm").submit();
              }

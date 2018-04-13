@@ -1,115 +1,156 @@
-<?php defined( '_VALID_MOS' ) or die( include("404.php") );
-if($_SESSION["wti"]["key"] == "Supper Administrator" || $_SESSION["wti"]["key"] == "Administrator"){ 
-	//$myprocess = new process();
-?>
-<div id="wrapper">	
-    <div id="content">
-        <ul class="breadcrumb">
-            <li><a href="index.html?lang=en" class="glyphicons home"><i></i>AdminPlus</a></li>
-            <li class="divider"></li>
-            <li>Online Shop</li>
-            <li class="divider"></li>
-            <li>Products</li>
-        </ul>
-		<div class="separator bottom"></div>
-        <div class="innerLR">
-            <div class="widget widget-2">
-                <div class="widget-head">
-                
-                    <h4 class="heading glyphicons qrcode"><i></i>Thêm mới thông tin nhà sản xuất</h4>
-                    
-                    <div class="heading-buttons">
-                        <div class="buttons pull-right">
-                            <a href="#modal-simple" data-toggle="modal" class="btn btn-primary btn-icon glyphicons circle_question_mark"><i></i> Trợ giúp</a>   
-                            <a href="" class="btn btn-primary btn-icon glyphicons ok_2"><i></i> Lưu lại</a>
-                            <a href="" class="btn btn-primary btn-icon glyphicons edit"><i></i> Cập nhật</a>
-                            <a href="product/vendors/view.html" class="btn btn-primary btn-icon glyphicons unshare"><i></i> Quay lại</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    
-                </div>
-<!-- Modal inline -->
-
-<!-- Modal -->
-<div class="modal hide fade" id="modal-simple">
-	
-	<!-- Modal heading -->
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3>Modal header</h3>
-	</div>
-	<!-- // Modal heading END -->
-	
-	<!-- Modal body -->
-	<div class="modal-body">
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-	</div>
-	<!-- // Modal body END -->
-	
-	<!-- Modal footer -->
-	<div class="modal-footer">
-		<a href="#" class="btn btn-default" data-dismiss="modal">Close</a> 
-	</div>
-	<!-- // Modal footer END -->
-</div>
-            <div class="widget-body">
-				<div class="row-fluid">
-					<div class="span2">
-						<br>
-						<p class="muted">Nhà sản xuất<span class="required">*</span></p>
-					</div>
-					<div class="span7"><br>
-						<input type="text" id="inputTitle" class="span6" value="" placeholder="">
-
-						<div class="separator"></div>
-					</div>
-				</div>
-              <div class="row-fluid">
-					<div class="span2">	
-					  <p class="muted">Số điện thoại</p>
-					</div>
-					<div class="span5">
-						<input type="text" id="inputTitle" class="span4" value="" placeholder="">&nbsp;
-						<div class="separator"></div>
-					</div>
-				</div>
-                <div class="row-fluid">
-					<div class="span2">
-						<p class="muted">Địa chỉ</p>
-					</div>
-					<div class="span7">
-						<input type="text" id="inputTitle" class="span6" value="" placeholder="">
-
-						<div class="separator"></div>
-					</div>
-				</div>
-                <div class="row-fluid">
-					<div class="span2">
-						<p class="muted">Email</p>
-					</div>
-					<div class="span7">
-						<input type="text" id="inputTitle" class="span6" value="" placeholder="">
-
-						<div class="separator"></div>
-					</div>
-				</div>
-               <div class="row-fluid">
-					<div class="span2">	
-						<p class="muted">Mô tả</p>
-					</div>
-					<div class="span7">
-						<textarea name="message" class="span6" rows="5"></textarea>
-                        &nbsp;
-						<div class="separator"></div>
-					</div>
-				</div>
+<?php defined( '_VALID_MOS' ) or die( include("../news/404.php") ); ?>
+<div class="page-content">
+    <form id="validateSubmitForm" name="myForm" method="post" enctype="multipart/form-data">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs breadcrumbs-fixed">
+            <div class="buttons-task col-xs-12 col-md-6">
+                <ul class="breadcrumb breadcrumbs-fixed">
+                    <li><i class="fa fa-table"></i></li>
+                    <li>Thêm mới nhà sản xuất</li>
+                </ul>
             </div>
-                
+            <div class="text-align-right text-align-left-xs col-xs-12 col-md-6">
+                <a href="product/vendors/view.html" class="btn btn-sky shiny">Hủy</a>
+                <button type="submit" class="btn btn-sky shiny">Lưu</button>
             </div>
         </div>
-        <!-- End Content -->        
-    </div>
-   	<!-- End Wrapper -->
+        <!-- /Page Breadcrumb -->
+        <!-- Page Body -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-8 col-sm-8 col-xs-12">
+                            <div class="widget flat">
+                                <div class="widget-header bordered-bottom bordered-themeprimary">
+                                    <span class="widget-caption">Thêm mới thông tin nhà sản xuất</span>
+                                    <div class="widget-buttons">
+                                        <a href="#" data-toggle="maximize">
+                                            <i class="fa fa-expand blue"></i>
+                                        </a>
+                                        <a href="#" data-toggle="collapse">
+                                            <i class="fa fa-minus blue"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget-body widget-body-white">                                       
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Nhà sản xuất <span class="text-danger">*</span></label>
+                                        <div>
+                                            <input name="nhasanxuat" type="text" id="inputTitle" class="form-control">
+											<?php if(isset($_SESSION['validator']['nhasanxuat'])) echo $_SESSION['validator']['nhasanxuat']; ?>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+
+										<label for="inputTitle">Điện thoại</label>  
+										<div>
+											<input name="dienthoai" type="text" id="inputTitle" class="form-control">
+											<?php if(isset($_SESSION['validator']['dienthoai'])) echo $_SESSION['validator']['dienthoai']; ?>
+										</div>
+									</div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Địa chỉ</label>
+                                        <div>
+                                            <input name="diachi" type="text" id="inputTitle" class="form-control">
+											<?php if(isset($_SESSION['validator']['diachi'])) echo $_SESSION['validator']['diachi']; ?>	
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputTitle">Email</label>
+                                        <div>
+                                            <input name="email" type="text" id="inputTitle" class="form-control">
+											<?php if(isset($_SESSION['validator']['email'])) echo $_SESSION['validator']['email']; ?>
+
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="hidden" value="news.add"/>
+        <input type="hidden" name="act" value="save"/>
+		<input name="date" type="hidden" id="inputTitle" class="form-control" value="<?php echo date('d/m/Y'); ?>"/>
+    </form>
+    <!-- /Page Body -->
 </div>
-<?php } ?>
+
+<script type="text/javascript">
+
+
+    $.validator.setDefaults(
+        {
+            submitHandler: function (form) {
+                form.submit();
+            },
+            showErrors: function (map, list) {
+                this.currentElements.parents('label:first, .controls:first').find('.error').remove();
+                this.currentElements.parents('.row-fluid:first').removeClass('error');
+
+                $.each(list, function (index, error) {
+                    var ee = $(error.element);
+                    var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
+
+                    ee.parents('.row-fluid:first').addClass('error');
+                    eep.find('.error').remove();
+                    eep.append('<p class="error help-block"><span class="label label-important">' + error.message + '</span></p>');
+                });
+                //refreshScrollers();
+            }
+        });
+
+    $(function () {
+        // validate signup form on keyup and submit
+        $("#validateSubmitForm").bootstrapValidator({
+            fields: {
+                'nhasanxuat': {
+                    validators: {
+                        notEmpty: {
+                            message: "Nhà sản xuất không được bỏ trống"
+                        }
+                    }
+                },
+                'dienthoai': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Số điện thoại không được để trống'
+                        },
+						stringLength: {
+                            min: 10,
+                            message: "Số điện thoại chỉ được 10 hoặc 11 số",
+							max: 11,
+                            message: "Số điện thoại chỉ được 10 hoặc 11 số"
+                        }
+                    }
+                },
+				'diachi': {
+                    validators: {
+                        notEmpty: {
+                            message: "Địa chỉ không được để trống"
+                        }
+                    }
+                },
+				'email': {
+                    validators: {
+                        notEmpty: {
+                            message: "Email không được để trống"
+                        }
+                    }
+                },
+            }
+        });
+    });
+
+</script>
+
+<?php if (!empty($_SESSION["validator"])) {
+    unset($_SESSION["validator"]);
+} ?>

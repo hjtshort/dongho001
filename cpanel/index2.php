@@ -12,10 +12,14 @@
 	
 	/* Application Data */
     define('APP_DATA_FILE', REAL_PATH . '../application_data/' . $_SERVER['SERVER_NAME'] . '.data');
-    include_once(REAL_PATH . "../protected/app_variable.php");
+    include_once(REAL_PATH . "../include/app_variable.php");
     
-    include_once("../protected/global_config.php");
-    include_once("../protected/core_class.php");
+    //include_once("../include/global_config.php");
+	include_once("../include/core_class.php");
+	include_once("../include/init.config.php");
+	include_once("../include/db_class.php");	
+	global $func;
+    $func = new core_class();
     
     $core_class = new core_class();
 	
@@ -36,7 +40,14 @@
 				} else {
 					include_once("accessdenied.php");
 				}
-		    break;
+			break;
+			case "report":
+				include_once("components/orders/exportorders/orders.exportorders.report.admin.php");
+				// $myprocess= new orders();
+				// $data=$myprocess->get_data($_GET['ngay1'],$_GET['ngay2'],$_GET['status']);
+				
+					//$func->_redirect('orders/exportorders/view.html');
+			break;
 			
 			/*Ajax Kiet*/
 			

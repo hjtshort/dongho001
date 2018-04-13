@@ -1,28 +1,6 @@
-<?php defined( '_VALID_MOS' ) or die( include("../news/404.php") ); ?>
-
-<script type="text/javascript" src="<?= $conf['rooturl']; ?>/myeditor/myfinder/ckfinder.js"></script>
-<script type="text/javascript" src="<?= $conf['rooturl']; ?>/myeditor/ckeditor.js"></script>
-<script language="javascript" type="text/javascript">
-    function BrowseServer(inputId) {
-        var finder = new CKFinder();
-        finder.StartupPath = "Image:/image/";
-        finder.selectActionFunction = SetFileField;
-        finder.selectActionData = inputId;
-        finder.popup();
-    }
-
-    // This is a sample function which is called when a file is selected in CKFinder.
-    function SetFileField(fileUrl, data) {
-        document.getElementById("image_src").value = fileUrl;
-        document.getElementById("image_file").src = fileUrl;
-    }
-
-    // This is a sample function which is called when a file is selected in CKFinder.
-    function ResetImage() {
-        document.getElementById("image_file").src = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9nPjwvc3ZnPg==";
-    }
-</script>
-
+<?php defined( '_VALID_MOS' ) or die( include("../news/404.php") ); 
+  // $myprocess=new orders();
+?>
 <div class="page-content">
     <form id="validateSubmitForm" name="myForm" method="post" enctype="multipart/form-data" >
         <!-- Page Breadcrumb -->
@@ -35,7 +13,7 @@
             </div>
             <div class="text-align-right text-align-left-xs col-xs-12 col-md-6">
                 <a href="content/news/view.html" class="btn btn-sky shiny">Hủy</a>
-                <button type="submit" class="btn btn-sky shiny">Lưu</button>
+                <button type="button" id="ajaxne" class="btn btn-sky shiny">Lưu</button>
             </div>
         </div>
         <!-- /Page Breadcrumb -->
@@ -57,18 +35,24 @@
                                         </a>
                                     </div>
                                 </div>
+                                <?php 
+                                ?>
                                 <div class="widget-body widget-body-white">
 
                                     <div class="form-group">
 
                                         <label for="inputTitle">Kiểu xuất dữ liệu</label>
-                                        <div>
-                                             <input style="opacity:1;" name="" type="radio" id="inputTitle" class="form-control" data-bv-field="news_title">    
-                                             <label for="inputTitle">Xuất theo đơn hàng </label>                                     
+                                        <div class="radio">
+                                            <label>
+                                                <input name="kind" value="orders" type="radio" class="colored-success">
+                                                <span class="text"> Theo đơn hàng</span>
+                                            </label>
                                         </div>
-                                        <div>
-                                             <input style="opacity:1;" name="" type="radio" id="inputTitle" class="form-control" data-bv-field="news_title">    
-                                             <label for="inputTitle">Xuất theo sản phẩm </label>                                     
+                                        <div class="radio">
+                                            <label>
+                                                <input name="kind" value="product" type="radio" class="colored-success">
+                                                <span class="text"> Theo sản phẩm</span>
+                                            </label>
                                         </div>
                                     </div>   
                                     <div class="form-group">  
@@ -81,7 +65,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div>
-                                                  <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                  <input name="ngay1" class="form-control date-picker ngay1" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
                                             </div>
                                         </div>
                                         <div class="col-lg-2">
@@ -90,28 +74,27 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div>
-                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">    
+                                                <input name="ngay2" class="form-control date-picker ngay2" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">    
                                             </div> 
                                         </div>
                                     </div>
                                     <div class="form-group">  
                                         <label for="product_name">Trạng thái đơn hàng</label>   
                                         <div>
-                                        <select id="ddlOrderStatus" style="width:160px;">
-                                            <option selected="selected" value="0"> -- Tất cả -- </option>
-                                            <option value="1">Chờ xử lý</option>
+                                        <select name="choose" id="orderstatus" class="TextInput OrderStatus" style="width: 140px;top: 4px;position:relative;" orderid="108080" orderstatus="5">
+                                            <option value="1">Chờ xử lý</option>                                   
                                             <option value="2">Chờ thanh toán</option>
                                             <option value="3">Chờ hoàn thành</option>
                                             <option value="4">Chờ xuất hàng</option>
                                             <option value="5">Chờ nhận hàng</option>
                                             <option value="6">Chuyển một phần</option>
                                             <option value="7">Hoàn thành</option>
-                                            <option value="8">Đã chuyển hết</option>
-                                            <option value="9">Hủy đơn hàng</option>
-                                            <option value="10">Từ chối đơn hàng</option>
-                                            <option value="11">Hoàn trả đơn hàng</option>
-                                            <option value="12">Đã tiếp nhận</option>
-                                            <option value="13">Đề nghị hủy</option>
+                                            <option value="9">Đã chuyển hết</option>
+                                            <option value="10">Hủy đơn hàng</option>
+                                            <option value="11">Từ chối đơn hàng</option>
+                                            <option value="12">Hoàn trả đơn hàng</option>
+                                            <option value="13">Đã tiếp nhận</option>
+                                            <option value="14">Đề nghị hủy</option>
                                         </select>
                                         </div>
                                     </div>
@@ -122,14 +105,22 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="hidden" value="news.add"/>
-        <input type="hidden" name="act" value="save"/>
+        <input type="hidden" name="hidden" value="news.report"/>
+        <input type="hidden" name="act" value="report"/>
 
     </form>
     <!-- /Page Body -->
 </div>
 
 <script type="text/javascript">
+$('#ajaxne').click(function (e) { 
+    var ngay1= $('.ngay1').val()
+    var ngay2=$('.ngay2').val()
+    var choose =$('#orderstatus').val()
+    var kind= $("input[name='kind']:checked").val()
+    location.href= "report.ajax?action=report&ngay1="+ngay1+"&ngay2="+ngay2+"&status="+choose+"&kind="+kind
+
+});
 
 
     $.validator.setDefaults(
@@ -216,114 +207,7 @@
         width: 2px;
     }
 </style>
-<script type="text/javascript">
-    $(document).ready(function () {
 
-        // enable fileuploader plugin
-        $('input[name="files"]').fileuploader({
-            extensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp'],
-            limit: 1,
-            maxSize: 5,
-            changeInput: ' ',
-            theme: 'thumbnails',
-            enableApi: true,
-            addMore: false,
-            thumbnails: {
-                box: '<div class="fileuploader-items">' +
-                '<ul class="fileuploader-items-list">' +
-                '<li class="fileuploader-thumbnails-input"><div class="fileuploader-thumbnails-input-inner">Chọn Ảnh</div></li>' +
-                '</ul>' +
-                '</div>',
-                item: '<li class="fileuploader-item">' +
-                '<div class="fileuploader-item-inner">' +
-                '<div class="thumbnail-holder">${image}</div>' +
-                '<div class="actions-holder">' +
-                '<a class="fileuploader-action fileuploader-action-remove" title="${captions.remove}"><i class="remove"></i></a>' +
-                '<span class="fileuploader-action-popup"></span>' +
-                '</div>' +
-                '<div class="progress-holder">${progressBar}</div>' +
-                '</div>' +
-                '</li>',
-                item2: '<li class="fileuploader-item">' +
-                '<div class="fileuploader-item-inner">' +
-                '<div class="thumbnail-holder">${image}</div>' +
-                '<div class="actions-holder">' +
-                '<a class="fileuploader-action fileuploader-action-remove" title="${captions.remove}"><i class="remove"></i></a>' +
-                '<span class="fileuploader-action-popup"></span>' +
-                '</div>' +
-                '</div>' +
-                '</li>',
-                startImageRenderer: true,
-                canvasImage: false,
-                _selectors: {
-                    list: '.fileuploader-items-list',
-                    item: '.fileuploader-item',
-                    start: '.fileuploader-action-start',
-                    popup_open: '.fileuploader-action-popup',
-                    retry: '.fileuploader-action-retry',
-                    remove: '.fileuploader-action-remove'
-                },
-                onItemShow: function (item, listEl, parentEl, newInputEl, inputEl) {
-                    var plusInput = listEl.find('.fileuploader-thumbnails-input'),
-                        api = $.fileuploader.getInstance(inputEl.get(0));
-                    item.html.find('.fileuploader-action-remove').before('<a class="fileuploader-action fileuploader-action-change" title="Đổi Ảnh"><i class="fa fa-history"></i></a>');
-                    if (api.getFiles().length >= api.getOptions().limit) {
-                        plusInput.hide();
-                    }
-
-                    plusInput.insertAfter(item.html);
-                    var action_change = listEl.find('.fileuploader-action-change');
-                    action_change.on('click', function () {
-                        api.open();
-                    });
-
-                    if (item.format == 'image') {
-                        item.html.find('.fileuploader-item-icon').hide();
-                    }
-                },
-                onItemRemove: function (html, listEl, parentEl, newInputEl, inputEl) {
-                    var plusInput = listEl.find('.fileuploader-thumbnails-input'),
-                        api = $.fileuploader.getInstance(inputEl.get(0));
-
-                    html.children().animate({'opacity': 0}, 200, function () {
-                        setTimeout(function () {
-                            html.remove();
-
-                            if (api.getFiles().length - 1 < api.getOptions().limit) {
-                                plusInput.show();
-                            }
-                        }, 100);
-                    });
-
-                }
-            },
-            afterRender: function (listEl, parentEl, newInputEl, inputEl) {
-                var plusInput = listEl.find('.fileuploader-thumbnails-input'),
-
-                    api = $.fileuploader.getInstance(inputEl.get(0));
-
-                plusInput.on('click', function () {
-                    api.open();
-                });
-
-            },
-            editor: {
-                cropper: {
-                    ratio: '1:1',
-                    minWidth: 150,
-                    minHeight: 150,
-                    maxWidth: 800,
-                    maxHeight: 600,
-                    showGrid: true
-                }
-            },
-            dragDrop: {
-                container: '.fileuploader-thumbnails-input'
-            }
-        });
-
-    });
-</script>
 <script>
 
     //--Bootstrap Date Picker--

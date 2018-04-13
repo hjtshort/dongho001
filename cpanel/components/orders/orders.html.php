@@ -46,10 +46,6 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 				case "invoice":
 					include_once("orders/orders.orders.invoice.admin.php");
 				break;
-				case "function":
-					include_once("models.orders.php");
-					include_once("orders/function.php");
-				break;
 				
 			}
 		
@@ -100,6 +96,10 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 			
 				case "view":
 					include_once("exportorders/orders.exportorders.view.admin.php");
+				break;
+				case "report":
+					include_once("exportorders/orders.exportorders.report.admin.php");
+		
 				break;
 				
 				case "add":

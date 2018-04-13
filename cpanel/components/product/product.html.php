@@ -143,12 +143,13 @@ if( isset($_SESSION["wti"]) || !empty($_SESSION["wti"]) ){
 				break;
 				
 				case "add":
+					include_once("vendors/product.vendors.add.admin.process.php");
 					include_once("vendors/product.vendors.add.admin.php");
 				break;
 				
 				case "edit":
-					//include_once("process/com_product.article.edit.models.php");
-					//include_once("product/com_product.product.edit.admin.php");
+					include_once("vendors/product.vendors.edit.admin.process.php");
+					include_once("vendors/product.vendors.edit.admin.php");
 				break;
 				
 				case "copy":

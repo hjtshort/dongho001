@@ -72,7 +72,7 @@
                                              </div>
                                          </div>
                                      </div>
-                                    <?php var_dump($_POST); ?>
+
         
                                      <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                          <thead class="flip-content bordered-palegreen">

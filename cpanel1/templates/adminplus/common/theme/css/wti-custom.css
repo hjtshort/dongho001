@@ -1,0 +1,68 @@
+/* CSS Document */
+.LogoHeader {
+	padding: 6px 0 0 15px;
+	float: left;
+	position: absolute;
+	top: 5px;
+	left: 0px;
+}
+
+.LogoHeader {
+	color: #005FA3;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.LogoHeader .logoimage, .LogoHeader .linkroot {
+	float: left;
+	margin-left: 6px;
+}
+
+.LogoHeader .linkroot {
+	border-left: 2px solid #d6d6d6;
+	margin-left: 5px;
+	margin-top: 12px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.LogoHeader .logoimage {
+	margin-top: 10px;
+}
+
+a.SiteName, a.SiteName:link, a.SiteName:hover, a.SiteName:visited {
+	font-size: 24px;
+	color: #2294d2;
+	text-decoration: none;
+}
+
+.img-thumbnail {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+.btn {
+	font-size:13px;	
+}
+
+.form-inline.small label {
+	margin: 5px 5px 0 0;
+}
+
+.checkbox{
+	display:table-cell !important;	
+}
+
+input[type=text], input[type=password], select, textarea {
+	color: #555;
+}
