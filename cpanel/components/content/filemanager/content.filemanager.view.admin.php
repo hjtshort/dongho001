@@ -1,8 +1,6 @@
 <?php
 ?>
 
-
-
 <div class="page-content">
     <!-- Page Breadcrumb -->
     <div class="page-breadcrumbs breadcrumbs-fixed">
@@ -58,20 +56,17 @@
                     $appendedFiles = json_encode($appendedFiles);
                     ?>
 
-                    <div id="ckfinder-widget"></div>
+                    <div id="ckfinder1"></div>
                     <script type="text/javascript" src="javascript/ckeditor/ckeditor.js"></script>
                     <script type="text/javascript" src="javascript/ckfinder/ckfinder.js"></script>
                         <script type="text/javascript">
-                        CKFinder.widget( 'ckfinder-widget', {
-                            width: '100%',
-                            height: 500,
-                            plugins: [
-                            
-                                '../samples/plugins/StatusBarInfo/StatusBarInfo'
-                            ]
+             
+                        CKFinder.widget( 'ckfinder1', {
+                            width: 960,
+                            height: 700
                         } );
-                           
-                        </script>
+                    </script>
+        
                  
                  
                 </form>
