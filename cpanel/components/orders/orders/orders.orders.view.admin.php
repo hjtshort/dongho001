@@ -85,7 +85,6 @@
                                                  </label>
                                              </th>
                                              <th>Khách hàng</th>
-                                             <th class="center" style="width: 10%;">Drag</th>
                                              <th class="center" style="width: 20%;">Thời gian đặt hàng</th>
                                              <th style="width: 10%;" class="center">Trạng thái</th>
                                              <th style="width: 10%;" class="center">Tin nhắn</th>
@@ -111,9 +110,6 @@
                                                  </td>
                                                  <td>
                                                     <a href="orders/orders/edit/<?php echo $value['id'];  ?>.html"><?php echo $value['bill_name'] ?></a>
-                                                 </td>
-                                                 <td>
-                                                    ++
                                                  </td>
                                                  <td class="center"><?php echo $func->getTimeInterval($value['date_create']); ?></td>
                                                  <td>

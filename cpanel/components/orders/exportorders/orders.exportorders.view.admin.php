@@ -174,6 +174,7 @@ $('#ajaxne').click(function (e) {
 </script>
 <!--Bootstrap Date Picker-->
 <script src="<?= $conf['template_admin']; ?>/assets/js/datetime/bootstrap-datepicker.js"></script>
+<script src="<?= $conf['template_admin']; ?>/assets/js/datetime/jquery.ui.datepicker-vi-VN.js"></script>
 
 <!--Bootstrap Time Picker-->
 <script src="<?= $conf['template_admin']; ?>/assets/js/datetime/bootstrap-timepicker.js"></script>
@@ -206,6 +207,7 @@ $('#ajaxne').click(function (e) {
         height: 8px;
         width: 2px;
     }
+  
 </style>
 
 <script>
@@ -215,6 +217,12 @@ $('#ajaxne').click(function (e) {
 
     //--Bootstrap Time Picker--
     $('#timepicker1').timepicker();
+    $(".date-picker").datepicker({
+        isRTL: false,
+        format: 'dd.mm.yyyy hh:ii',
+        autoclose:true,
+        language: 'en'
+    });
 
 </script>
 <?php if (!empty($_SESSION["validator"])) {
