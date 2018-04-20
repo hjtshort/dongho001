@@ -8,6 +8,29 @@
         {
             $this->dbObj = new classDb();
         }
+        public function get_orders_view($search,$offset,$limit)
+        {
+            if($offset!=''|| $limit!=''){
+                $lim="limit ".$offset.",".$limit;
+            }
+            else 
+                $lim="";
+            $a="%".$search."%";
+            $sql= " SELECT `id`, `bill_name`, `bill_email`, `bill_address`, `bill_phone`, `note`, `total`, `order_status`,
+            `date_create`, `date_update`
+            FROM `donhang`
+            where bill_name like ?".$lim;
+            
+             $result = $this->dbObj->SqlQueryOutputResult($sql, array($a));
+             return $result;
+         
+        }
+        public function count_orders(){
+            $sql= " SELECT `id`, `bill_name`, `bill_email`, `bill_address`, `bill_phone`, `note`, `total`, `order_status`,
+            `date_create`, `date_update`
+            FROM `donhang`";
+            $result = $this->dbObj->SqlQueryOutputResult($sql, array(0))->rowCount();
+        }
         public function change_orders($query,$value,$check){     
             
             if ($this->dbObj->SqlQueryInputResult($query, array($value, $check)) <> FALSE) {
@@ -28,22 +51,8 @@
     $orders_process= new orders_process();
     switch ($_POST['act']){
         case "":
-            if(!isset($_POST['search'])){
-                $sql= " SELECT `id`, `bill_name`, `bill_email`, `bill_address`, `bill_phone`, `note`, `total`, `order_status`,
-                `date_create`, `date_update`
-                FROM `donhang`";
-                $a="";
-               
-                
-            }
-            else{
-                $a="%".strip_tags($_POST['search'])."%";
-                $sql= " SELECT `id`, `bill_name`, `bill_email`, `bill_address`, `bill_phone`, `note`, `total`, `order_status`,
-                `date_create`, `date_update`
-                FROM `donhang` where `bill_name` like ?";
-            }
-            $data=$orders_process->get_orders_view($sql,$a);
-            break;
+
+        break;
         case "choose":
             if(isset($_POST['chkItem'])){
                 $query="UPDATE `donhang` SET `order_status`= ? where `id` in (?)";

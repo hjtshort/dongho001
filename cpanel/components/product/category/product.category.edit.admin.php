@@ -1,8 +1,10 @@
-<?php defined( '_VALID_MOS' ) or die( include("404.php") );
-	$category_process = new category_process();	
+﻿<?php defined( '_VALID_MOS' ) or die( include("404.php") );
+    $category_process = new category_process();	
+    $url=$func->_extract_url($_GET['params'],'/');
 ?>
     <script type="text/javascript" src="<?= $conf['rooturl']; ?>/myeditor/myfinder/ckfinder.js"></script>
     <script type="text/javascript" src="<?= $conf['rooturl']; ?>/myeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="javascript/table-dragger.min.js"></script>
     <script language="javascript" type="text/javascript">
         function BrowseServer(inputId) {
             var finder = new CKFinder();
@@ -162,7 +164,120 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="widget flat">
+                                        <div class="widget-body widget-body-white">  
+                                            <h4>Sản phẩm</h4>
+                                            <div class="row" style="margin-bottom: 15px">
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-3" style="padding: 7px 0 0 0">
+                                                            <label for="">Sắp xếp:</label>
+                                                        </div>
+                                                        <div class="col-sm-9" style="padding: 0">
+                                                            <select class="form-control" name="style" id="select">
+                                                                <option value="" <?php if($data['danhmucsapxep']==$category_process::MANUAL) echo "selected" ?>>Thủ công</option>
+                                                                <option value="<?= $category_process::ALPHA_ASC ?>" <?php if($data['danhmucsapxep']==$category_process::ALPHA_ASC) echo "selected" ?>>Theo tên: A-Z</option>
+                                                                <option value="<?= $category_process::ALPHA_DESC ?>"
+                                                                <?php if($data['danhmucsapxep']==$category_process::ALPHA_DESC) echo "selected" ?>>Theo tên: Z-A</option>
+                                                                <option value="<?= $category_process::PRICE_ASC ?>">Theo giá: Từ cao đến thấp</option>
+                                                                <option value="<?= $category_process::PRICE_DESC ?>">Theo giá: Từ thấp đến cao</option>
+                                                                <option value="<?= $category_process::CREATE_ASC ?>">Theo ngày: Từ mới đến cũ</option>
+                                                                <option value="<?= $category_process::CREATE_DESC ?>">Theo ngày: Từ cũ đến mới</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="danhmuc" value="<?php echo $url[3]; ?>" hidden>
+                                                <div id="main_table">
+                                                    <table id="idcuatable" class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <!-- <tr>
+                                                               
+                                                               <select bind-event-change="sortProducts.updateSortOrder()" class="ui-select js-no-dirty" id="sort-order-selector" name="SortOrder"><option 
+                                                                <th style="width: 1%;" class="center">#</th>
+                                                                <th style="width: 1%;" class="uniformjs">
+                                                                    <label>
+                                                                        <input type="checkbox">
+                                                                        <span class="text"></span>
+                                                                    </label>
+                                                                </th>
+                                                                <th>Khách hàng</th>
+                                                                <th class="center" style="width: 10%;">Drag</th>
+                                                                <th class="center" style="width: 10%;">Thời gian đặt hàng</th>
+                                                                <th style="width: 10%;" class="center">Trạng thái</th>
+                                                                <th style="width: 7%;" class="center">Tin nhắn</th>
+                                                                <th style="width: 7%;" class="center">Tổng</th>
+                                                                <th style="width: 7%;" class="center">Thao tác</th>
+                                                            </tr> -->
 
+                                                        </thead>
+                                                    <tbody class='simple_with_animation'>
+                                                    <?php   
+                                                         $result1 = $category_process->get_product($url[3]);  
+                                                        foreach($result1 as $value){
+                                                            $hinhanh=json_decode($value['hinhanh'])
+                                                             ?>
+                                                            <tr id="rowtable" class="selectable" data-id="<?php echo $value['sanpham_id'];?>">
+                                                                <td class="center">Kéo <i class="table-dragger-handle"></i></td>
+                                                                <td>
+                                                                    <img style="height:40px;border:1px solid #ddd" src="../data_setting/dongho001/file_upload/product/<?php echo $hinhanh[0]; ?>" onerror="this.src='resource/images/no_image.jpg'">
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $value['tensanpham']; ?>
+                                                                </td>
+                                                            </tr> 
+                                                        <?php } ?>                                                
+                                                        </tbody>
+                                                    </table>
+                                                    <script>
+                                                        $('#select').on('change', function () {
+                                                            $('#act').val('change')
+                                                            $('#hidden').val('changesx')
+                                                            $("#validateSubmitForm").submit()
+                                                        });
+                                                        $(function(){
+                                                            var t=''
+                                                            var el = document.getElementById('idcuatable');
+                                                            var dragger = tableDragger(el, {
+                                                            mode: 'row',
+                                                            onlyBody: true,
+                                                            animation: 300
+                                                            });
+                                                            dragger.on('drop',function(from, to){  
+                                                                $.ajax({
+                                                                    type: "post",
+                                                                    url: "sort.ajax",
+                                                                    data: {
+                                                                        "action":"sort",
+                                                                        "data":t.substr(0,t.length-1),
+                                                                    },
+                                                                    success: function (response) {
+                                                                        console.log(response)
+                                                                    }
+                                                                });
+                                                            });
+                                                             dragger.on('shadowMove', function(from, to, el, mode) {
+                                                              
+                                                                var from=$('#idcuatable tbody tr:eq('+from+')').attr("data-id")
+                                                                var to=$('#idcuatable tbody tr:eq('+to+')').attr("data-id")
+                                                                t+=from+","+to+"|"                                                      
+                                                             })
+                                                            
+                                                        })
+                                                
+                                                    </script>
+                                                </div>
+                                            </div>                                                       
+                                        </div>   
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-4 col-xs-12">
 
@@ -246,8 +361,8 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <input type="hidden" name="hidden" value="category.edit"/>
-            <input type="hidden" name="act" value="save"/>
+            <input  id="act" type="hidden" name="hidden" value="category.edit"/>
+            <input  id="hidden" type="hidden" name="act" value="save"/>
             <input type="hidden" name="date_add" id="date_add" value="<?= date("d/m/Y"); ?>"/>
 
         </form>
@@ -256,31 +371,37 @@
     <script type="text/javascript">
         $(function () {
             // validate signup form on keyup and submit
-            $("#validateSubmitForm").bootstrapValidator({
-                fields: {
-                    category_title: {
-                        validators: {
-                            notEmpty: {
-                                message: "Tên danh mục không được bỏ trống"
-                            },
-                            stringLength: {
-                                min: 5,
-                                message: "Tên danh mục phải lớn hơn 5 ký tự"
-                            }
+            // $("#validateSubmitForm").bootstrapValidator({
+            //     fields: {
+            //         category_title: {
+            //             validators: {
+            //                 notEmpty: {
+            //                     message: "Tên danh mục không được bỏ trống"
+            //                 },
+            //                 stringLength: {
+            //                     min: 5,
+            //                     message: "Tên danh mục phải lớn hơn 5 ký tự"
+            //                 }
 
-                        }
-                    },
-                    'parent_category': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Vui lòng chọn danh mục cha'
-                            }
-                        }
-                    }
-                }
-            });
+            //             }
+            //         },
+            //         'parent_category': {
+            //             validators: {
+            //                 notEmpty: {
+            //                     message: 'Vui lòng chọn danh mục cha'
+            //                 }
+            //             }
+            //         }
+            //     }
+            // });
         });
     </script>
 <?php if (!empty($_SESSION["validator"])) {
     unset($_SESSION["validator"]);
 } ?>
+
+
+
+
+
+                                            

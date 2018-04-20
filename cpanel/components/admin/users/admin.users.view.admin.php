@@ -198,7 +198,7 @@ $search= isset($_POST['search'])? strip_tags($_POST['search']):"";
 
                                         <div class="col-sm-4">
                                             <div class="text-align-right" id="simpledatatable_length">
-                                                <select onchange="javascript:location.href = ''record='+this.value;"
+                                                <select onchange="javascript:location.href = 'admin/users/view.html?record='+this.value;"
                                                         name="from" name="simpledatatable_length"
                                                         aria-controls="simpledatatable"
                                                         class="form-control input-sm">

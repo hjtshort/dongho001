@@ -1,8 +1,15 @@
 <?php defined( '_VALID_MOS' ) or die( include("../../content/news/404.php") ); 
-     $sql= " SELECT `id`, `bill_name`, `bill_email`, `bill_address`, `bill_phone`, `note`, `total`, `order_status`,
-     `date_create`, `date_update`
-     FROM `donhang`";
-   $data=$orders_process->get_orders_view($sql,'');
+ $orders_process= new orders_process();
+$self_link = $_GET["params"] . ".html?";
+if(isset($_GET["record"])) { $self_link .= "record=" . $_GET["record"] . "&"; }
+if(!isset($_GET["page"])) $tranghientai = 1; else $tranghientai = intval($_GET["page"]);
+if(!isset($_GET["record"])) $somautin = 10; else $somautin = intval($_GET["record"]);
+include_once('../include/paging.php');
+$search= isset($_POST['search'])? strip_tags($_POST['search']):"";
+$tongsodong= $orders_process->get_orders_view($search,'','')->rowCount();
+@$pager = Pager::getPagerData($tongsodong, $somautin,$tranghientai, $self_link );
+
+@$data=$orders_process->get_orders_view($search,$pager->offset,$pager->limit)->fetchAll();
  ?>
  <link href="<?= $conf['template_admin']; ?>/assets/css/dataTables.bootstrap.css" rel="stylesheet"/>
 <div class="page-content">
@@ -174,7 +181,7 @@
         
                                          <div class="col-sm-4">
                                              <div class="text-align-right" id="simpledatatable_length">
-                                                 <select onchange="javascript:location.href = ''record='+this.value;"
+                                                 <select onchange="javascript:location.href = 'orders/orders/view.html?record='+this.value;"
                                                          name="from" name="simpledatatable_length"
                                                          aria-controls="simpledatatable"
                                                          class="form-control input-sm">
@@ -216,7 +223,7 @@
     $(this).closest("tr").find("input:checkbox").prop('checked',true)
     $("#act").val("choose");
     $("#tempt").val(this.value)
-        $("#validateSubmitForm").submit();
+    $("#validateSubmitForm").submit();
  });
 
     

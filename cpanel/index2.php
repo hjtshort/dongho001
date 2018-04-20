@@ -1,6 +1,6 @@
 <?php if (!defined('_VALID_MOS')) define( '_VALID_MOS', 1 );
 
-    session_start();
+    //session_start();
 	ob_start();
 	
 	ini_set('zlib_output_compression','On');
@@ -43,10 +43,9 @@
 			break;
 			case "report":
 				include_once("components/orders/exportorders/orders.exportorders.report.admin.php");
-				// $myprocess= new orders();
-				// $data=$myprocess->get_data($_GET['ngay1'],$_GET['ngay2'],$_GET['status']);
-				
-					//$func->_redirect('orders/exportorders/view.html');
+			break;
+			case "sort":
+				include_once("components/product/category/product.category.edit.ajax.admin.process.php");
 			break;
 			
 			/*Ajax Kiet*/

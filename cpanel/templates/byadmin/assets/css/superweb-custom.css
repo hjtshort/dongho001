@@ -39,3 +39,6 @@ table ul.dropdown-menu {
 .register-container .registerbox{
     height: auto !important
 }
+.popover{
+	left: 0 !important;
+}

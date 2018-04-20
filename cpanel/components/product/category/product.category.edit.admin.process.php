@@ -1,7 +1,15 @@
 <?php defined( '_VALID_MOS' ) or die( include("404.php") );
 
+
     class category_process extends product
     {
+		const ALPHA_ASC = 'alpha-asc';
+		const ALPHA_DESC= 'alpha-desc';
+		const PRICE_DESC='price-desc';
+		const PRICE_ASC='price-asc';
+		const CREATE_DESC='created-desc';
+		const CREATE_ASC='created-asc';
+		const MANUAL='manual';
         public $dbObj;
         
         function __construct()
@@ -25,7 +33,8 @@
 						danhmucsanpham.hinhanh,
 						danhmucsanpham.seo_tieudetrang,
 						danhmucsanpham.seo_thetukhoa,
-						danhmucsanpham.seo_themota
+						danhmucsanpham.seo_themota,
+						danhmucsanpham.danhmucsapxep
 					FROM danhmucsanpham
 					WHERE danhmucsanpham.danhmuc_id = ?";
 		    $result = $this->dbObj->SqlQueryOutputResult($sql, array( $danhmuc_id ));
@@ -52,7 +61,23 @@
             } else {
                 return false;
             }
-	    }
+		}
+		public function get_product($danhmuc_id)
+		{
+			$sql="SELECT * FROM sanpham inner join sanpham_sapxep on sanpham.sanpham_id=sanpham_sapxep.sanpham_id 
+			 where sanpham.danhmuc_id=? order by order_num desc";
+			$result = $this->dbObj->SqlQueryOutputResult($sql, array( $danhmuc_id ))->fetchAll();
+			return $result;
+		}
+		public function change_danhmucsapxep($iddanhmuc,$id)
+		{
+			$sql="UPDATE danhmucsanpham set danhmucsapxep=? where danhmuc_id=? ";
+			if($this->dbObj->SqlQueryInputResult($sql,array($id,$iddanhmuc)))
+				return true;
+			else 
+				return false;
+
+		}
     }
     
     /*  ___________________________
@@ -136,7 +161,14 @@
 				}
 			}		           
 			
-        break;
+		break;
+		case "change":
+			if($_POST['act']=='changesx')
+			{   $url=$func->_extract_url($_GET['params'],'/');
+				$category_process = new category_process;
+				$check=$category_process->change_danhmucsapxep($url[3],$_POST['style']);
+			}
+		break;
 
         
         default:

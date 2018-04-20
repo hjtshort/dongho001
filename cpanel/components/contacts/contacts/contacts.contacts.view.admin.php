@@ -187,7 +187,7 @@
 
                                         <div class="col-sm-4">
                                             <div class="text-align-right" id="simpledatatable_length">
-                                                <select onchange="javascript:location.href = ''record='+this.value;"
+                                                <select onchange="javascript:location.href = 'contacts/contacts/view.html?record='+this.value;"
                                                         name="from" name="simpledatatable_length"
                                                         aria-controls="simpledatatable"
                                                         class="form-control input-sm">
@@ -227,6 +227,9 @@
 <script language="javascript">
 
     $(function () {
+        $('#record').on('change', function () {
+                location.href="product/product/view.html?record="+this.value
+            });
 
         $('.btn_submit').click(function (e) {
 

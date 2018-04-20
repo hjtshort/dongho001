@@ -9,47 +9,54 @@
             $this->dbObj = new classDb();
         }
 		
-		public function get_product_count( $search_value, $danhmuc_id = 0, $title = "%%", $condition= "" )
-	    {
-			@$condition = ""; @$danhmuc_id = intval( @$search_value[3] );
-	
-			if( @$search_value[0] != "" || @$search_value[1] != "" ){
-				$condition .= " AND sanpham.gia >= " . intval(str_replace(",", "", $search_value[0])) . " AND sanpham.gia <= ". intval(str_replace(",", "", $search_value[1]));
-			} 
+		// public function get_product_count( $search_value, $danhmuc_id, $status,$nhacungcap_id )
+	    // {
+		// 	@$condition = ""; 
+		// 	if($danhmuc_id)
 			
-			if(!empty($search_value[2])){
-				$title = "%" . $search_value[2] . "%";
-			}
+		// 	if(!empty($search_value)){
+		// 		$title = "%" . $search_value . "%";
+		// 	}
 			
-			if($danhmuc_id > 0){
-				$condition .= "AND sanpham.danhmuc_id IN (SELECT danhmuc_id FROM danhmucsanpham WHERE FIND_IN_SET($danhmuc_id, danhmuc_id_assoc))";
-			}
+		// 	if($danhmuc_id > 0){
+		// 		$condition .= "AND sanpham.danhmuc_id IN (SELECT danhmuc_id FROM danhmucsanpham WHERE FIND_IN_SET($danhmuc_id, danhmuc_id_assoc))";
+		// 	}
 			
-		    $query = "SELECT COUNT(sanpham.sanpham_id) as `totalrow`
-					FROM sanpham
-					INNER JOIN danhmucsanpham ON danhmucsanpham.danhmuc_id = sanpham.danhmuc_id
-					WHERE sanpham.tensanpham LIKE ? $condition";
+		//     $query = "SELECT COUNT(sanpham.sanpham_id) as `totalrow`
+		// 			FROM sanpham
+		// 			INNER JOIN danhmucsanpham ON danhmucsanpham.danhmuc_id = sanpham.danhmuc_id
+		// 			WHERE sanpham.tensanpham LIKE ? $condition";
 
-		    $result = $this->dbObj->SqlQueryOutputResult($query, array( $title ));
-			if ($row = $result->fetch()) {
-				return $row['totalrow'];
-			}
-	    }
+		//     $result = $this->dbObj->SqlQueryOutputResult($query, array( $title ));
+		// 	if ($row = $result->fetch()) {
+		// 		return $row['totalrow'];
+		// 	}
+	    // }
 		
-		public function get_product_view( $search_value, $offset, $limit, $danhmuc_id = 0, $title = "%%", $condition= "" )
+		public function get_product_view( $search_value, $offset, $limit, $danhmuc_id, $status,$nhacungcap_id)
 	    {			
-			@$condition = ""; @$danhmuc_id = intval( @$search_value[3] );
-	
-			if( @$search_value[0] != "" || @$search_value[1] != "" ){
-				$condition .= " AND sanpham.gia >= " . intval(str_replace(",", "", $search_value[0])) . " AND sanpham.gia <= ". intval(str_replace(",", "", $search_value[1]));
-			} 
-			
-			if(!empty($search_value[2])){
-				$title = "%" . $search_value[2] . "%";
+			@$condition = "";
+		
+			if($danhmuc_id!='')
+			{
+				$condition.=" And sanpham.danhmuc_id=".$danhmuc_id."";
 			}
-			
-			if($danhmuc_id > 0){
-				$condition .= "AND sanpham.danhmuc_id IN (SELECT danhmuc_id FROM danhmucsanpham WHERE FIND_IN_SET($danhmuc_id, danhmuc_id_assoc))";
+			if($status!='')
+			{
+				$condition.=" And sanpham.hienthi=".$status."";	
+			}
+			if($nhacungcap_id!='')
+			{
+				$condition.=" And sanpham.nhasanxuat_id=".$nhacungcap_id."";
+			}			
+			if($search_value!=''){
+				$title = "%" . $search_value. "%";
+			}
+			else
+				$title="%%";
+			if($offset!=''||$limit!='')
+			{
+				$lim="LIMIT ".$offset.",".$limit."";
 			}
 			
 		    $query = "SELECT
@@ -66,9 +73,8 @@
 					LEFT JOIN danhmucsanpham ON danhmucsanpham.danhmuc_id = sanpham.danhmuc_id
 					LEFT JOIN sanpham_nhasanxuat ON sanpham_nhasanxuat.nhasanxuat_id = sanpham.nhasanxuat_id
 					WHERE sanpham.tensanpham LIKE ? $condition
-					ORDER BY danhmucsanpham.thutu DESC, `sanpham`.`thutu` DESC
-					/*LIMIT $offset, $limit*/";
-		    $result = $this->dbObj->SqlQueryOutputResult($query, array( $title ));
+					ORDER BY danhmucsanpham.thutu DESC , `sanpham`.`thutu` DESC ".$lim;
+			$result = $this->dbObj->SqlQueryOutputResult($query, array( $title ));
 		    return $result;
 	    }				
         
@@ -85,7 +91,7 @@
 		
 		function lock_news($trangthai, $values)
         {
-			$query = "UPDATE sanpham SET `hienthi` = ? WHERE Id = ?";
+			$query = "UPDATE sanpham SET `hienthi` = ? WHERE sanpham_id = ?";
             
             if ($this->dbObj->SqlQueryInputResult($query, array($trangthai, $values)) <> FALSE) {
                 return true;
@@ -96,14 +102,26 @@
 
 	    function process_delete_product($values)
         {
-		    $query = "DELETE from sanpham where Id = ?";
+		    $query = "DELETE from sanpham where sanpham_id = ?";
             
             if ($this->dbObj->SqlQueryInputResult($query, array($values)) <> FALSE) {
                 return true;
             } else {
                 return false;
             }
-	    }
+		}
+		public function sanpham_danhmuc()
+		{
+			$query ="Select danhmuc_id,tieude from danhmucsanpham";
+			$result = $this->dbObj->SqlQueryOutputResult($query, array(0));
+			return $result;
+		}
+		public function sanpham_nhasanxuat()
+		{
+			$query ="Select nhasanxuat_id,nhasanxuat from sanpham_nhasanxuat";
+			$result = $this->dbObj->SqlQueryOutputResult($query, array(0));
+			return $result;
+		}
     }
     
     /*  ___________________________
@@ -131,7 +149,8 @@
 				}
 				if($check == TRUE) $_SESSION["message"]["notyfy"] = NULL;
 				else $_SESSION["message"]["notyfy"] = "Không thực hiện được, vui lòng thao tác lại !!! ";
-			} else if($_POST["act"] == "lock" || $_POST["act"] == "lock-all"){
+			} 
+			else if($_POST["act"] == "lock" || $_POST["act"] == "lock-all"){
 				$check = FALSE;
 				$values = $_POST["chkItem"];
 				for ($row = 0; $row < count($values); $row++){
