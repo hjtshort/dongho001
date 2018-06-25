@@ -1,8 +1,7 @@
-<?php 
+﻿<?php 
 class category_process 
 {
     public $dbObj;
-    
     function __construct()
     {
         $this->dbObj = new classDb();

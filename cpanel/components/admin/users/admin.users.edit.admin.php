@@ -37,7 +37,7 @@ $data=$myprocess->get_user_list($url['id'])->fetchAll();
                                         </a>
                                     </div>
                                 </div>
-                                <?php echo  $func->enscriptPass('123456'); ?>
+                              
                                 <div class="widget-body widget-body-white">                                        
                                     <div class="form-group">
 
